@@ -7,7 +7,10 @@ const App = () => {
     console.log(classes);
 
     return (
-        <h2 className={classes.test}>Test WW</h2>
+        <>
+            <h2 className={classes.test}>Test WW</h2>
+            <button className={classes.myButton}>BooooM</button>
+        </>
     )
 };
 

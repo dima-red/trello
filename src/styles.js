@@ -7,8 +7,7 @@ export const styles = createUseStyles({
         color: textColor
     },
     myButton: {
-        button: {
-            color: 'white'
-        }
+        color: 'orange',
+
     }
 });

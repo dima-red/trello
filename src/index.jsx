@@ -1,5 +1,15 @@
 import React from 'react';
-import reactDOM from 'react-dom';
-import App from './App.jsx';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store';
+import BoardView from './views';
+import './index.css';
 
-reactDOM.render(<App />, document.getElementById('root'));
+const store = configureStore();
+
+ReactDOM.render(
+    <Provider store={ store }>
+        <BoardView />
+    </Provider>,
+    document.getElementById('root')
+);

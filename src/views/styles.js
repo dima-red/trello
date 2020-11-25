@@ -3,8 +3,9 @@ import {createUseStyles} from 'react-jss'
 export const styles = createUseStyles({
     app: {
         "background-color": "#282c34",
-        color: "white",
-        "font-size": "25px",
+        // color: "white",
+        color: "#61dafb",
+        "font-size": "20px",
     },
     appContainer: {
         border: "2px solid white",
@@ -14,8 +15,8 @@ export const styles = createUseStyles({
         "box-sizing": "border-box"
     },
     boardContent: {
-        "max-width": "50%",
-        margin: "0 auto",
+        "max-width": "33%",
+        // margin: "20px",
     },
     appHeader: {
         display: "flex",
@@ -24,7 +25,7 @@ export const styles = createUseStyles({
     },
     logoWrapper: {
         margin: "15px",
-        "align-self": "flex-end",
+        "align-self": "center",
     },
     appLogo: {
         animation: "appLogoSpin infinite 20s linear"

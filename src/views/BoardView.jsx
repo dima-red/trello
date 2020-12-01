@@ -23,6 +23,7 @@ const BoardView = () => {
                 <main>
                     <div className={ classes.boardContent }>
                         <List />
+                        <List />
                     </div>
                 </main>
             </div>

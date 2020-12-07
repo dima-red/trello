@@ -1,16 +1,20 @@
 import React from "react";
-import { styles } from "./styles.js";
+import withStyles from 'react-jss';
+import Typography from '../../atomic-jss-components/Typography/Typography.jsx';
+import styles from "./styles.js";
 
-const List = () => {
-    const classes = styles();
+const List = ({ classes, props }) => {
+    const {summary, description, dateTime} = props;
 
     return (
         <div className={classes.listWrapper}>
-            <div className={ classes.summary }>Summary</div>
-            <div className={ classes.description }>Description</div>
-            <span className={ classes.dateTime }>Date & Time</span>
+            <Typography variant={'summary'} value={ summary }/>
+            <Typography variant={'description'} value={ description }/>
+            <Typography variant={'date'} value={ dateTime }/>
         </div>
     );
-}
+};
 
-export default List;
+const StylesList = withStyles(styles)(List);
+
+export default StylesList;

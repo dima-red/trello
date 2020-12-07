@@ -1,8 +1,8 @@
-import {createUseStyles} from 'react-jss'
+import { primary, secondary, ternary, white} from '../../constants/style.constants';
 
-export const styles = createUseStyles({
+const styles = {
   btn: {
-    "background-color": "#282c34",
+    "background-color": primary,
     color: "white",
     border: "1px solid white",
     padding: "10px 20px",
@@ -11,7 +11,9 @@ export const styles = createUseStyles({
     cursor: "pointer"
   },
   text: {
-    color: "white",
+    color: white,
   }
-});
+};
+
+export default styles;
 

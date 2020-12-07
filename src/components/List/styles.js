@@ -1,28 +1,14 @@
-import { createUseStyles } from 'react-jss'
+import { primary, secondary, ternary, white} from '../../constants/style.constants';
 
-export const styles = createUseStyles({
+export const styles = {
   listWrapper: {
-    border: "2px solid white",
+    color: primary,
+    border: `2px solid ${white}`,
     "border-radius": "5px",
-    margin: "20px"
+    margin: "20px",
+    "background-color": ternary,
   },
-  summary: {
-    "text-align": "center",
-    "margin-bottom": "20px",
-  },
-  description: {
-    border: "2px solid white",
-    "border-radius": "5px",
-    width: "70%",
-    margin: "0 auto",
-    "font-size": "15px",
-  },
-  dateTime: {
-    "font-size": "10px",
-    "text-align": "right",
-    padding: "10px",
-    display: "block",
-  }
-});
+};
 
+export default styles;
 

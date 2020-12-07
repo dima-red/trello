@@ -1,10 +1,10 @@
-import {createUseStyles} from 'react-jss'
+import { primary, secondary, ternary, white} from '../../constants/style.constants';
 
-export const styles = createUseStyles({
+const styles = {
     app: {
-        "background-color": "#282c34",
+        "background-color": primary,
         // color: "white",
-        color: "#61dafb",
+        color: secondary,
         "font-size": "20px",
     },
     appContainer: {
@@ -43,4 +43,6 @@ export const styles = createUseStyles({
     headerRight: {
         display: "flex"
     }
-});
+};
+
+export default styles;

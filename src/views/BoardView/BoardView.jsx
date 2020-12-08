@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import createList from "./actions";
+import { createList } from "./actions";
 import Button from '../../atomic-jss-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
 import styles from './styles';
@@ -30,7 +30,7 @@ const BoardView = ({classes}) => {
                         <Button text={ 'Boards' } classNameProps={ classes.headerBtn } onClick={() => console.log('Add Board')}/>
                     </div>
                     <div className={ classes.headerRight }>
-                        <Button text={ '+' } classNameProps={ buttonClassNames } onClick={ ()=> addNewList(dispatch)}/>
+                        <Button text={ '+' } classNameProps={ buttonClassNames } onClick={ () => addNewList(dispatch)}/>
                         <div className={ classes.logoWrapper }>
                             <div className={ classes.appLogo }>DG</div>
                         </div>

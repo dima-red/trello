@@ -22,6 +22,6 @@ Typography.defaultProps = {
     className: '',
 };
 
-const StylesTypography = withStyles(styles)(Typography);
+const StyledTypography = withStyles(styles)(Typography);
 
-export default StylesTypography;
+export default StyledTypography;

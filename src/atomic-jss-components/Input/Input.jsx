@@ -3,6 +3,7 @@ import withStyles from 'react-jss';
 import { useDispatch } from 'react-redux'
 import { nameList } from "../../views/BoardView/actions";
 import { saveList } from "../../views/BoardView/actions";
+import Button from "../../atomic-jss-components/Button/Button.jsx";
 import classNames from 'classnames';
 import styles from "./styles.js";
 
@@ -24,8 +25,8 @@ const Input = ({ classes, value, placeholder, id}) => {
     return (
         <div className={ classes.summary }>
             <input type="text" value={ value } onChange={ event => handleInputChange(event, dispatch, id) } placeholder={placeholder} />
-            <button onClick={ () => handleOkButton(dispatch, id) } >Ok</button>
-            <button onClick={ handleCancelButton }>Cancel</button>
+            <Button text={"✔"} classNameProps={ classes.listNameButton } onClick={ () => handleOkButton(dispatch, id) } />
+            <Button text={"✖"} classNameProps={ classes.listNameButton } onClick={ handleCancelButton } />
         </div>
     );
 };

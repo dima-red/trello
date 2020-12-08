@@ -15,8 +15,7 @@ const styles = {
         "box-sizing": "border-box"
     },
     boardContent: {
-        "max-width": "33%",
-        // margin: "20px",
+        display: "flex",
     },
     appHeader: {
         display: "flex",

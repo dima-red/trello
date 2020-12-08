@@ -8,6 +8,14 @@ export const styles = {
     margin: "20px",
     "background-color": ternary,
   },
+  listFooter: {
+    display: "flex",
+    "margin-bottom": "10px",
+  },
+  addTaskButton: {
+    padding: "5px 10px",
+    "font-size": "15px",
+  },
 };
 
 export default styles;

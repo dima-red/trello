@@ -6,6 +6,9 @@ export const styles = {
         display: "block",
         "margin-bottom": "20px",
     },
+    listNameButton: {
+        padding: "5px 10px",
+    },
 };
 
 export default styles;

@@ -1,4 +1,4 @@
-import { primary, secondary, ternary, white} from '../../constants/style.constants';
+import { primary, secondary, ternary, white, decline} from '../../constants/style.constants';
 
 const styles = {
   btn: {
@@ -18,7 +18,7 @@ const styles = {
   },
   cancelButton: {
     "&:hover": {
-      color: "#ff6c6c",
+      color: decline,
     }
   },
 };

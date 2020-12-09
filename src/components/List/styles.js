@@ -1,4 +1,4 @@
-import { primary, secondary, ternary, white} from '../../constants/style.constants';
+import { primary, secondary, ternary, white, decline} from '../../constants/style.constants';
 
 export const styles = {
   listWrapper: {

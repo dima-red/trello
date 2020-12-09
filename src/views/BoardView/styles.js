@@ -3,7 +3,6 @@ import { primary, secondary, ternary, white} from '../../constants/style.constan
 const styles = {
     app: {
         "background-color": primary,
-        // color: "white",
         color: secondary,
         "font-size": "20px",
     },
@@ -14,13 +13,21 @@ const styles = {
         height: "100vh",
         "box-sizing": "border-box"
     },
+    mainContainer: {
+        height: "calc(100vh - 70px)",
+        "margin-top": "68px",
+        "overflow-y": "auto",
+    },
     boardContent: {
         display: "flex",
+        "flex-wrap": "wrap",
     },
     appHeader: {
         display: "flex",
         "justify-content": "space-between",
         "border-bottom": "2px solid white",
+        position: "fixed",
+        "width": "100%",
     },
     logoWrapper: {
         margin: "15px",

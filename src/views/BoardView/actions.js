@@ -1,10 +1,14 @@
+import { LIST_ID_NUMBER } from '../../constants/action.constants';
+import { TASK_ID_NUMBER } from '../../constants/action.constants';
+
 import { ADD_NEW_LIST } from '../../constants/action.constants';
 import { NAME_NEW_LIST } from '../../constants/action.constants';
-import { LIST_ID_NUMBER } from '../../constants/action.constants';
 import { SAVE_NEW_LIST } from '../../constants/action.constants';
 import { CANCEL_NEW_LIST } from '../../constants/action.constants';
+import { CREATE_NEW_TASK } from '../../constants/action.constants';
 
-let listCounter = LIST_ID_NUMBER;
+let listIdCounter = LIST_ID_NUMBER;
+let taskIdCounter = TASK_ID_NUMBER;
 
 export const createList = () => (
     {
@@ -13,38 +17,52 @@ export const createList = () => (
             summary: '',
             tasks: [],
             placeholder: 'Please, name your list',
-            id: ++listCounter,
+            listId: ++listIdCounter,
             dateTime: new Date().toLocaleString(),
             isNewList: true,
         },
     }
 );
 
-export const nameList = (value, id) => (
+export const nameList = (value, listId) => (
     {
         type: NAME_NEW_LIST,
         payload: {
             summary: value,
-            id,
+            listId,
         },
     }
 );
 
-export const saveList = (id) => (
+export const saveList = (listId) => (
     {
         type: SAVE_NEW_LIST,
         payload: {
             isNewList: false,
-            id,
+            listId,
         },
     }
 );
 
-export const cancelListCreation = (id) => (
+export const cancelListCreation = (listId) => (
     {
         type: CANCEL_NEW_LIST,
         payload: {
-            id,
+            listId,
+        },
+    }
+);
+
+export const createTask = (listId) => (
+    {
+        type: CREATE_NEW_TASK,
+        listId,
+        payload: {
+            description: '',
+            placeholder: 'Please, name your task',
+            taskId: ++taskIdCounter,
+            dateTime: new Date().toLocaleString(),
+            isNewTask: true,
         },
     }
 );

@@ -20,7 +20,7 @@ const BoardView = ({classes}) => {
     const lists = useSelector(state => state.lists);
     const dispatch = useDispatch();
 
-    console.log(lists);
+    console.info("Store: ", lists);
 
     return (
         <div className={ classes.app }>
@@ -37,12 +37,14 @@ const BoardView = ({classes}) => {
                     </div>
                 </header>
                 <main>
-                    <div className={ classes.boardContent }>
-                        {
-                            lists.map(list => (
-                                <List props={ list }/>
-                            ))
-                        }
+                    <div className={ classes.mainContainer }>
+                        <div className={ classes.boardContent }>
+                            {
+                                lists.map(list => (
+                                    <List props={ list }/>
+                                ))
+                            }
+                        </div>
                     </div>
                 </main>
             </div>

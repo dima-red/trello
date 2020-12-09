@@ -21,7 +21,6 @@ export const styles = {
   },
 
 
-
   summary: {
     "text-align": "center",
     display: "flex",
@@ -35,6 +34,14 @@ export const styles = {
     padding: "2px 6px",
     border: "1px solid grey",
   },
+
+  description: {
+    display: "flex",
+  },
+  taskNameButton: {
+    "align-self": "flex-end",
+  },
+
 };
 
 export default styles;

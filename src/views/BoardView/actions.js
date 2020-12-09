@@ -59,7 +59,7 @@ export const createTask = (listId) => (
         listId,
         payload: {
             description: '',
-            placeholder: 'Please, name your task',
+            placeholder: 'Please, add description for your task',
             taskId: ++taskIdCounter,
             dateTime: new Date().toLocaleString(),
             isNewTask: true,

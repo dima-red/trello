@@ -6,6 +6,7 @@ import Task from "../Task/Task.jsx";
 import Button from "../../atomic-jss-components/Button/Button.jsx";
 import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions";
 import styles from "./styles.js";
+import classNames from "classnames";
 
 const handleListNameChange = (event, dispatch, listId) => {
     const value = event.target.value;
@@ -29,7 +30,22 @@ const renderListNameCreation = (classes, summary, listId, placeholder, dispatch)
         <div className={ classes.summary }>
             <input type="text" value={ summary } className={classes.listNameInput} onChange={ event => handleListNameChange(event, dispatch, listId) } placeholder={placeholder} />
             <Button text={"✔"} classNameProps={ classes.listNameButton } onClick={ () => handleOkButton(dispatch, listId) } />
-            <Button text={"✖"} classNameProps={ classes.listNameButton } onClick={ () => handleCancelButton(dispatch, listId) } />
+            <Button text={"✖"} classNameProps={ classes.listNameButton } isCancel={ true } onClick={ () => handleCancelButton(dispatch, listId) } />
+        </div>
+    );
+};
+
+const renderTaskNameCreation = (classes, task, listId, dispatch) => {
+    const taskNameButtonClasses = classNames(
+        classes.listNameButton,
+        classes.taskNameButton
+    );
+
+    return (
+        <div className={ classes.description }>
+            <textarea type="text" value={ task.description } className={classes.listNameInput} onChange={ event => handleListNameChange(event, dispatch, listId) } placeholder={ task.placeholder } />
+            <Button text={"✔"} classNameProps={ taskNameButtonClasses } onClick={ () => handleOkButton(dispatch, listId) } />
+            <Button text={"✖"} classNameProps={ taskNameButtonClasses } isCancel={ true } onClick={ () => handleCancelButton(dispatch, listId) } />
         </div>
     );
 };
@@ -46,7 +62,7 @@ const List = ({ classes, props }) => {
             }
             {
                 !!tasks && !!tasks.length && tasks.map(task => (
-                    <Task description={ task.description }/>
+                    task.isNewTask ? renderTaskNameCreation(classes, task, listId, dispatch) : <Task description={ task.description }/>
                 ))
             }
             <div className={ classes.listFooter }>

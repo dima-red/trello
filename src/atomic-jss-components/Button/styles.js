@@ -15,7 +15,12 @@ const styles = {
     "&:hover": {
       color: secondary,
     },
-  }
+  },
+  cancelButton: {
+    "&:hover": {
+      color: "#ff6c6c",
+    }
+  },
 };
 
 export default styles;

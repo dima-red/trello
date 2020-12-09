@@ -1,6 +1,7 @@
 import { ADD_NEW_LIST } from '../../constants/action.constants';
 import { NAME_NEW_LIST } from '../../constants/action.constants';
 import { SAVE_NEW_LIST } from '../../constants/action.constants';
+import { CANCEL_NEW_LIST } from '../../constants/action.constants';
 
 const initialState = [
     {
@@ -17,7 +18,7 @@ const initialState = [
     }
 ];
 
-const lists = (state = initialState, {type, payload, id}) => {
+const lists = (state = initialState, {type, payload}) => {
     switch (type) {
         case ADD_NEW_LIST:
             return [
@@ -34,7 +35,7 @@ const lists = (state = initialState, {type, payload, id}) => {
                 }
                 return list;
              });
-         case SAVE_NEW_LIST:
+        case SAVE_NEW_LIST:
              return state.map(list => {
                 if (list.id === payload.id) {
                     list.isNewList = payload.isNewList;
@@ -42,6 +43,8 @@ const lists = (state = initialState, {type, payload, id}) => {
                 }
                 return list;
              });
+        case CANCEL_NEW_LIST:
+            return state.filter(list => list.id !== payload.id);
 
         default:
             return state;

@@ -17,7 +17,7 @@ export const styles = {
     dateTime: {
         "font-size": "12px",
         "text-align": "right",
-        padding: "10px",
+        "align-self": "center",
         display: "block",
     }
 };

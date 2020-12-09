@@ -12,6 +12,9 @@ const styles = {
   },
   text: {
     color: white,
+    "&:hover": {
+      color: secondary,
+    },
   }
 };
 

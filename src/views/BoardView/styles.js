@@ -48,7 +48,8 @@ const styles = {
 
     headerRight: {
         display: "flex"
-    }
+    },
+    headerLeft: {},
 };
 
 export default styles;

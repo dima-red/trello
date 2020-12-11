@@ -1,4 +1,4 @@
-import { ADD_NEW_LIST, NAME_NEW_LIST, SAVE_NEW_LIST, CANCEL_NEW_LIST, CREATE_NEW_TASK } from '../../constants/action.constants';
+import { ADD_NEW_LIST, NAME_NEW_LIST, SAVE_NEW_LIST, CANCEL_NEW_LIST, CREATE_NEW_TASK } from '../../../constants/action.constants';
 
 const initialState = [
     {
@@ -15,7 +15,7 @@ const initialState = [
     }
 ];
 
-const lists = (state = initialState, {type, payload, listId}) => {
+const lists = (state = initialState, {type, payload}) => {
     switch (type) {
         case ADD_NEW_LIST:
             return [
@@ -25,28 +25,30 @@ const lists = (state = initialState, {type, payload, listId}) => {
                 },
             ];
         case NAME_NEW_LIST:
-             return state.map(list => {
+            return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.summary = payload.summary;
                     return list;
                 }
                 return list;
-             });
+            });
+
         case SAVE_NEW_LIST:
-             return state.map(list => {
+            return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.isNewList = payload.isNewList;
-                    // return list;
                 }
                 return list;
-             });
+            });
+
         case CANCEL_NEW_LIST:
             return state.filter(list => list.listId !== payload.listId);
+
         case CREATE_NEW_TASK:
             return state.map(list => {
-                if (list.listId === listId) {
+                if (list.listId === payload.listId) {
                     list.tasks.push(payload);
-                };
+                }
                 return list;
             });
 
@@ -55,6 +57,4 @@ const lists = (state = initialState, {type, payload, listId}) => {
     }
 };
 
-export default {
-    lists,
-};
+export default lists;

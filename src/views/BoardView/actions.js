@@ -56,13 +56,13 @@ export const cancelListCreation = (listId) => (
 export const createTask = (listId) => (
     {
         type: CREATE_NEW_TASK,
-        listId,
         payload: {
             description: '',
             placeholder: 'Please, add description for your task',
             taskId: ++taskIdCounter,
             dateTime: new Date().toLocaleString(),
             isNewTask: true,
+            listId,
         },
     }
 );

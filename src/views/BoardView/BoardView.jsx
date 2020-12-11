@@ -8,10 +8,6 @@ import styles from './styles';
 
 import { useSelector, useDispatch } from 'react-redux'
 
-const addNewList = (dispatch) => {
-    dispatch(createList());
-};
-
 const BoardView = ({classes}) => {
     const buttonClassNames = classNames(
         classes.headerBtn,
@@ -20,7 +16,7 @@ const BoardView = ({classes}) => {
     const lists = useSelector(state => state.lists);
     const dispatch = useDispatch();
 
-    console.info("Store: ", lists);
+    console.info("Store.lists : ", lists);
 
     return (
         <div className={ classes.app }>
@@ -30,7 +26,7 @@ const BoardView = ({classes}) => {
                         <Button text={ 'Boards' } classNameProps={ classes.headerBtn } onClick={() => console.log('Add Board')}/>
                     </div>
                     <div className={ classes.headerRight }>
-                        <Button text={ '+' } classNameProps={ buttonClassNames } onClick={ () => addNewList(dispatch)}/>
+                        <Button text={ '+' } classNameProps={ buttonClassNames } onClick={ () => dispatch(createList())}/>
                         <div className={ classes.logoWrapper }>
                             <div className={ classes.appLogo }>DG</div>
                         </div>
@@ -41,7 +37,7 @@ const BoardView = ({classes}) => {
                         <div className={ classes.boardContent }>
                             {
                                 lists.map(list => (
-                                    <List props={ list }/>
+                                    <List { ...list } />
                                 ))
                             }
                         </div>

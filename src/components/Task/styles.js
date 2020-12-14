@@ -11,6 +11,9 @@ export const styles = {
         display: "flex",
         margin: "0 auto 10px auto",
         width: "90%",
+        "& textarea[type='text']": {
+            padding: "10px",
+        },
     },
 };
 

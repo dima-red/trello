@@ -4,7 +4,6 @@ import classNames from "classnames";
 import styles from "./styles";
 
 const Button = ({ classes, text, classNameProps, onClick, isCancel}) => {
-    // console.log(onClick); TODO: think about it
     const buttonTextClasses = classNames(
         classes.text,
         {
@@ -13,7 +12,7 @@ const Button = ({ classes, text, classNameProps, onClick, isCancel}) => {
     );
 
     return (
-        <button className={ `${ classes.btn } ${ classNameProps }` } onClick={ onClick }>
+        <button className={ `${ classes.button } ${ classNameProps }` } onClick={ onClick }>
             <span className={ buttonTextClasses }>{ text }</span>
         </button>
     )

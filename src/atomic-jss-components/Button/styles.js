@@ -1,7 +1,7 @@
 import { primary, secondary, ternary, white, decline} from '../../constants/style.constants';
 
 const styles = {
-  btn: {
+  button: {
     "background-color": primary,
     color: "white",
     border: "1px solid white",

@@ -43,7 +43,7 @@ const BoardView = ({classes}) => {
                         <div className={ classes.boardContent }>
                             {
                                 lists.map(list => (
-                                    <List { ...list } changeHandler={dispatch} />
+                                    <List { ...list } changeHandler={dispatch} key={list.listId} />
                                 ))
                             }
                         </div>

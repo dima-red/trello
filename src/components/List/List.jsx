@@ -25,7 +25,7 @@ const renderListNameCreation = (classes, summary, listId, placeholder, handler) 
             <Button
                 text={"✖"}
                 classNameProps={ classes.listNameButton }
-                isCancel={ true }
+                isAlertColor={ true }
                 onClick={ () => handler(cancelListCreation(listId)) }
             />
         </div>
@@ -44,6 +44,7 @@ const List = ({ classes, summary, dateTime, isNewList = false, placeholder, list
             {
                 !!tasks.length && tasks.map(task => (
                     <Task
+                        key={task.taskId}
                         {...task}
                         changeHandler={changeHandler}
                     />
@@ -54,6 +55,7 @@ const List = ({ classes, summary, dateTime, isNewList = false, placeholder, list
                     text={"Add Task"}
                     classNameProps={ classes.addTaskButton }
                     onClick={() => changeHandler(createTask(listId))}
+                    variant='additional'
                 />
                 <Typography
                     variant={'date'}

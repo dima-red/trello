@@ -1,26 +1,42 @@
-import { primary, secondary, ternary, white, decline} from '../../constants/style.constants';
+import {primary, secondary, ternary, decline} from '../../constants/style.constants';
 
 const styles = {
-  button: {
-    "background-color": primary,
-    color: "white",
-    border: "1px solid white",
-    padding: "10px 20px",
-    "border-radius": "5px",
-    "font-size": "20px",
-    cursor: "pointer"
-  },
-  text: {
-    color: white,
-    "&:hover": {
-      color: secondary,
+    button: {
+        "background-color": primary,
+        color: ternary,
+        border: `1px solid ${ternary}`,
+        padding: "10px 20px",
+        "border-radius": "5px",
+        "font-size": "20px",
+        cursor: "pointer",
     },
-  },
-  cancelButton: {
-    "&:hover": {
-      color: decline,
-    }
-  },
+
+    mainButton: {
+        "&:hover": {
+            "border-color": secondary,
+            "& $alertColor$text": {
+                color: decline,
+            },
+            "& $text": {
+                color: secondary,
+            },
+        },
+    },
+    additionalButton: {
+        "font-weight": "bold",
+        "&:hover": {
+            "border-color": primary,
+            "& $alertColor$text": {
+                color: decline,
+            },
+            "& $text": {
+                color: primary,
+            },
+        },
+    },
+
+    text: {},
+    alertColor: {},
 };
 
 export default styles;

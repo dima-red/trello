@@ -1,5 +1,4 @@
 export const primary = '#555555';
-export const secondary = 'greenyellow';
-export const ternary = '#EBECF0';
-export const white = 'white';
+export const secondary = '#ceeba2';
+export const ternary = 'white';
 export const decline = '#ff6c6c';

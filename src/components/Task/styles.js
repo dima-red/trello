@@ -1,10 +1,15 @@
-import { primary, secondary, ternary, white} from '../../constants/style.constants';
+import { primary, secondary, ternary} from '../../constants/style.constants';
 
 export const styles = {
     createTaskButton: {
         padding: "2px 6px",
-        border: "1px solid grey",
+        border: `1px solid ${primary}`,
         "align-self": "flex-end", // for cases when user will change the size of textarea
+
+        "&:hover": {
+            "border-color": primary,
+        },
+        "margin-left": "1px",
     },
 
     description: {

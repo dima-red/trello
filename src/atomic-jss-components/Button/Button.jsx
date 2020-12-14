@@ -3,17 +3,28 @@ import withStyles from "react-jss";
 import classNames from "classnames";
 import styles from "./styles";
 
-const Button = ({ classes, text, classNameProps, onClick, isCancel}) => {
+const buttonVariantsMap = {
+    main: 'mainButton',
+    additional: 'additionalButton',
+};
+
+const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant}) => {
+    const buttonClasses = classNames(
+        classes.button,
+        classes[buttonVariantsMap[variant]],
+        classNameProps
+    );
+
     const buttonTextClasses = classNames(
         classes.text,
         {
-            [classes.cancelButton]: isCancel,
+            [classes.alertColor]: isAlertColor,
         },
     );
 
     return (
         <button
-            className={ `${ classes.button } ${ classNameProps }` }
+            className={ buttonClasses }
             onClick={ onClick }
         >
             <span className={ buttonTextClasses }>{ text }</span>
@@ -22,7 +33,9 @@ const Button = ({ classes, text, classNameProps, onClick, isCancel}) => {
 };
 
 Button.defaultProps = {
-    isCancel: false,
+    isAlertColor: false,
+    variant: 'main', // can be 'additional'
+    classNameProps: '',
 };
 
 const StyledButton = withStyles(styles)(Button);

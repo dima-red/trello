@@ -28,7 +28,7 @@ const renderTaskNameCreation = (classes, description, listId, placeholder, handl
             <Button
                 text={"✖"}
                 classNameProps={ taskNameButtonClasses }
-                isCancel={ true }
+                isAlertColor={ true }
                 onClick={ () => handler(cancelListCreation(listId)) }
             />
         </div>

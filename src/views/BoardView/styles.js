@@ -1,4 +1,4 @@
-import { primary, secondary, ternary, white} from '../../constants/style.constants';
+import { primary, secondary, ternary} from '../../constants/style.constants';
 
 const styles = {
     app: {
@@ -7,7 +7,7 @@ const styles = {
         "font-size": "20px",
     },
     appContainer: {
-        border: "2px solid white",
+        border: `2px solid ${ternary}`,
         "border-radius": "5px",
         margin: "0 auto",
         height: "100vh",
@@ -25,7 +25,7 @@ const styles = {
     appHeader: {
         display: "flex",
         "justify-content": "space-between",
-        "border-bottom": "2px solid white",
+        "border-bottom": `2px solid ${ternary}`,
         position: "fixed",
         "width": "100%",
     },

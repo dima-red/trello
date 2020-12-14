@@ -1,4 +1,4 @@
-import { primary, secondary, ternary, white} from '../../constants/style.constants';
+import { primary, secondary, ternary} from '../../constants/style.constants';
 
 export const styles = {
     summary: {
@@ -7,7 +7,7 @@ export const styles = {
     },
     description: {
         "box-shadow": "0 1px 0 rgba(9, 30, 66, 0.25)",
-        "background-color": white,
+        "background-color": ternary,
         "border-radius": "5px",
         width: "80%",
         margin: "0 auto 10px auto",

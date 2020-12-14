@@ -25,7 +25,6 @@ module.exports = {
         "react/prop-types": "warn",
         "react/require-default-props": "warn",
         "react/jsx-tag-spacing": "warn",
-        "react/jsx-curly-spacing": "warn",
         "react/jsx-max-props-per-line": "warn",
         "react/jsx-closing-bracket-location": "warn",
         "react/jsx-wrap-multilines": "warn",

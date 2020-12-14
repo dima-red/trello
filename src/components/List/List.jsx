@@ -11,7 +11,8 @@ const renderListNameCreation = (classes, summary, listId, placeholder, handler) 
     return (
         <div className={ classes.summary }>
             <input
-                type="text" value={ summary }
+                type="text"
+                value={ summary }
                 className={classes.listNameInput}
                 onChange={ event => handler(nameList(event.target.value, listId)) }
                 placeholder={placeholder}
@@ -42,7 +43,10 @@ const List = ({ classes, summary, dateTime, isNewList = false, placeholder, list
             }
             {
                 !!tasks.length && tasks.map(task => (
-                    <Task {...task} changeHandler={changeHandler}/>
+                    <Task
+                        {...task}
+                        changeHandler={changeHandler}
+                    />
                 ))
             }
             <div className={ classes.listFooter }>
@@ -51,7 +55,9 @@ const List = ({ classes, summary, dateTime, isNewList = false, placeholder, list
                     classNameProps={ classes.addTaskButton }
                     onClick={() => changeHandler(createTask(listId))}
                 />
-                <Typography variant={'date'} value={ dateTime }/>
+                <Typography
+                    variant={'date'}
+                    value={ dateTime }/>
             </div>
         </div>
     );

@@ -12,7 +12,10 @@ const Button = ({ classes, text, classNameProps, onClick, isCancel}) => {
     );
 
     return (
-        <button className={ `${ classes.button } ${ classNameProps }` } onClick={ onClick }>
+        <button
+            className={ `${ classes.button } ${ classNameProps }` }
+            onClick={ onClick }
+        >
             <span className={ buttonTextClasses }>{ text }</span>
         </button>
     )

@@ -22,10 +22,18 @@ const BoardView = ({classes}) => {
             <div className={ classes.appContainer }>
                 <header className={ classes.appHeader }>
                     <div className={ classes.headerLeft }>
-                        <Button text={ 'Boards' } classNameProps={ classes.headerBtn } onClick={() => console.log('Add Board')}/>
+                        <Button
+                            text={ 'Boards' }
+                            classNameProps={ classes.headerBtn }
+                            onClick={() => console.log('Add Board')}
+                        />
                     </div>
                     <div className={ classes.headerRight }>
-                        <Button text={ '+' } classNameProps={ buttonClassNames } onClick={ () => dispatch(createList())}/>
+                        <Button
+                            text={ '+' }
+                            classNameProps={ buttonClassNames }
+                            onClick={ () => dispatch(createList())}
+                        />
                         <div className={ classes.logoWrapper }>
                             <div className={ classes.appLogo }>DG</div>
                         </div>
@@ -36,7 +44,7 @@ const BoardView = ({classes}) => {
                         <div className={ classes.boardContent }>
                             {
                                 lists.map(list => (
-                                    <List { ...list } changeHandler={dispatch}/>
+                                    <List { ...list } changeHandler={dispatch} />
                                 ))
                             }
                         </div>

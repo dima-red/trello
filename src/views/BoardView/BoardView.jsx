@@ -1,12 +1,11 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
 import { createList } from "./actions";
 import Button from '../../atomic-jss-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
 import styles from './styles';
-
-import { useSelector, useDispatch } from 'react-redux'
 
 const BoardView = ({classes}) => {
     const buttonClassNames = classNames(
@@ -37,7 +36,7 @@ const BoardView = ({classes}) => {
                         <div className={ classes.boardContent }>
                             {
                                 lists.map(list => (
-                                    <List { ...list } />
+                                    <List { ...list } changeHandler={dispatch}/>
                                 ))
                             }
                         </div>

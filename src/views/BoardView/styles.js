@@ -29,14 +29,6 @@ const styles = {
         position: "fixed",
         "width": "100%",
     },
-    logoWrapper: {
-        margin: "15px",
-        "align-self": "center",
-    },
-    appLogo: {
-        animation: "appLogoSpin infinite 20s linear"
-    },
-
     headerBtn: {
         margin: "10px 10px"
     },

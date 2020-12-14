@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { createList } from "./actions";
 import Button from '../../atomic-jss-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
+import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';
 
 const BoardView = ({classes}) => {
@@ -34,9 +35,7 @@ const BoardView = ({classes}) => {
                             classNameProps={ buttonClassNames }
                             onClick={ () => dispatch(createList())}
                         />
-                        <div className={ classes.logoWrapper }>
-                            <div className={ classes.appLogo }>DG</div>
-                        </div>
+                        <Logo />
                     </div>
                 </header>
                 <main>

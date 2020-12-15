@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions";
+import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions/actions";
 import Typography from '../../atomic-jss-components/Typography/Typography.jsx';
-import NameCreation from "../NameCreation/NameCreation.jsx";
+import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
 const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, handleCreate }) => {
 
     return (
         isNewTask
-            ? <NameCreation
+            ? <SummaryDescriptionMaker
                 text={ description }
                 listId={ listId }
                 taskId={ taskId }

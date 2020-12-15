@@ -7,7 +7,7 @@ import {
     NAME_NEW_TASK,
     SAVE_NEW_TASK,
     CANCEL_NEW_TASK,
-} from '../../../constants/action.constants';
+} from '../actions/action.constants';
 
 const initialState = [
     {

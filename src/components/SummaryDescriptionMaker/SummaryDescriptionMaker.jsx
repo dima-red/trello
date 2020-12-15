@@ -6,7 +6,7 @@ import Button from "../../atomic-jss-components/Button/Button.jsx";
 import InputArea from "../../atomic-jss-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
 
-const NameCreation = (props) => {
+const SummaryDescriptionMaker = (props) => {
     const { classes, text, listId, taskId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
 
     const buttonClasses = classNames(
@@ -43,7 +43,7 @@ const NameCreation = (props) => {
     );
 };
 
-NameCreation.propTypes = {
+SummaryDescriptionMaker.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     summary: PropTypes.string,
     dateTime: PropTypes.string.isRequired,
@@ -54,6 +54,6 @@ NameCreation.propTypes = {
     changeHandler: PropTypes.func.isRequired,
 };
 
-const StyledNameCreation = withStyles(styles)(NameCreation);
+const StyledSummaryDescriptionMaker = withStyles(styles)(SummaryDescriptionMaker);
 
-export default StyledNameCreation;
+export default StyledSummaryDescriptionMaker;

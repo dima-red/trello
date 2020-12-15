@@ -4,8 +4,8 @@ import withStyles from "react-jss";
 import Typography from "../../atomic-jss-components/Typography/Typography.jsx";
 import Task from "../Task/Task.jsx";
 import Button from "../../atomic-jss-components/Button/Button.jsx";
-import NameCreation from "../NameCreation/NameCreation.jsx";
-import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions";
+import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
+import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions/actions";
 import styles from "./styles.js";
 
 const List = (props) => {
@@ -15,7 +15,7 @@ const List = (props) => {
         <div className={classes.listWrapper}>
             {
                 isNewList
-                    ? <NameCreation
+                    ? <SummaryDescriptionMaker
                         text={summary}
                         variant='short'
                         listId={listId}

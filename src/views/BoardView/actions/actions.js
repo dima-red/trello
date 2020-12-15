@@ -10,7 +10,7 @@ import {
     NAME_NEW_TASK,
     SAVE_NEW_TASK,
     CANCEL_NEW_TASK,
-} from '../../constants/action.constants';
+} from './action.constants';
 
 let listIdCounter = LIST_ID_NUMBER;
 let taskIdCounter = TASK_ID_NUMBER;

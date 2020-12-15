@@ -21,7 +21,7 @@ const BoardView = ({classes}) => {
 
     return (
         <div className={ classes.app }>
-            <div className={ classes.appContainer }>
+            <div className={ classes.viewWrapper }>
                 <header className={ classes.appHeader }>
                     <div className={ classes.headerLeft }>
                         <Button

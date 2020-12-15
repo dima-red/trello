@@ -1,24 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const InputArea = ({ variant, text, listId, taskId, classNameProps, changeHandler, handleChange, placeholder }) => {
-
+const InputArea = ({variant, text, listId, taskId, classNameProps, changeHandler, handleChange, placeholder}) => {
+    const Component = variant === 'short' ? 'input' : 'textarea';
     return (
-        variant === 'short'
-            ? <input
-                type="text"
-                value={ text }
-                className={ classNameProps }
-                onChange={ event => changeHandler(handleChange(event.target.value, listId, taskId)) }
-                placeholder={placeholder}
-            />
-            : <textarea
-                type="text"
-                value={ text }
-                className={ classNameProps }
-                onChange={ event => changeHandler(handleChange(event.target.value, listId, taskId)) }
-                placeholder={placeholder}
-            />
+        <Component
+            type="text"
+            value={text}
+            className={classNameProps}
+            onChange={event => changeHandler(handleChange(event.target.value, listId, taskId))}
+            placeholder={placeholder}
+        />
     )
 };
 
@@ -32,8 +24,6 @@ InputArea.propTypes = {
     placeholder: PropTypes.string.isRequired,
 };
 
-InputArea.defaultProps = {
-
-};
+InputArea.defaultProps = {};
 
 export default InputArea;

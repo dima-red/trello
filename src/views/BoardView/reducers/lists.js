@@ -1,12 +1,12 @@
 import {
-    ADD_NEW_LIST,
-    NAME_NEW_LIST,
-    SAVE_NEW_LIST,
-    CANCEL_NEW_LIST,
-    CREATE_NEW_TASK,
-    NAME_NEW_TASK,
-    SAVE_NEW_TASK,
-    CANCEL_NEW_TASK,
+    BOARD_VIEW_ADD_NEW_LIST,
+    BOARD_VIEW_NAME_NEW_LIST,
+    BOARD_VIEW_SAVE_NEW_LIST,
+    BOARD_VIEW_CANCEL_NEW_LIST,
+    BOARD_VIEW_CREATE_NEW_TASK,
+    BOARD_VIEW_NAME_NEW_TASK,
+    BOARD_VIEW_SAVE_NEW_TASK,
+    BOARD_VIEW_CANCEL_NEW_TASK,
 } from '../actions/action.constants';
 
 const initialState = [
@@ -44,14 +44,14 @@ const initialState = [
 
 const lists = (state = initialState, {type, payload}) => {
     switch (type) {
-        case ADD_NEW_LIST:
+        case BOARD_VIEW_ADD_NEW_LIST:
             return [
                 ...state,
                 {
                     ...payload,
                 },
             ];
-        case NAME_NEW_LIST:
+        case BOARD_VIEW_NAME_NEW_LIST:
             return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.summary = payload.summary;
@@ -60,7 +60,7 @@ const lists = (state = initialState, {type, payload}) => {
                 return list;
             });
 
-        case SAVE_NEW_LIST:
+        case BOARD_VIEW_SAVE_NEW_LIST:
             return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.isNewList = payload.isNewList;
@@ -68,17 +68,17 @@ const lists = (state = initialState, {type, payload}) => {
                 return list;
             });
 
-        case CANCEL_NEW_LIST:
+        case BOARD_VIEW_CANCEL_NEW_LIST:
             return state.filter(list => list.listId !== payload.listId);
 
-        case CREATE_NEW_TASK:
+        case BOARD_VIEW_CREATE_NEW_TASK:
             return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.tasks.push(payload);
                 }
                 return list;
             });
-        case NAME_NEW_TASK:
+        case BOARD_VIEW_NAME_NEW_TASK:
             return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.tasks.map(task => {
@@ -91,7 +91,7 @@ const lists = (state = initialState, {type, payload}) => {
                 return list;
             });
 
-        case SAVE_NEW_TASK:
+        case BOARD_VIEW_SAVE_NEW_TASK:
             return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.tasks.map(task => {
@@ -104,7 +104,7 @@ const lists = (state = initialState, {type, payload}) => {
                 return list;
             });
 
-        case CANCEL_NEW_TASK:
+        case BOARD_VIEW_CANCEL_NEW_TASK:
             return state.map(list => {
                 if (list.listId === payload.listId) {
                     list.tasks = list.tasks.filter(task => task.taskId !== payload.taskId);

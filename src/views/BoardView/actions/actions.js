@@ -1,23 +1,23 @@
 import {
-    LIST_ID_NUMBER,
-    TASK_ID_NUMBER,
+    BOARD_VIEW_LIST_ID_NUMBER,
+    BOARD_VIEW_TASK_ID_NUMBER,
 
-    ADD_NEW_LIST,
-    NAME_NEW_LIST,
-    SAVE_NEW_LIST,
-    CANCEL_NEW_LIST,
-    CREATE_NEW_TASK,
-    NAME_NEW_TASK,
-    SAVE_NEW_TASK,
-    CANCEL_NEW_TASK,
+    BOARD_VIEW_ADD_NEW_LIST,
+    BOARD_VIEW_NAME_NEW_LIST,
+    BOARD_VIEW_SAVE_NEW_LIST,
+    BOARD_VIEW_CANCEL_NEW_LIST,
+    BOARD_VIEW_CREATE_NEW_TASK,
+    BOARD_VIEW_NAME_NEW_TASK,
+    BOARD_VIEW_SAVE_NEW_TASK,
+    BOARD_VIEW_CANCEL_NEW_TASK,
 } from './action.constants';
 
-let listIdCounter = LIST_ID_NUMBER;
-let taskIdCounter = TASK_ID_NUMBER;
+let listIdCounter = BOARD_VIEW_LIST_ID_NUMBER;
+let taskIdCounter = BOARD_VIEW_TASK_ID_NUMBER;
 
 export const createList = () => (
     {
-        type: ADD_NEW_LIST,
+        type: BOARD_VIEW_ADD_NEW_LIST,
         payload: {
             summary: '',
             tasks: [],
@@ -31,7 +31,7 @@ export const createList = () => (
 
 export const nameList = (value, listId) => (
     {
-        type: NAME_NEW_LIST,
+        type: BOARD_VIEW_NAME_NEW_LIST,
         payload: {
             summary: value,
             listId,
@@ -41,7 +41,7 @@ export const nameList = (value, listId) => (
 
 export const saveList = (listId) => (
     {
-        type: SAVE_NEW_LIST,
+        type: BOARD_VIEW_SAVE_NEW_LIST,
         payload: {
             isNewList: false,
             listId,
@@ -51,7 +51,7 @@ export const saveList = (listId) => (
 
 export const cancelListCreation = (listId) => (
     {
-        type: CANCEL_NEW_LIST,
+        type: BOARD_VIEW_CANCEL_NEW_LIST,
         payload: {
             listId,
         },
@@ -60,7 +60,7 @@ export const cancelListCreation = (listId) => (
 
 export const createTask = (listId) => (
     {
-        type: CREATE_NEW_TASK,
+        type: BOARD_VIEW_CREATE_NEW_TASK,
         payload: {
             description: '',
             placeholder: 'Please, add description for your task',
@@ -74,7 +74,7 @@ export const createTask = (listId) => (
 
 export const nameTask = (value, listId, taskId) => (
     {
-        type: NAME_NEW_TASK,
+        type: BOARD_VIEW_NAME_NEW_TASK,
         payload: {
             description: value,
             listId,
@@ -85,7 +85,7 @@ export const nameTask = (value, listId, taskId) => (
 
 export const saveTask = (listId, taskId) => (
     {
-        type: SAVE_NEW_TASK,
+        type: BOARD_VIEW_SAVE_NEW_TASK,
         payload: {
             isNewTask: false,
             listId,
@@ -96,7 +96,7 @@ export const saveTask = (listId, taskId) => (
 
 export const cancelTaskCreation = (listId, taskId) => (
     {
-        type: CANCEL_NEW_TASK,
+        type: BOARD_VIEW_CANCEL_NEW_TASK,
         payload: {
             listId,
             taskId

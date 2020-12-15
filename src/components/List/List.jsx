@@ -1,16 +1,70 @@
 import React from "react";
-import { styles } from "./styles.js";
+import withStyles from "react-jss";
+import Typography from "../../atomic-jss-components/Typography/Typography.jsx";
+import Task from "../Task/Task.jsx";
+import Button from "../../atomic-jss-components/Button/Button.jsx";
+import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions";
+import styles from "./styles.js";
 
-const List = () => {
-    const classes = styles();
+const renderListNameCreation = (classes, summary, listId, placeholder, handler) => {
+
+    return (
+        <div className={ classes.summary }>
+            <input
+                type="text"
+                value={ summary }
+                className={classes.listNameInput}
+                onChange={ event => handler(nameList(event.target.value, listId)) }
+                placeholder={placeholder}
+            />
+            <Button
+                text={"✔"}
+                classNameProps={ classes.listNameButton }
+                onClick={ () => handler(saveList(listId)) }
+            />
+            <Button
+                text={"✖"}
+                classNameProps={ classes.listNameButton }
+                isAlertColor={ true }
+                onClick={ () => handler(cancelListCreation(listId)) }
+            />
+        </div>
+    );
+};
+
+const List = ({ classes, summary, dateTime, isNewList = false, placeholder, listId, tasks, changeHandler }) => {
 
     return (
         <div className={classes.listWrapper}>
-            <div className={ classes.summary }>Summary</div>
-            <div className={ classes.description }>Description</div>
-            <span className={ classes.dateTime }>Date & Time</span>
+            {
+                isNewList
+                    ? renderListNameCreation(classes, summary, listId, placeholder, changeHandler)
+                    : <Typography variant={'summary'} value={ summary }/>
+            }
+            {
+                !!tasks.length && tasks.map(task => (
+                    <Task
+                        key={task.taskId}
+                        {...task}
+                        changeHandler={changeHandler}
+                    />
+                ))
+            }
+            <div className={ classes.listFooter }>
+                <Button
+                    text={"Add Task"}
+                    classNameProps={ classes.addTaskButton }
+                    onClick={() => changeHandler(createTask(listId))}
+                    variant='additional'
+                />
+                <Typography
+                    variant={'date'}
+                    value={ dateTime }/>
+            </div>
         </div>
     );
-}
+};
 
-export default List;
+const StyledList = withStyles(styles)(List);
+
+export default StyledList;

@@ -1,9 +1,9 @@
-const path = require('path');
+const commonPaths = require('./webpack/paths');
 
 module.exports = {
-    entry: './src/index.jsx',
+    entry: commonPaths.entryPath,
     output: {
-        path: path.join(__dirname, 'public'),
+        path: commonPaths.outputPath,
         filename: 'bundle.js'
     },
     module: {
@@ -21,8 +21,8 @@ module.exports = {
     },
     devtool: 'eval-cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: commonPaths.outputPath,
         open: true,
         port: 8081
-    }
+    },
 };

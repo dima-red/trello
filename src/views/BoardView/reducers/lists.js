@@ -66,7 +66,6 @@ const lists = (state = initialState, {type, payload}) => {
                     list.tasks.map(task => {
                         if (task.taskId === payload.taskId) {
                             task.description = payload.description;
-                            // return task;
                         }
                         return task;
                     });
@@ -88,19 +87,12 @@ const lists = (state = initialState, {type, payload}) => {
             });
 
         case CANCEL_NEW_TASK:
-            // return state.map(list => {
-            //     if (list.listId === payload.listId) {
-            //         return list.tasks.filter(task => task.taskId !== payload.taskId);
-            //     }
-            //     return list;
-            // });
-
-            console.log(state.map(list => {
+            return state.map(list => {
                 if (list.listId === payload.listId) {
-                    list.tasks.filter(task => task.taskId !== payload.taskId);
+                    list.tasks = list.tasks.filter(task => task.taskId !== payload.taskId);
                 }
                 return list;
-            }));
+            });
 
         default:
             return state;

@@ -32,12 +32,14 @@ const SummaryDescriptionMaker = (props) => {
                 text={"✔"}
                 classNameProps={ buttonClasses }
                 onClick={ () => changeHandler(handleSave(listId, taskId)) }
+                variant='additional'
             />
             <Button
                 text={"✖"}
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
                 onClick={ () => changeHandler(handleCancel(listId, taskId)) }
+                variant='additional'
             />
         </div>
     );

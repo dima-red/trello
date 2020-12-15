@@ -32,6 +32,7 @@ const styles = {
             "& $text": {
                 color: primary,
             },
+            "background-color": ternary,
         },
     },
 

@@ -1,11 +1,16 @@
-import { LIST_ID_NUMBER } from '../../constants/action.constants';
-import { TASK_ID_NUMBER } from '../../constants/action.constants';
+import {
+    LIST_ID_NUMBER,
+    TASK_ID_NUMBER,
 
-import { ADD_NEW_LIST } from '../../constants/action.constants';
-import { NAME_NEW_LIST } from '../../constants/action.constants';
-import { SAVE_NEW_LIST } from '../../constants/action.constants';
-import { CANCEL_NEW_LIST } from '../../constants/action.constants';
-import { CREATE_NEW_TASK } from '../../constants/action.constants';
+    ADD_NEW_LIST,
+    NAME_NEW_LIST,
+    SAVE_NEW_LIST,
+    CANCEL_NEW_LIST,
+    CREATE_NEW_TASK,
+    NAME_NEW_TASK,
+    SAVE_NEW_TASK,
+    CANCEL_NEW_TASK,
+} from '../../constants/action.constants';
 
 let listIdCounter = LIST_ID_NUMBER;
 let taskIdCounter = TASK_ID_NUMBER;
@@ -63,6 +68,38 @@ export const createTask = (listId) => (
             dateTime: new Date().toLocaleString(),
             isNewTask: true,
             listId,
+        },
+    }
+);
+
+export const nameTask = (value, listId, taskId) => (
+    {
+        type: NAME_NEW_TASK,
+        payload: {
+            description: value,
+            listId,
+            taskId,
+        },
+    }
+);
+
+export const saveTask = (listId, taskId) => (
+    {
+        type: SAVE_NEW_TASK,
+        payload: {
+            isNewTask: false,
+            listId,
+            taskId,
+        },
+    }
+);
+
+export const cancelTaskCreation = (listId, taskId) => (
+    {
+        type: CANCEL_NEW_TASK,
+        payload: {
+            listId,
+            taskId
         },
     }
 );

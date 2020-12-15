@@ -1,4 +1,13 @@
-import { ADD_NEW_LIST, NAME_NEW_LIST, SAVE_NEW_LIST, CANCEL_NEW_LIST, CREATE_NEW_TASK } from '../../../constants/action.constants';
+import {
+    ADD_NEW_LIST,
+    NAME_NEW_LIST,
+    SAVE_NEW_LIST,
+    CANCEL_NEW_LIST,
+    CREATE_NEW_TASK,
+    NAME_NEW_TASK,
+    SAVE_NEW_TASK,
+    CANCEL_NEW_TASK,
+} from '../../../constants/action.constants';
 
 const initialState = [
     {
@@ -50,6 +59,42 @@ const lists = (state = initialState, {type, payload}) => {
                     list.tasks.push(payload);
                 }
                 return list;
+            });
+        case NAME_NEW_TASK:
+            return state.map(list => {
+                if (list.listId === payload.listId) {
+                    list.tasks.map(task => {
+                        if (task.taskId === payload.taskId) {
+                            task.description = payload.description;
+                            // return task;
+                        }
+                        return task;
+                    });
+                }
+                return list;
+            });
+
+        case SAVE_NEW_TASK:
+            return state.map(list => {
+                if (list.listId === payload.listId) {
+                    list.tasks.map(task => {
+                        if (task.taskId === payload.taskId) {
+                            task.isNewTask = payload.isNewTask;
+
+                            console.log(task);
+                            console.log(payload);
+                        }
+                        return task;
+                    });
+                }
+                return list;
+            });
+
+        case CANCEL_NEW_TASK:
+            return state.map(list => {
+                if (list.listId === payload.listId) {
+                    list.tasks.filter(task => task.taskId !== payload.taskId)
+                }
             });
 
         default:

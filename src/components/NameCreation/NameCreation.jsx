@@ -6,7 +6,7 @@ import InputArea from "../../atomic-jss-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
 
 const NameCreation = (props) => {
-    const { classes, text, listId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
+    const { classes, text, listId, taskId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
 
     return (
         <div className={ classes.summary }>
@@ -16,19 +16,20 @@ const NameCreation = (props) => {
                 placeholder={placeholder}
                 changeHandler={changeHandler}
                 handleChange={handleChange}
-                id={listId}
+                listId={listId}
+                taskId={taskId}
                 variant={variant}
             />
             <Button
                 text={"✔"}
                 classNameProps={ classes.listNameButton }
-                onClick={ () => changeHandler(handleSave(listId)) }
+                onClick={ () => changeHandler(handleSave(listId, taskId)) }
             />
             <Button
                 text={"✖"}
                 classNameProps={ classes.listNameButton }
                 isAlertColor={ true }
-                onClick={ () => changeHandler(handleCancel(listId)) }
+                onClick={ () => changeHandler(handleCancel(listId, taskId)) }
             />
         </div>
     );

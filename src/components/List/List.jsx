@@ -8,42 +8,12 @@ import NameCreation from "../NameCreation/NameCreation.jsx";
 import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions";
 import styles from "./styles.js";
 
-// const renderListNameCreation = (classes, summary, listId, placeholder, handler) => {
-//
-//     return (
-//         <div className={ classes.summary }>
-//             <input
-//                 type="text"
-//                 value={ summary }
-//                 className={classes.listNameInput}
-//                 onChange={ event => handler(nameList(event.target.value, listId)) }
-//                 placeholder={placeholder}
-//             />
-//             <Button
-//                 text={"✔"}
-//                 classNameProps={ classes.listNameButton }
-//                 onClick={ () => handler(saveList(listId)) }
-//             />
-//             <Button
-//                 text={"✖"}
-//                 classNameProps={ classes.listNameButton }
-//                 isAlertColor={ true }
-//                 onClick={ () => handler(cancelListCreation(listId)) }
-//             />
-//         </div>
-//     );
-// };
-
 const List = (props) => {
     const { classes, summary, dateTime, isNewList = false, placeholder, listId, tasks, changeHandler } = props;
 
     return (
         <div className={classes.listWrapper}>
             {
-                // isNewList
-                //     ? renderListNameCreation(classes, summary, listId, placeholder, changeHandler)
-                //     : <Typography variant={'summary'} value={ summary }/>
-
                 isNewList
                     ? <NameCreation
                         text={summary}
@@ -62,7 +32,7 @@ const List = (props) => {
                     <Task
                         key={task.taskId}
                         {...task}
-                        changeHandler={changeHandler}
+                        changeHandler={ changeHandler }
                     />
                 ))
             }

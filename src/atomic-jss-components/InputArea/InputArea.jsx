@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const InputArea = ({ variant, text, id, classNameProps, changeHandler, handleChange, placeholder }) => {
+const InputArea = ({ variant, text, listId, taskId, classNameProps, changeHandler, handleChange, placeholder }) => {
 
     return (
         variant === 'short'
@@ -9,14 +9,14 @@ const InputArea = ({ variant, text, id, classNameProps, changeHandler, handleCha
                 type="text"
                 value={ text }
                 className={ classNameProps }
-                onChange={ event => changeHandler(handleChange(event.target.value, id)) }
+                onChange={ event => changeHandler(handleChange(event.target.value, listId, taskId)) }
                 placeholder={placeholder}
             />
             : <textarea
                 type="text"
                 value={ text }
                 className={ classNameProps }
-                onChange={ event => changeHandler(handleChange(event.target.value, id)) }
+                onChange={ event => changeHandler(handleChange(event.target.value, listId, taskId)) }
                 placeholder={placeholder}
             />
     )
@@ -24,7 +24,8 @@ const InputArea = ({ variant, text, id, classNameProps, changeHandler, handleCha
 
 InputArea.propTypes = {
     text: PropTypes.string,
-    id: PropTypes.number.isRequired,
+    listId: PropTypes.number.isRequired,
+    taskId: PropTypes.number,
     classNameProps: PropTypes.string,
     changeHandler: PropTypes.func,
     actionCreator: PropTypes.func,

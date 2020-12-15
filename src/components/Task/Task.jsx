@@ -1,54 +1,25 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import {cancelListCreation, nameList, saveList} from "../../views/BoardView/actions";
+import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions";
 import Typography from '../../atomic-jss-components/Typography/Typography.jsx';
 import NameCreation from "../NameCreation/NameCreation.jsx";
-import Button from "../../atomic-jss-components/Button/Button.jsx";
 import styles from "./styles.js";
 
-// const renderTaskNameCreation = (classes, description, listId, placeholder, handler) => {
-//
-//     return (
-//         <div className={ classes.description }>
-//             <textarea
-//                 type="text"
-//                 value={ description }
-//                 className={classes.listNameInput}
-//                 onChange={ event => handler(nameTask(event.target.value, listId)) }
-//                 placeholder={ placeholder }
-//             />
-//             <Button
-//                 text={"✔"}
-//                 classNameProps={ classes.createTaskButton }
-//                 onClick={ () => handler(saveList(listId)) }
-//             />
-//             <Button
-//                 text={"✖"}
-//                 classNameProps={ classes.createTaskButton }
-//                 isAlertColor={ true }
-//                 onClick={ () => handler(cancelListCreation(listId)) }
-//             />
-//         </div>
-//     );
-// };
-
-const Task = ({ classes, description, isNewTask, listId, placeholder, changeHandler }) => {
+const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, handleCreate }) => {
 
     return (
-        // isNewTask ? renderTaskNameCreation(classes, description, listId, placeholder, changeHandler) : <Typography variant={'description'} value={ description }/>
         isNewTask
-            // ? renderTaskNameCreation(classes, description, listId, placeholder, changeHandler)
             ? <NameCreation
-                classes={classes}
-                text={summary}
+                text={ description }
                 variant='short'
-                listId={listId}
-                placeholder={placeholder}
-                changeHandler={changeHandler}
-                handleChange={ nameList }
-                handleSave={ saveList }
-                handleCancel={ cancelListCreation }
+                listId={ listId }
+                taskId={ taskId }
+                placeholder={ placeholder }
+                changeHandler={ changeHandler }
+                handleChange={ nameTask }
+                handleSave={ saveTask }
+                handleCancel={ cancelTaskCreation }
             />
             : <Typography variant={'description'} value={ description }/>
     );

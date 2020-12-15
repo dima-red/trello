@@ -35,7 +35,6 @@ const styles = {
             "background-color": ternary,
         },
     },
-
     text: {},
     alertColor: {},
 };

@@ -33,6 +33,7 @@ const SummaryDescriptionMaker = (props) => {
                 classNameProps={ buttonClasses }
                 onClick={ () => changeHandler(handleSave(listId, taskId)) }
                 variant='additional'
+                isDisabled={ !text.length }
             />
             <Button
                 text={"✖"}

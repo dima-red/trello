@@ -9,7 +9,7 @@ const buttonVariantsMap = {
     additional: 'additionalButton',
 };
 
-const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant}) => {
+const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant, isDisabled }) => {
     const buttonClasses = classNames(
         classes.button,
         classes[buttonVariantsMap[variant]],
@@ -27,6 +27,7 @@ const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant}
         <button
             className={ buttonClasses }
             onClick={ onClick }
+            disabled={ isDisabled }
         >
             <span className={ buttonTextClasses }>{ text }</span>
         </button>
@@ -40,12 +41,14 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     isAlertColor: PropTypes.string,
     variant: PropTypes.string.isRequired,
+    isDisabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
     isAlertColor: false,
     variant: 'main', // can be 'additional'
     classNameProps: '',
+    isDisabled: false,
 };
 
 const StyledButton = withStyles(styles)(Button);

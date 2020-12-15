@@ -9,10 +9,13 @@ const styles = {
         "border-radius": "5px",
         "font-size": "20px",
         cursor: "pointer",
+        "&[disabled]": {
+            opacity: 0.6,
+        },
     },
 
     mainButton: {
-        "&:hover": {
+        "&:hover&:not([disabled])": {
             "border-color": secondary,
             "& $alertColor$text": {
                 color: decline,
@@ -24,7 +27,7 @@ const styles = {
     },
     additionalButton: {
         "font-weight": "bold",
-        "&:hover": {
+        "&:hover&:not([disabled])": {
             "border-color": primary,
             "& $alertColor$text": {
                 color: decline,

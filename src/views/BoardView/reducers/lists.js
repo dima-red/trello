@@ -12,13 +12,31 @@ import {
 const initialState = [
     {
         summary: 'ToDo',
-        tasks: [{description: 'To do something important!'}, {description: 'To do something another important!'}],
+        tasks: [
+            {
+                description: 'To do something important!',
+                taskId: 0,
+            },
+            {
+                description: 'To do something another important!',
+                taskId: 1,
+            }
+        ],
         dateTime: '11/18/2020, 3:06:49 PM',
         listId: 0,
     },
     {
         summary: 'In Progress',
-        tasks: [{description: 'Something important is in progress!'}, {description: 'Something important is in progress!'}],
+        tasks: [
+            {
+                description: 'Something important is in progress!',
+                taskId: 2,
+            },
+            {
+                description: 'Something important is in progress!',
+                taskId: 3,
+            }
+        ],
         dateTime: '11/19/2020, 4:06:49 PM',
         listId: 1,
     }

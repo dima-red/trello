@@ -12,7 +12,6 @@ const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, ch
         isNewTask
             ? <NameCreation
                 text={ description }
-                variant='short'
                 listId={ listId }
                 taskId={ taskId }
                 placeholder={ placeholder }

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from "react-jss";
+import classNames from 'classnames';
 import Button from "../../atomic-jss-components/Button/Button.jsx";
 import InputArea from "../../atomic-jss-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
@@ -8,8 +9,15 @@ import styles from "./styles.js";
 const NameCreation = (props) => {
     const { classes, text, listId, taskId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
 
+    const buttonClasses = classNames(
+        classes.listNameButton,
+        {
+            [classes.textArea]: variant !== 'short',
+        },
+    );
+
     return (
-        <div className={ classes.summary }>
+        <div className={ classes.listItem }>
             <InputArea
                 classNameProps={classes.listNameInput}
                 text={text}
@@ -22,12 +30,12 @@ const NameCreation = (props) => {
             />
             <Button
                 text={"✔"}
-                classNameProps={ classes.listNameButton }
+                classNameProps={ buttonClasses }
                 onClick={ () => changeHandler(handleSave(listId, taskId)) }
             />
             <Button
                 text={"✖"}
-                classNameProps={ classes.listNameButton }
+                classNameProps={ buttonClasses }
                 isAlertColor={ true }
                 onClick={ () => changeHandler(handleCancel(listId, taskId)) }
             />

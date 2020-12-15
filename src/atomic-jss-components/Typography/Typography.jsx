@@ -1,19 +1,29 @@
 import React from "react";
-import withStyles from 'react-jss';
-import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import withStyles from "react-jss";
+import classNames from "classnames";
 import styles from "./styles.js";
 
-const Typography = ({ classes, variant, value }) => {
-    const typographyClassNames = classNames({
-        [classes.summary]: variant === 'summary',
-        [classes.description]: variant === 'description',
-        [classes.dateTime]: variant === 'date',
-    });
+const typographyClassesMAP = {
+    summary: 'summary',
+    description: 'description',
+    date: 'dateTime',
+};
 
+const Typography = ({ classes, variant, value }) => {
+    const typographyClassNames = classNames(
+        classes[typographyClassesMAP[variant]]
+    );
 
     return (
-        <div className={ typographyClassNames }>{ value }</div>
+        <div className={ typographyClassNames }>
+            <span>{ value }</span>
+        </div>
     );
+};
+
+Typography.propTypes = {
+    classes: PropTypes.shape({}).isRequired,
 };
 
 Typography.defaultProps = {

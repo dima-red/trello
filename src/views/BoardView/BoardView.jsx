@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
@@ -52,6 +53,10 @@ const BoardView = ({classes}) => {
             </div>
         </div>
     )
+};
+
+BoardView.propTypes = {
+    classes: PropTypes.shape({}).isRequired,
 };
 
 const StyledBoardView = withStyles(styles)(BoardView);

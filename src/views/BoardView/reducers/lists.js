@@ -21,7 +21,7 @@ const lists = (state = initialState, {type, payload}) => {
             return [
                 ...state,
                 {
-                    ...payload
+                    ...payload,
                 },
             ];
         case NAME_NEW_LIST:

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import withStyles from "react-jss";
 import classNames from "classnames";
 import styles from "./styles";
@@ -30,6 +31,15 @@ const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant}
             <span className={ buttonTextClasses }>{ text }</span>
         </button>
     )
+};
+
+Button.propTypes = {
+    classes: PropTypes.shape({}).isRequired,
+    text: PropTypes.string,
+    classNameProps: PropTypes.string,
+    onClick: PropTypes.func.isRequired,
+    isAlertColor: PropTypes.string,
+    variant: PropTypes.string.isRequired,
 };
 
 Button.defaultProps = {

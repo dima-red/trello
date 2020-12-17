@@ -1,4 +1,4 @@
-import {primary, secondary, ternary, decline} from '../../constants/style.constants';
+import {primary, secondary, ternary, decline} from '../../constants/color.constants';
 
 export const styles = {
     listWrapper: {
@@ -25,28 +25,6 @@ export const styles = {
             },
         },
         text: {},
-    },
-
-
-
-
-    summary: {
-        "text-align": "center",
-        display: "flex",
-        margin: "20px",
-    },
-    listNameInput: {
-        border: "1px solid grey",
-        "border-radius": "5px",
-    },
-    listNameButton: {
-        padding: "2px 6px",
-        border: "1px solid grey",
-
-        "&:hover": {
-            "border-color": primary,
-        },
-        "margin-left": "1px",
     },
 };
 

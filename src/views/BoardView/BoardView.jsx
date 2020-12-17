@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import { createList } from "./actions";
-import Button from '../../atomic-jss-components/Button/Button.jsx';
+import { createList } from "./actions/actions";
+import Button from '../../atomic-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';
@@ -20,7 +21,7 @@ const BoardView = ({classes}) => {
 
     return (
         <div className={ classes.app }>
-            <div className={ classes.appContainer }>
+            <div className={ classes.viewWrapper }>
                 <header className={ classes.appHeader }>
                     <div className={ classes.headerLeft }>
                         <Button
@@ -52,6 +53,10 @@ const BoardView = ({classes}) => {
             </div>
         </div>
     )
+};
+
+BoardView.propTypes = {
+    classes: PropTypes.shape({}).isRequired,
 };
 
 const StyledBoardView = withStyles(styles)(BoardView);

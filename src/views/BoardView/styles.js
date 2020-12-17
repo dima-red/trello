@@ -1,4 +1,4 @@
-import { primary, secondary, ternary} from '../../constants/style.constants';
+import { primary, secondary, ternary} from '../../constants/color.constants';
 
 const styles = {
     app: {
@@ -6,7 +6,7 @@ const styles = {
         color: secondary,
         "font-size": "20px",
     },
-    appContainer: {
+    viewWrapper: {
         border: `2px solid ${ternary}`,
         "border-radius": "5px",
         margin: "0 auto",

@@ -30,6 +30,10 @@ module.exports = {
         "react/jsx-wrap-multilines": "warn",
         "react/jsx-indent": [ "error", 4 ],
         "react/jsx-indent-props": [ "error", 4 ],
+        'object-curly-spacing': [
+            'error',
+            'always',
+        ],
     }
 };
 

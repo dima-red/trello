@@ -1,4 +1,4 @@
-import { primary, secondary, ternary} from '../../constants/style.constants';
+import { primary, secondary, ternary} from '../../constants/color.constants';
 
 export const styles = {
     summary: {

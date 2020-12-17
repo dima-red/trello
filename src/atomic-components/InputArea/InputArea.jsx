@@ -5,7 +5,7 @@ import classNames from "classnames";
 import styles from "../../atomic-components/InputArea/styles";
 
 const InputArea = (props) => {
-    const { classes, variant, text, listId, taskId, changeHandler, handleChange, placeholder } = props;
+    const { classes, variant, text, handleChange, placeholder, listId, taskId } = props;
     const Component = variant;
     const componentClassNames = classNames(
         classes.inputElement,
@@ -17,7 +17,7 @@ const InputArea = (props) => {
             type="text"
             value={text}
             className={ componentClassNames }
-            onChange={event => changeHandler(handleChange(event.target.value, listId, taskId))}
+            onChange={ event => handleChange(event, listId, taskId) }
             placeholder={placeholder}
         />
     )
@@ -27,9 +27,6 @@ InputArea.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     variant: PropTypes.string.isRequired,
     text: PropTypes.string,
-    listId: PropTypes.number.isRequired,
-    taskId: PropTypes.number.isRequired,
-    changeHandler: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
 };

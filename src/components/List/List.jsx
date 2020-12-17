@@ -9,21 +9,20 @@ import { nameList, saveList, cancelListCreation, createTask } from "../../views/
 import styles from "./styles.js";
 
 const List = (props) => {
-    const { classes, summary, dateTime, isNewList, placeholder, listId, changeHandler } = props;
+    const { classes, summary, dateTime, isNewList, placeholder, listId, handleChange, handleSave, handleCancel, handleCreateTask, handleChangeTask, handleSaveTask, handleCancelTask } = props;
     const tasks = Object.values(props.tasks);
     return (
         <div className={classes.listWrapper}>
             {
                 isNewList ?
                     <SummaryDescriptionMaker
-                        text={summary}
+                        text={ summary }
                         variant='input'
-                        listId={listId}
+                        listId={ listId }
                         placeholder={placeholder}
-                        changeHandler={changeHandler}
-                        handleChange={ nameList }
-                        handleSave={ saveList }
-                        handleCancel={ cancelListCreation }
+                        handleChange={ handleChange }
+                        handleSave={ handleSave }
+                        handleCancel={ handleCancel }
                     /> :
                     <Typography variant={'summary'} value={ summary }/>
             }
@@ -32,7 +31,10 @@ const List = (props) => {
                     <Task
                         key={task.taskId}
                         {...task}
-                        changeHandler={ changeHandler }
+
+                        handleChangeTask={ handleChangeTask }
+                        handleSaveTask={ handleSaveTask }
+                        handleCancelTask={ handleCancelTask }
                     />
                 ))
             }
@@ -40,7 +42,7 @@ const List = (props) => {
                 <Button
                     text={"Add Task"}
                     classNameProps={ classes.addTaskButton }
-                    onClick={() => changeHandler(createTask(listId))}
+                    onClick={ handleCreateTask }
                     variant='additional'
                 />
                 <Typography

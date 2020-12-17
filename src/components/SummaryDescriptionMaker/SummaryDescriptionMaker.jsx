@@ -7,7 +7,7 @@ import InputArea from "../../atomic-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
 
 const SummaryDescriptionMaker = (props) => {
-    const { classes, text, listId, taskId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
+    const { classes, text, placeholder, variant, handleChange, handleSave, handleCancel, listId, taskId, handleChangeTask, handleSaveTask, handleCancelTask } = props;
 
     const buttonClasses = classNames(
         classes.inputControls,
@@ -16,21 +16,23 @@ const SummaryDescriptionMaker = (props) => {
         },
     );
 
+    console.log(handleChange);
+
+
     return (
         <div className={ classes.listItem }>
             <InputArea
-                text={text}
-                placeholder={placeholder}
-                changeHandler={changeHandler}
-                handleChange={handleChange}
-                listId={listId}
-                taskId={taskId}
-                variant={variant}
+                text={ text }
+                placeholder={ placeholder }
+                handleChange={ handleChange || handleChangeTask }
+                listId={ listId }
+                taskId={ taskId }
+                variant={ variant }
             />
             <Button
                 text={"✔"}
                 classNameProps={ buttonClasses }
-                onClick={ () => changeHandler(handleSave(listId, taskId)) }
+                onClick={ () => handleSave(taskId, listId) }
                 variant='additional'
                 isDisabled={ !text.length }
             />
@@ -38,7 +40,7 @@ const SummaryDescriptionMaker = (props) => {
                 text={"✖"}
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
-                onClick={ () => changeHandler(handleCancel(listId, taskId)) }
+                onClick={ () => handleCancel(taskId, listId) }
                 variant='additional'
             />
         </div>
@@ -49,7 +51,6 @@ SummaryDescriptionMaker.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     text: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    listId: PropTypes.number.isRequired,
     changeHandler: PropTypes.func.isRequired,
 };
 

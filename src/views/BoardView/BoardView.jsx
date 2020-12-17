@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import { createList } from "./actions";
+import {
+    cancelListCreation,
+    cancelTaskCreation,
+    createList,
+    createTask,
+    nameList,
+    nameTask,
+    saveList,
+    saveTask
+} from "./actions";
 import Button from '../../atomic-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
@@ -44,7 +53,20 @@ const BoardView = ({ classes }) => {
                         <div className={ classes.boardContent }>
                             {
                                 lists.map(list => (
-                                    <List { ...list } changeHandler={dispatch} key={list.listId} />
+                                    <List
+                                        { ...list }
+                                        handleChange={ (event, listId) => dispatch(nameList(event.target.value, listId)) }
+                                        handleSave={ (listId) => dispatch(saveList(listId)) }
+                                        handleCancel={ (listId) => dispatch(cancelListCreation(listId)) }
+
+                                        handleCreateTask={ () => dispatch(createTask(list.listId)) }
+
+                                        handleChangeTask={ (event, listId, taskId) => dispatch(nameTask(event.target.value, listId, taskId)) }
+                                        handleSaveTask={ (listId, taskId) => dispatch(saveTask(listId, taskId)) }
+                                        handleCancelTask={ (listId, taskId) => dispatch(cancelTaskCreation(listId, taskId)) }
+
+                                        key={list.listId}
+                                    />
                                 ))
                             }
                         </div>

@@ -6,7 +6,7 @@ import Typography from '../../atomic-components/Typography/Typography.jsx';
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
-const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, }) => {
+const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, handleChangeTask, handleSaveTask, handleCancelTask }) => {
 
     return (
         isNewTask ?
@@ -16,10 +16,10 @@ const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, ch
                 listId={ listId }
                 taskId={ taskId }
                 placeholder={ placeholder }
-                changeHandler={ changeHandler }
-                handleChange={ nameTask }
-                handleSave={ saveTask }
-                handleCancel={ cancelTaskCreation }
+
+                handleChangeTask={ handleChangeTask }
+                handleSaveTask={ handleSaveTask }
+                handleCancelTask={ handleCancelTask }
             /> :
             <Typography variant={'description'} value={ description }/>
     );

@@ -55,15 +55,15 @@ const BoardView = ({ classes }) => {
                                 lists.map(list => (
                                     <List
                                         { ...list }
-                                        handleChange={ (event, listId) => dispatch(nameList(event.target.value, listId)) }
-                                        handleSave={ (listId) => dispatch(saveList(listId)) }
-                                        handleCancel={ (listId) => dispatch(cancelListCreation(listId)) }
+                                        handleChangeListName={ (value, listId) => dispatch(nameList(value, listId)) }
+                                        handleSaveListName={ (listId) => dispatch(saveList(listId)) }
+                                        handleCancelListName={ (listId) => dispatch(cancelListCreation(listId)) }
 
                                         handleCreateTask={ () => dispatch(createTask(list.listId)) }
 
-                                        handleChangeTask={ (event, listId, taskId) => dispatch(nameTask(event.target.value, listId, taskId)) }
-                                        handleSaveTask={ (listId, taskId) => dispatch(saveTask(listId, taskId)) }
-                                        handleCancelTask={ (listId, taskId) => dispatch(cancelTaskCreation(listId, taskId)) }
+                                        handleChangeTaskName={ (value, listId, taskId) => dispatch(nameTask(value, listId, taskId)) }
+                                        handleSaveTaskName={ (listId, taskId) => dispatch(saveTask(listId, taskId)) }
+                                        handleCancelTaskName={ (listId, taskId) => dispatch(cancelTaskCreation(listId, taskId)) }
 
                                         key={list.listId}
                                     />

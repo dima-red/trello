@@ -5,12 +5,26 @@ import Typography from "../../atomic-components/Typography/Typography.jsx";
 import Task from "../Task/Task.jsx";
 import Button from "../../atomic-components/Button/Button.jsx";
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
-import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions";
 import styles from "./styles.js";
 
 const List = (props) => {
-    const { classes, summary, dateTime, isNewList, placeholder, listId, handleChange, handleSave, handleCancel, handleCreateTask, handleChangeTask, handleSaveTask, handleCancelTask } = props;
+    const {
+        classes,
+        summary,
+        dateTime,
+        isNewList,
+        placeholder,
+        listId,
+        handleChangeListName,
+        handleSaveListName,
+        handleCancelListName,
+        handleCreateTask,
+        handleChangeTaskName,
+        handleSaveTaskName,
+        handleCancelTaskName
+    } = props;
     const tasks = Object.values(props.tasks);
+
     return (
         <div className={classes.listWrapper}>
             {
@@ -20,9 +34,9 @@ const List = (props) => {
                         variant='input'
                         listId={ listId }
                         placeholder={placeholder}
-                        handleChange={ handleChange }
-                        handleSave={ handleSave }
-                        handleCancel={ handleCancel }
+                        handleChange={ handleChangeListName }
+                        handleSave={ handleSaveListName }
+                        handleCancel={ handleCancelListName }
                     /> :
                     <Typography variant={'summary'} value={ summary }/>
             }
@@ -32,9 +46,9 @@ const List = (props) => {
                         key={task.taskId}
                         {...task}
 
-                        handleChangeTask={ handleChangeTask }
-                        handleSaveTask={ handleSaveTask }
-                        handleCancelTask={ handleCancelTask }
+                        handleChangeTask={ handleChangeTaskName }
+                        handleSaveTask={ handleSaveTaskName }
+                        handleCancelTask={ handleCancelTaskName }
                     />
                 ))
             }

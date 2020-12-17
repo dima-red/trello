@@ -17,7 +17,7 @@ const InputArea = (props) => {
             type="text"
             value={text}
             className={ componentClassNames }
-            onChange={ event => handleChange(event, listId, taskId) }
+            onChange={ event => handleChange(event.target.value, listId, taskId) }
             placeholder={placeholder}
         />
     )

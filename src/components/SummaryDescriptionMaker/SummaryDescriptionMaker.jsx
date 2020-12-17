@@ -7,7 +7,17 @@ import InputArea from "../../atomic-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
 
 const SummaryDescriptionMaker = (props) => {
-    const { classes, text, placeholder, variant, handleChange, handleSave, handleCancel, listId, taskId, handleChangeTask, handleSaveTask, handleCancelTask } = props;
+    const {
+        classes,
+        text,
+        placeholder,
+        variant,
+        handleChange,
+        handleSave,
+        handleCancel,
+        listId,
+        taskId
+    } = props;
 
     const buttonClasses = classNames(
         classes.inputControls,
@@ -16,15 +26,12 @@ const SummaryDescriptionMaker = (props) => {
         },
     );
 
-    console.log(handleChange);
-
-
     return (
         <div className={ classes.listItem }>
             <InputArea
                 text={ text }
                 placeholder={ placeholder }
-                handleChange={ handleChange || handleChangeTask }
+                handleChange={ handleChange }
                 listId={ listId }
                 taskId={ taskId }
                 variant={ variant }
@@ -32,7 +39,7 @@ const SummaryDescriptionMaker = (props) => {
             <Button
                 text={"✔"}
                 classNameProps={ buttonClasses }
-                onClick={ () => handleSave(taskId, listId) }
+                onClick={ () => handleSave(listId, taskId) }
                 variant='additional'
                 isDisabled={ !text.length }
             />
@@ -40,7 +47,7 @@ const SummaryDescriptionMaker = (props) => {
                 text={"✖"}
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
-                onClick={ () => handleCancel(taskId, listId) }
+                onClick={ () => handleCancel(listId, taskId) }
                 variant='additional'
             />
         </div>

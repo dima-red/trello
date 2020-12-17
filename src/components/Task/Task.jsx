@@ -1,27 +1,37 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions";
 import Typography from '../../atomic-components/Typography/Typography.jsx';
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
-const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, handleChangeTask, handleSaveTask, handleCancelTask }) => {
+const Task = (props) => {
+    const {
+        classes,
+        description,
+        isNewTask,
+        listId,
+        taskId,
+        placeholder,
+        handleChangeTask,
+        handleSaveTask,
+        handleCancelTask
+    } = props;
 
     return (
         isNewTask ?
             <SummaryDescriptionMaker
-                text={ description }
+                text={description}
                 variant='textarea'
-                listId={ listId }
-                taskId={ taskId }
-                placeholder={ placeholder }
+                listId={listId}
+                taskId={taskId}
+                placeholder={placeholder}
 
-                handleChangeTask={ handleChangeTask }
-                handleSaveTask={ handleSaveTask }
-                handleCancelTask={ handleCancelTask }
+                handleChange={handleChangeTask}
+                handleSave={handleSaveTask}
+                handleCancel={handleCancelTask}
             /> :
-            <Typography variant={'description'} value={ description }/>
+            <Typography variant={'description'} value={description}/>
     );
 };
 

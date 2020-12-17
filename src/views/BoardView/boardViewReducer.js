@@ -107,6 +107,8 @@ const boardViewReducer = (state = initialState, { type, payload }) => {
 
     case SAVE_NEW_TASK: {
         const listsCopy = Object.assign({}, state.lists);
+        console.log(payload);
+        console.log(listsCopy[payload.listId].tasks);
 
         listsCopy[payload.listId].tasks[payload.taskId].isNewTask = payload.isNewTask;
 

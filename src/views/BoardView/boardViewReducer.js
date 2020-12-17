@@ -50,31 +50,27 @@ const boardViewReducer = (state = initialState, { type, payload }) => {
         return {
             lists: {
                 ...state.lists,
-                [payload.listId]: {
-                    ...payload,
-                }
+                [payload.listId]: payload,
             },
         };
-    case NAME_NEW_LIST:
+    case NAME_NEW_LIST: {
+        const listsCopy = Object.assign({}, state.lists);
+
+        listsCopy[payload.listId].summary = payload.summary;
+
         return {
-            lists: {
-                ...state.lists,
-                [payload.listId]: {
-                    ...state.lists[payload.listId],
-                    summary: payload.summary,
-                },
-            },
+            lists: listsCopy,
         };
-    case SAVE_NEW_LIST:
+    }
+    case SAVE_NEW_LIST: {
+        const listsCopy = Object.assign({}, state.lists);
+
+        listsCopy[payload.listId].isNewList = payload.isNewList;
+
         return {
-            lists: {
-                ...state.lists,
-                [payload.listId]: {
-                    ...state.lists[payload.listId],
-                    isNewList: payload.isNewList,
-                },
-            },
+            lists: listsCopy,
         };
+    }
     case CANCEL_NEW_LIST: {
         const listsCopy = Object.assign({}, state.lists);
 

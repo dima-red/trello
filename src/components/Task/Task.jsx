@@ -2,16 +2,17 @@ import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions/actions";
-import Typography from '../../atomic-jss-components/Typography/Typography.jsx';
+import Typography from '../../atomic-components/Typography/Typography.jsx';
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
 const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, handleCreate }) => {
 
     return (
-        isNewTask
-            ? <SummaryDescriptionMaker
+        isNewTask ?
+            <SummaryDescriptionMaker
                 text={ description }
+                variant='textarea'
                 listId={ listId }
                 taskId={ taskId }
                 placeholder={ placeholder }
@@ -19,8 +20,8 @@ const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, ch
                 handleChange={ nameTask }
                 handleSave={ saveTask }
                 handleCancel={ cancelTaskCreation }
-            />
-            : <Typography variant={'description'} value={ description }/>
+            /> :
+            <Typography variant={'description'} value={ description }/>
     );
 };
 

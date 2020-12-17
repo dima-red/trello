@@ -2,24 +2,23 @@ import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from "react-jss";
 import classNames from 'classnames';
-import Button from "../../atomic-jss-components/Button/Button.jsx";
-import InputArea from "../../atomic-jss-components/InputArea/InputArea.jsx";
+import Button from "../../atomic-components/Button/Button.jsx";
+import InputArea from "../../atomic-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
 
 const SummaryDescriptionMaker = (props) => {
     const { classes, text, listId, taskId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
 
     const buttonClasses = classNames(
-        classes.listNameButton,
+        classes.inputControls,
         {
-            [classes.textArea]: variant !== 'short',
+            [classes.textAreaControls]: variant === 'textarea',
         },
     );
 
     return (
         <div className={ classes.listItem }>
             <InputArea
-                classNameProps={classes.listNameInput}
                 text={text}
                 placeholder={placeholder}
                 changeHandler={changeHandler}
@@ -48,12 +47,9 @@ const SummaryDescriptionMaker = (props) => {
 
 SummaryDescriptionMaker.propTypes = {
     classes: PropTypes.shape({}).isRequired,
-    summary: PropTypes.string,
-    dateTime: PropTypes.string.isRequired,
-    isNewList: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     listId: PropTypes.number.isRequired,
-    tasks: PropTypes.array.isRequired,
     changeHandler: PropTypes.func.isRequired,
 };
 

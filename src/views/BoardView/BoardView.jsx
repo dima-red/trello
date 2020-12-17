@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
 import { createList } from "./actions/actions";
-import Button from '../../atomic-jss-components/Button/Button.jsx';
+import Button from '../../atomic-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';

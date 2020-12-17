@@ -42,78 +42,78 @@ const initialState = [
     }
 ];
 
-const lists = (state = initialState, {type, payload}) => {
+const lists = (state = initialState, { type, payload }) => {
     switch (type) {
-        case BOARD_VIEW_ADD_NEW_LIST:
-            return [
-                ...state,
-                {
-                    ...payload,
-                },
-            ];
-        case BOARD_VIEW_NAME_NEW_LIST:
-            return state.map(list => {
-                if (list.listId === payload.listId) {
-                    list.summary = payload.summary;
-                    return list;
-                }
+    case BOARD_VIEW_ADD_NEW_LIST:
+        return [
+            ...state,
+            {
+                ...payload,
+            },
+        ];
+    case BOARD_VIEW_NAME_NEW_LIST:
+        return state.map(list => {
+            if (list.listId === payload.listId) {
+                list.summary = payload.summary;
                 return list;
-            });
+            }
+            return list;
+        });
 
-        case BOARD_VIEW_SAVE_NEW_LIST:
-            return state.map(list => {
-                if (list.listId === payload.listId) {
-                    list.isNewList = payload.isNewList;
-                }
-                return list;
-            });
+    case BOARD_VIEW_SAVE_NEW_LIST:
+        return state.map(list => {
+            if (list.listId === payload.listId) {
+                list.isNewList = payload.isNewList;
+            }
+            return list;
+        });
 
-        case BOARD_VIEW_CANCEL_NEW_LIST:
-            return state.filter(list => list.listId !== payload.listId);
+    case BOARD_VIEW_CANCEL_NEW_LIST:
+        return state.filter(list => list.listId !== payload.listId);
 
-        case BOARD_VIEW_CREATE_NEW_TASK:
-            return state.map(list => {
-                if (list.listId === payload.listId) {
-                    list.tasks.push(payload);
-                }
-                return list;
-            });
-        case BOARD_VIEW_NAME_NEW_TASK:
-            return state.map(list => {
-                if (list.listId === payload.listId) {
-                    list.tasks.map(task => {
-                        if (task.taskId === payload.taskId) {
-                            task.description = payload.description;
-                        }
-                        return task;
-                    });
-                }
-                return list;
-            });
+    case BOARD_VIEW_CREATE_NEW_TASK:
+        return state.map(list => {
+            if (list.listId === payload.listId) {
+                list.tasks.push(payload);
+            }
+            return list;
+        });
+    case BOARD_VIEW_NAME_NEW_TASK:
+        return state.map(list => {
+            if (list.listId === payload.listId) {
+                list.tasks.map(task => {
+                    if (task.taskId === payload.taskId) {
+                        task.description = payload.description;
+                    }
+                    return task;
+                });
+            }
+            return list;
+        });
 
-        case BOARD_VIEW_SAVE_NEW_TASK:
-            return state.map(list => {
-                if (list.listId === payload.listId) {
-                    list.tasks.map(task => {
-                        if (task.taskId === payload.taskId) {
-                            task.isNewTask = payload.isNewTask;
-                        }
-                        return task;
-                    });
-                }
-                return list;
-            });
+    case BOARD_VIEW_SAVE_NEW_TASK:
+        return state.map(list => {
+            if (list.listId === payload.listId) {
+                list.tasks.map(task => {
+                    if (task.taskId === payload.taskId) {
+                        task.isNewTask = payload.isNewTask;
+                    }
+                    return task;
+                });
+            }
+            return list;
+        });
 
-        case BOARD_VIEW_CANCEL_NEW_TASK:
-            return state.map(list => {
-                if (list.listId === payload.listId) {
-                    list.tasks = list.tasks.filter(task => task.taskId !== payload.taskId);
-                }
-                return list;
-            });
+    case BOARD_VIEW_CANCEL_NEW_TASK:
+        return state.map(list => {
+            if (list.listId === payload.listId) {
+                list.tasks = list.tasks.filter(task => task.taskId !== payload.taskId);
+            }
+            return list;
+        });
 
-        default:
-            return state;
+    default:
+        return state;
     }
 };
 

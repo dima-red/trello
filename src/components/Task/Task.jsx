@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions/actions";
+import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions";
 import Typography from '../../atomic-components/Typography/Typography.jsx';
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
-const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, handleCreate }) => {
+const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, }) => {
 
     return (
         isNewTask ?

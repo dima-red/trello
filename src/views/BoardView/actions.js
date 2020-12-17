@@ -20,7 +20,7 @@ export const createList = () => (
         type: ADD_NEW_LIST,
         payload: {
             summary: '',
-            tasks: [],
+            tasks: {},
             placeholder: 'Please, name your list',
             listId: ++listIdCounter,
             dateTime: new Date().toLocaleString(),

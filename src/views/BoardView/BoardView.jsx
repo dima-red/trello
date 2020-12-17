@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import { createList } from "./actions/actions";
+import { createList } from "./actions";
 import Button from '../../atomic-components/Button/Button.jsx';
 import List from '../../components/List/List.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';
 
-const BoardView = ({classes}) => {
+const BoardView = ({ classes }) => {
     const buttonClassNames = classNames(
         classes.headerBtn,
         classes.addBtn,
     );
-    const lists = useSelector(state => state.lists);
+    const lists = Object.values(useSelector(state => state.boardViewReducer.lists));
     const dispatch = useDispatch();
 
-    console.info("Store.lists : ", lists);
+    console.info("Store.lists : ", useSelector(state => state.boardViewReducer.lists));
 
     return (
         <div className={ classes.app }>

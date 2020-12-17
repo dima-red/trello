@@ -5,12 +5,12 @@ import Typography from "../../atomic-components/Typography/Typography.jsx";
 import Task from "../Task/Task.jsx";
 import Button from "../../atomic-components/Button/Button.jsx";
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
-import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions/actions";
+import { nameList, saveList, cancelListCreation, createTask } from "../../views/BoardView/actions";
 import styles from "./styles.js";
 
 const List = (props) => {
-    const { classes, summary, dateTime, isNewList, placeholder, listId, tasks, changeHandler } = props;
-
+    const { classes, summary, dateTime, isNewList, placeholder, listId, changeHandler } = props;
+    const tasks = Object.values(props.tasks);
     return (
         <div className={classes.listWrapper}>
             {

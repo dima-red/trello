@@ -7,14 +7,14 @@ import Button from "../../atomic-components/Button/Button.jsx";
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
-const List = (props) => {
+const TaskList = (props) => {
     const {
         classes,
         summary,
         dateTime,
         isNewList,
         placeholder,
-        listId,
+        taskListId,
         handleChangeListName,
         handleSaveListName,
         handleCancelListName,
@@ -26,13 +26,13 @@ const List = (props) => {
     const tasks = Object.values(props.tasks);
 
     return (
-        <div className={ classes.listWrapper }>
+        <div className={ classes.wrapper }>
             {
                 isNewList ?
                     <SummaryDescriptionMaker
                         text={ summary }
                         variant='input'
-                        listId={ listId }
+                        taskListId={ taskListId }
                         placeholder={ placeholder }
                         handleChange={ handleChangeListName }
                         handleSave={ handleSaveListName }
@@ -52,7 +52,7 @@ const List = (props) => {
                     />
                 ))
             }
-            <div className={ classes.listFooter }>
+            <div className={ classes.footer }>
                 <Button
                     text={"Add Task"}
                     classNameProps={ classes.addTaskButton }
@@ -67,13 +67,13 @@ const List = (props) => {
     );
 };
 
-List.propTypes = {
+TaskList.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     summary: PropTypes.string,
     dateTime: PropTypes.string.isRequired,
     isNewList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    listId: PropTypes.number.isRequired,
+    taskListId: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
     handleChangeListName: PropTypes.func.isRequired,
     handleSaveListName: PropTypes.func.isRequired,
@@ -84,11 +84,11 @@ List.propTypes = {
     handleCancelTaskName: PropTypes.func.isRequired,
 };
 
-List.defaultProps = {
+TaskList.defaultProps = {
     isNewList: false,
     summary: '',
 };
 
-const StyledList = withStyles(styles)(List);
+const StyledList = withStyles(styles)(TaskList);
 
 export default StyledList;

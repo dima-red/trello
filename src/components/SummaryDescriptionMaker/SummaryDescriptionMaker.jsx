@@ -15,7 +15,7 @@ const SummaryDescriptionMaker = (props) => {
         handleChange,
         handleSave,
         handleCancel,
-        listId,
+        taskListId,
         taskId
     } = props;
 
@@ -32,14 +32,14 @@ const SummaryDescriptionMaker = (props) => {
                 text={ text }
                 placeholder={ placeholder }
                 handleChange={ handleChange }
-                listId={ listId }
+                taskListId={ taskListId }
                 taskId={ taskId }
                 variant={ variant }
             />
             <Button
                 text={"✔"}
                 classNameProps={ buttonClasses }
-                onClick={ () => handleSave(listId, taskId) }
+                onClick={ () => handleSave(taskListId, taskId) }
                 variant='additional'
                 isDisabled={ !text.length }
             />
@@ -47,7 +47,7 @@ const SummaryDescriptionMaker = (props) => {
                 text={"✖"}
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
-                onClick={ () => handleCancel(listId, taskId) }
+                onClick={ () => handleCancel(taskListId, taskId) }
                 variant='additional'
             />
         </div>
@@ -62,7 +62,7 @@ SummaryDescriptionMaker.propTypes = {
     handleSave: PropTypes.func.isRequired,
     handleCancel: PropTypes.func.isRequired,
     variant: PropTypes.string.isRequired,
-    listId: PropTypes.number.isRequired,
+    taskListId: PropTypes.number.isRequired,
     taskId: PropTypes.number.isRequired,
 };
 

@@ -10,7 +10,7 @@ import {
 } from './action.constants';
 
 const initialState = {
-    lists: {
+    taskLists: {
         0: {
             summary: 'ToDo',
             tasks: {
@@ -24,7 +24,7 @@ const initialState = {
                 }
             },
             dateTime: '11/18/2020, 3:06:49 PM',
-            listId: 0,
+            taskListId: 0,
         },
         1: {
             summary: 'In Progress',
@@ -39,7 +39,7 @@ const initialState = {
                 }
             },
             dateTime: '11/19/2020, 4:06:49 PM',
-            listId: 1,
+            taskListId: 1,
         }
     },
 };
@@ -48,76 +48,79 @@ const boardViewReducer = (state = initialState, { type, payload }) => {
     switch (type) {
     case ADD_NEW_LIST:
         return {
-            lists: {
-                ...state.lists,
-                [payload.listId]: payload,
+            taskLists: {
+                ...state.taskLists,
+                [payload.taskListId]: payload,
             },
         };
     case NAME_NEW_LIST: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.listId].summary = payload.summary;
+        listsCopy[payload.taskListId].summary = payload.summary;
 
         return {
-            lists: listsCopy,
+            taskLists: listsCopy,
         };
     }
     case SAVE_NEW_LIST: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.listId].isNewList = payload.isNewList;
+        listsCopy[payload.taskListId].isNewList = payload.isNewList;
 
         return {
-            lists: listsCopy,
+            taskLists: listsCopy,
         };
     }
     case CANCEL_NEW_LIST: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        delete listsCopy[payload.listId];
+        delete listsCopy[payload.taskListId];
 
         return {
-            lists: listsCopy,
+            taskLists: listsCopy,
         };
     }
 
     case CREATE_NEW_TASK: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.listId].tasks[payload.taskId] = payload;
+        console.log(listsCopy);
+        console.log(payload.taskListId);
+
+        listsCopy[payload.taskListId].tasks[payload.taskId] = payload;
 
         return {
-            lists: listsCopy
+            taskLists: listsCopy
         };
     }
 
     case NAME_NEW_TASK: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.listId].tasks[payload.taskId].description = payload.description;
+        listsCopy[payload.taskListId].tasks[payload.taskId].description = payload.description;
 
         return {
-            lists: listsCopy,
+            taskLists: listsCopy,
         };
     }
 
     case SAVE_NEW_TASK: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.listId].tasks[payload.taskId].isNewTask = payload.isNewTask;
+        listsCopy[payload.taskListId].tasks[payload.taskId].isNewTask = payload.isNewTask;
 
         return {
-            lists: listsCopy,
+            taskLists: listsCopy,
         };
     }
 
     case CANCEL_NEW_TASK: {
-        const listsCopy = Object.assign({}, state.lists);
+        const listsCopy = Object.assign({}, state.taskLists);
 
-        delete listsCopy[payload.listId].tasks[payload.taskId];
+        delete listsCopy[payload.taskListId].tasks[payload.taskId];
 
         return {
-            lists: listsCopy,
+            taskLists: listsCopy,
         };
     }
 

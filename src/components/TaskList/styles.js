@@ -1,7 +1,7 @@
 import { primary, secondary, ternary } from '../../constants/color.constants';
 
 export const styles = {
-    listWrapper: {
+    wrapper: {
         color: primary,
         border: `2px solid ${ternary}`,
         "border-radius": "5px",
@@ -10,7 +10,7 @@ export const styles = {
         height: "fit-content",
         "min-width": "270px",
     },
-    listFooter: {
+    footer: {
         display: "flex",
         "margin-bottom": "10px",
         "justify-content": "space-around",

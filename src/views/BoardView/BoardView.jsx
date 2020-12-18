@@ -4,17 +4,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import withStyles from 'react-jss';
 import classNames from 'classnames';
 import {
-    cancelListCreation,
-    cancelTaskCreation,
-    createList,
+    createTaskList,
+    nameTaskList,
+    saveTaskList,
+    cancelTaskListCreation,
     createTask,
-    nameList,
     nameTask,
-    saveList,
-    saveTask
+    saveTask,
+    cancelTaskCreation,
 } from "./actions";
 import Button from '../../atomic-components/Button/Button.jsx';
-import List from '../../components/List/List.jsx';
+import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';
 
@@ -23,10 +23,11 @@ const BoardView = ({ classes }) => {
         classes.headerBtn,
         classes.addBtn,
     );
-    const lists = Object.values(useSelector(state => state.boardViewReducer.lists));
+    const taskLists = Object.values(useSelector(state => state.boardViewReducer.taskLists));
+    console.log(taskLists);
     const dispatch = useDispatch();
 
-    console.info("Store.lists : ", useSelector(state => state.boardViewReducer.lists));
+    console.info("Store.taskLists : ", useSelector(state => state.boardViewReducer.taskLists));
 
     return (
         <div className={ classes.app }>
@@ -43,7 +44,7 @@ const BoardView = ({ classes }) => {
                         <Button
                             text={ '+' }
                             classNameProps={ buttonClassNames }
-                            onClick={ () => dispatch(createList())}
+                            onClick={ () => dispatch(createTaskList())}
                         />
                         <Logo />
                     </div>
@@ -52,20 +53,20 @@ const BoardView = ({ classes }) => {
                     <div className={ classes.mainContainer }>
                         <div className={ classes.boardContent }>
                             {
-                                lists.map(list => (
-                                    <List
-                                        { ...list }
-                                        handleChangeListName={ (value, listId) => dispatch(nameList(value, listId)) }
-                                        handleSaveListName={ (listId) => dispatch(saveList(listId)) }
-                                        handleCancelListName={ (listId) => dispatch(cancelListCreation(listId)) }
+                                taskLists.map(taskList => (
+                                    <TaskList
+                                        { ...taskList }
+                                        handleChangeListName={ (value, taskListId) => dispatch(nameTaskList(value, taskListId)) }
+                                        handleSaveListName={ (taskListId) => dispatch(saveTaskList(taskListId)) }
+                                        handleCancelListName={ (taskListId) => dispatch(cancelTaskListCreation(taskListId)) }
 
-                                        handleCreateTask={ () => dispatch(createTask(list.listId)) }
+                                        handleCreateTask={ () => dispatch(createTask(taskList.taskListId)) }
 
-                                        handleChangeTaskName={ (value, listId, taskId) => dispatch(nameTask(value, listId, taskId)) }
-                                        handleSaveTaskName={ (listId, taskId) => dispatch(saveTask(listId, taskId)) }
-                                        handleCancelTaskName={ (listId, taskId) => dispatch(cancelTaskCreation(listId, taskId)) }
+                                        handleChangeTaskName={ (value, taskListId, taskId) => dispatch(nameTask(value, taskListId, taskId)) }
+                                        handleSaveTaskName={ (taskListId, taskId) => dispatch(saveTask(taskListId, taskId)) }
+                                        handleCancelTaskName={ (taskListId, taskId) => dispatch(cancelTaskCreation(taskListId, taskId)) }
 
-                                        key={list.listId}
+                                        key={ taskList.taskListId }
                                     />
                                 ))
                             }

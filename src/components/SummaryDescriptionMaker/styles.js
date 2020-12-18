@@ -1,4 +1,4 @@
-import { primary, secondary, ternary, decline } from '../../constants/color.constants';
+import { primary } from '../../constants/color.constants';
 
 const styles = {
     listItem: {

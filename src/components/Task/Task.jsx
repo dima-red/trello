@@ -41,7 +41,14 @@ Task.propTypes = {
     isNewTask: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
     listId: PropTypes.number.isRequired,
-    changeHandler: PropTypes.func.isRequired,
+    taskId: PropTypes.number.isRequired,
+    handleChangeTask: PropTypes.func.isRequired,
+    handleSaveTask: PropTypes.func.isRequired,
+    handleCancelTask: PropTypes.func.isRequired,
+};
+
+Task.defaultProps = {
+    description: '',
 };
 
 const StyledList = withStyles(styles)(Task);

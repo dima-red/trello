@@ -1,5 +1,3 @@
-import {primary, secondary, ternary, decline} from '../../constants/color.constants';
-
 const styles = {
     inputElement: {
         border: "1px solid grey",

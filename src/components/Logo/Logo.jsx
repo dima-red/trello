@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from "react-jss";
 import styles from "./styles";
 
-const Logo = ({ classes,}) => {
+const Logo = ({ classes }) => {
 
     return (
         <div className={ classes.logoWrapper }>

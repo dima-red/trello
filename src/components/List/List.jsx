@@ -26,14 +26,14 @@ const List = (props) => {
     const tasks = Object.values(props.tasks);
 
     return (
-        <div className={classes.listWrapper}>
+        <div className={ classes.listWrapper }>
             {
                 isNewList ?
                     <SummaryDescriptionMaker
                         text={ summary }
                         variant='input'
                         listId={ listId }
-                        placeholder={placeholder}
+                        placeholder={ placeholder }
                         handleChange={ handleChangeListName }
                         handleSave={ handleSaveListName }
                         handleCancel={ handleCancelListName }
@@ -43,7 +43,7 @@ const List = (props) => {
             {
                 !!tasks.length && tasks.map(task => (
                     <Task
-                        key={task.taskId}
+                        key={ task.taskId }
                         {...task}
 
                         handleChangeTask={ handleChangeTaskName }
@@ -69,18 +69,24 @@ const List = (props) => {
 
 List.propTypes = {
     classes: PropTypes.shape({}).isRequired,
-    listWrapper: PropTypes.string,
     summary: PropTypes.string,
     dateTime: PropTypes.string.isRequired,
     isNewList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
     listId: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
-    changeHandler: PropTypes.func.isRequired,
+    handleChangeListName: PropTypes.func.isRequired,
+    handleSaveListName: PropTypes.func.isRequired,
+    handleCancelListName: PropTypes.func.isRequired,
+    handleCreateTask: PropTypes.func.isRequired,
+    handleChangeTaskName: PropTypes.func.isRequired,
+    handleSaveTaskName: PropTypes.func.isRequired,
+    handleCancelTaskName: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
     isNewList: false,
+    summary: '',
 };
 
 const StyledList = withStyles(styles)(List);

@@ -58,7 +58,12 @@ SummaryDescriptionMaker.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     text: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    changeHandler: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSave: PropTypes.func.isRequired,
+    handleCancel: PropTypes.func.isRequired,
+    variant: PropTypes.string.isRequired,
+    listId: PropTypes.number.isRequired,
+    taskId: PropTypes.number.isRequired,
 };
 
 const StyledSummaryDescriptionMaker = withStyles(styles)(SummaryDescriptionMaker);

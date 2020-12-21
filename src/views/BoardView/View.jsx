@@ -18,7 +18,7 @@ import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';
 
-const BoardView = ({ classes }) => {
+const View = ({ classes }) => {
     const buttonClassNames = classNames(
         classes.headerBtn,
         classes.addBtn,
@@ -78,10 +78,10 @@ const BoardView = ({ classes }) => {
     )
 };
 
-BoardView.propTypes = {
+View.propTypes = {
     classes: PropTypes.shape({}).isRequired,
 };
 
-const StyledBoardView = withStyles(styles)(BoardView);
+const StyledView = withStyles(styles)(View);
 
-export default StyledBoardView;
+export default StyledView;

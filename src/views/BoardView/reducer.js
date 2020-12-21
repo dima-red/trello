@@ -44,7 +44,7 @@ const initialState = {
     },
 };
 
-const boardViewReducer = (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
     case ADD_NEW_LIST:
         return {
@@ -126,4 +126,4 @@ const boardViewReducer = (state = initialState, { type, payload }) => {
     }
 };
 
-export default boardViewReducer;
+export default reducer;

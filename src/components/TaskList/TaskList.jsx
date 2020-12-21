@@ -12,7 +12,7 @@ const TaskList = (props) => {
         classes,
         summary,
         dateTime,
-        isNewList,
+        isEditList,
         placeholder,
         handleChangeListName,
         handleSaveListName,
@@ -27,7 +27,7 @@ const TaskList = (props) => {
     return (
         <div className={ classes.wrapper }>
             {
-                isNewList ?
+                isEditList ?
                     <SummaryDescriptionMaker
                         text={ summary }
                         variant='input'
@@ -69,7 +69,7 @@ TaskList.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     summary: PropTypes.string,
     dateTime: PropTypes.string.isRequired,
-    isNewList: PropTypes.bool.isRequired,
+    isEditList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
     taskListId: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
@@ -83,7 +83,7 @@ TaskList.propTypes = {
 };
 
 TaskList.defaultProps = {
-    isNewList: false,
+    isEditList: false,
     summary: '',
 };
 

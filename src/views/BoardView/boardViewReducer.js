@@ -65,7 +65,7 @@ const boardViewReducer = (state = initialState, { type, payload }) => {
     case SAVE_NEW_LIST: {
         const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.taskListId].isNewList = payload.isNewList;
+        listsCopy[payload.taskListId].isEditList = payload.isEditList;
 
         return {
             taskLists: listsCopy,
@@ -104,7 +104,7 @@ const boardViewReducer = (state = initialState, { type, payload }) => {
     case SAVE_NEW_TASK: {
         const listsCopy = Object.assign({}, state.taskLists);
 
-        listsCopy[payload.taskListId].tasks[payload.taskId].isNewTask = payload.isNewTask;
+        listsCopy[payload.taskListId].tasks[payload.taskId].isEditTask = payload.isEditTask;
 
         return {
             taskLists: listsCopy,

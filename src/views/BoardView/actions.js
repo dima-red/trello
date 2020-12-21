@@ -24,7 +24,7 @@ export const createTaskList = () => (
             placeholder: 'Please, name your list',
             taskListId: ++taskListIdCounter,
             dateTime: new Date().toLocaleString(),
-            isNewList: true,
+            isEditList: true,
         },
     }
 );
@@ -43,7 +43,7 @@ export const saveTaskList = (taskListId) => (
     {
         type: SAVE_NEW_LIST,
         payload: {
-            isNewList: false,
+            isEditList: false,
             taskListId,
         },
     }
@@ -66,7 +66,7 @@ export const createTask = (taskListId) => (
             placeholder: 'Please, add description for your task',
             taskId: ++taskIdCounter,
             dateTime: new Date().toLocaleString(),
-            isNewTask: true,
+            isEditTask: true,
             taskListId,
         },
     }
@@ -87,7 +87,7 @@ export const saveTask = (taskListId, taskId) => (
     {
         type: SAVE_NEW_TASK,
         payload: {
-            isNewTask: false,
+            isEditTask: false,
             taskListId,
             taskId,
         },

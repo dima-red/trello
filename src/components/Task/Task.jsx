@@ -9,7 +9,7 @@ const Task = (props) => {
     const {
         classes,
         description,
-        isNewTask,
+        isEditTask,
         taskId,
         placeholder,
         handleChangeTask,
@@ -18,7 +18,7 @@ const Task = (props) => {
     } = props;
 
     return (
-        isNewTask ?
+        isEditTask ?
             <SummaryDescriptionMaker
                 text={ description }
                 variant='textarea'
@@ -35,7 +35,7 @@ const Task = (props) => {
 Task.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     description: PropTypes.string,
-    isNewTask: PropTypes.bool.isRequired,
+    isEditTask: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
     taskId: PropTypes.number.isRequired,
     handleChangeTask: PropTypes.func.isRequired,

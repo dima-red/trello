@@ -55,7 +55,7 @@ const TaskList = (props) => {
                     text={"Add Task"}
                     classNameProps={ classes.addTaskButton }
                     onClick={ handleCreateTask }
-                    variant='additional'
+                    variant='secondary'
                 />
                 <Typography
                     variant={'date'}
@@ -71,7 +71,7 @@ TaskList.propTypes = {
     dateTime: PropTypes.string.isRequired,
     isEditList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    taskListId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
     handleChangeListName: PropTypes.func.isRequired,
     handleSaveListName: PropTypes.func.isRequired,

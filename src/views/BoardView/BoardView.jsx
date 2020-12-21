@@ -56,17 +56,17 @@ const BoardView = ({ classes }) => {
                                 taskLists.map(taskList => (
                                     <TaskList
                                         { ...taskList }
-                                        handleChangeListName={ value => dispatch(nameTaskList(value, taskList.taskListId)) }
-                                        handleSaveListName={ () => dispatch(saveTaskList(taskList.taskListId)) }
-                                        handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.taskListId)) }
+                                        handleChangeListName={ value => dispatch(nameTaskList(value, taskList.id)) }
+                                        handleSaveListName={ () => dispatch(saveTaskList(taskList.id)) }
+                                        handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.id)) }
 
-                                        handleCreateTask={ () => dispatch(createTask(taskList.taskListId)) }
+                                        handleCreateTask={ () => dispatch(createTask(taskList.id)) }
 
-                                        handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.taskListId, taskId)) }
-                                        handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.taskListId, taskId)) }
-                                        handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.taskListId, taskId)) }
+                                        handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.id, taskId)) }
+                                        handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
+                                        handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
 
-                                        key={ taskList.taskListId }
+                                        key={ taskList.id }
                                     />
                                 ))
                             }

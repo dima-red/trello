@@ -5,8 +5,8 @@ import classNames from "classnames";
 import styles from "./styles";
 
 const buttonVariantsMap = {
-    main: 'mainButton',
-    additional: 'additionalButton',
+    primary: 'primaryButton',
+    secondary: 'secondaryButton',
 };
 
 const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant, isDisabled }) => {
@@ -46,7 +46,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     isAlertColor: false,
-    variant: 'main', // can be 'additional'
+    variant: 'primary', // can be 'additional'
     classNameProps: '',
     isDisabled: false,
 };

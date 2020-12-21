@@ -14,7 +14,7 @@ const styles = {
         },
     },
 
-    mainButton: {
+    primaryButton: {
         "&:hover&:not([disabled])": {
             "border-color": secondary,
             "& $alertColor$text": {
@@ -25,7 +25,7 @@ const styles = {
             },
         },
     },
-    additionalButton: {
+    secondaryButton: {
         "font-weight": "bold",
         "&:hover&:not([disabled])": {
             "border-color": primary,

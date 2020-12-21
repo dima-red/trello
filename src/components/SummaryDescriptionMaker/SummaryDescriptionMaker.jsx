@@ -58,7 +58,7 @@ SummaryDescriptionMaker.propTypes = {
     handleSave: PropTypes.func.isRequired,
     handleCancel: PropTypes.func.isRequired,
     variant: PropTypes.string.isRequired,
-    taskListId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     taskId: PropTypes.number.isRequired,
 };
 

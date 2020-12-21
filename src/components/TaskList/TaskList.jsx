@@ -36,7 +36,10 @@ const TaskList = (props) => {
                         handleSave={ handleSaveListName }
                         handleCancel={ handleCancelListName }
                     /> :
-                    <Typography variant={'summary'} value={ summary }/>
+                    <Typography
+                        variant={'summary'}
+                        value={ summary }
+                    />
             }
             {
                 !!tasks.length && tasks.map(task => (
@@ -59,19 +62,23 @@ const TaskList = (props) => {
                 />
                 <Typography
                     variant={'date'}
-                    value={ dateTime }/>
+                    value={ dateTime }
+                />
             </div>
         </div>
     );
 };
 
 TaskList.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        wrapper: PropTypes.string,
+        footer: PropTypes.string,
+        addTaskButton: PropTypes.string,
+    }).isRequired,
     summary: PropTypes.string,
     dateTime: PropTypes.string.isRequired,
     isEditList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
     tasks: PropTypes.array.isRequired,
     handleChangeListName: PropTypes.func.isRequired,
     handleSaveListName: PropTypes.func.isRequired,
@@ -85,6 +92,8 @@ TaskList.propTypes = {
 TaskList.defaultProps = {
     isEditList: false,
     summary: '',
+    dateTime: 'Created Date',
+    placeholder: '',
 };
 
 const StyledList = withStyles(styles)(TaskList);

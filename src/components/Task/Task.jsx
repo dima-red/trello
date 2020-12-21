@@ -28,7 +28,10 @@ const Task = (props) => {
                 handleSave={ handleSaveTask(taskId) }
                 handleCancel={ handleCancelTask(taskId) }
             /> :
-            <Typography variant={ 'description' } value={ description }/>
+            <Typography
+                variant={ 'description' }
+                value={ description }
+            />
     );
 };
 

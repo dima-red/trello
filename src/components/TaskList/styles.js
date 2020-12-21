@@ -18,13 +18,6 @@ export const styles = {
     addTaskButton: {
         padding: "5px 10px",
         "font-size": "12px",
-        "&:hover": {
-            "background-color": ternary,
-            "& $text": {
-                "color": primary,
-            },
-        },
-        text: {},
     },
 };
 

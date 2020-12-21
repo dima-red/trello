@@ -24,10 +24,10 @@ const View = ({ classes }) => {
         classes.addBtn,
     );
     const taskLists = Object.values(useSelector(state => state.boardViewReducer.taskLists));
-    console.log(taskLists);
     const dispatch = useDispatch();
 
     console.info("Store.taskLists : ", useSelector(state => state.boardViewReducer.taskLists));
+    console.info("Array from Store.taskLists : ", taskLists);
 
     return (
         <div className={ classes.app }>
@@ -79,7 +79,17 @@ const View = ({ classes }) => {
 };
 
 View.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        headerBtn: PropTypes.string,
+        addBtn: PropTypes.string,
+        app: PropTypes.string,
+        viewWrapper: PropTypes.string,
+        appHeader: PropTypes.string,
+        headerLeft: PropTypes.string,
+        headerRight: PropTypes.string,
+        mainContainer: PropTypes.string,
+        boardContent: PropTypes.string,
+    }).isRequired,
 };
 
 const StyledView = withStyles(styles)(View);

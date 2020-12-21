@@ -13,14 +13,13 @@ const styles = {
             opacity: 0.6,
         },
     },
-
     primaryButton: {
         "&:hover&:not([disabled])": {
             "border-color": secondary,
-            "& $alertColor$text": {
+            "& $alertColor$buttonContent": {
                 color: decline,
             },
-            "& $text": {
+            "& $buttonContent": {
                 color: secondary,
             },
         },
@@ -29,16 +28,16 @@ const styles = {
         "font-weight": "bold",
         "&:hover&:not([disabled])": {
             "border-color": primary,
-            "& $alertColor$text": {
+            "& $alertColor$buttonContent": {
                 color: decline,
             },
-            "& $text": {
+            "& $buttonContent": {
                 color: primary,
             },
             "background-color": ternary,
         },
     },
-    text: {},
+    buttonContent: {},
     alertColor: {},
 };
 

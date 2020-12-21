@@ -24,7 +24,9 @@ const InputArea = (props) => {
 };
 
 InputArea.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        inputElement: PropTypes.string,
+    }).isRequired,
     variant: PropTypes.string.isRequired,
     text: PropTypes.string,
     handleChange: PropTypes.func.isRequired,

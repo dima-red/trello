@@ -17,7 +17,10 @@ Logo.defaultProps = {
 };
 
 Logo.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        logoWrapper: PropTypes.string,
+        appLogo: PropTypes.string,
+    }).isRequired,
 };
 
 const StyledLogo = withStyles(styles)(Logo);

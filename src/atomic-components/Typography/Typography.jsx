@@ -31,7 +31,6 @@ Typography.propTypes = {
 Typography.defaultProps = {
     value: '',
     variant: 'summary',
-    text: '',
     className: '',
 };
 

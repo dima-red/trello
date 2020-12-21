@@ -36,7 +36,7 @@ const SummaryDescriptionMaker = (props) => {
                 text={"✔"}
                 classNameProps={ buttonClasses }
                 onClick={ handleSave }
-                variant='additional'
+                variant='secondary'
                 isDisabled={ !text.length }
             />
             <Button
@@ -44,22 +44,24 @@ const SummaryDescriptionMaker = (props) => {
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
                 onClick={ handleCancel }
-                variant='additional'
+                variant='secondary'
             />
         </div>
     );
 };
 
 SummaryDescriptionMaker.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        inputControls: PropTypes.string,
+        textAreaControls: PropTypes.string,
+        listItem: PropTypes.string,
+    }).isRequired,
     text: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSave: PropTypes.func.isRequired,
     handleCancel: PropTypes.func.isRequired,
     variant: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    taskId: PropTypes.number.isRequired,
 };
 
 const StyledSummaryDescriptionMaker = withStyles(styles)(SummaryDescriptionMaker);

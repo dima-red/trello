@@ -14,7 +14,6 @@ const TaskList = (props) => {
         dateTime,
         isNewList,
         placeholder,
-        taskListId,
         handleChangeListName,
         handleSaveListName,
         handleCancelListName,
@@ -32,7 +31,6 @@ const TaskList = (props) => {
                     <SummaryDescriptionMaker
                         text={ summary }
                         variant='input'
-                        taskListId={ taskListId }
                         placeholder={ placeholder }
                         handleChange={ handleChangeListName }
                         handleSave={ handleSaveListName }

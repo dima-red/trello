@@ -56,15 +56,15 @@ const BoardView = ({ classes }) => {
                                 taskLists.map(taskList => (
                                     <TaskList
                                         { ...taskList }
-                                        handleChangeListName={ (value, taskListId) => dispatch(nameTaskList(value, taskListId)) }
-                                        handleSaveListName={ (taskListId) => dispatch(saveTaskList(taskListId)) }
-                                        handleCancelListName={ (taskListId) => dispatch(cancelTaskListCreation(taskListId)) }
+                                        handleChangeListName={ value => dispatch(nameTaskList(value, taskList.taskListId)) }
+                                        handleSaveListName={ () => dispatch(saveTaskList(taskList.taskListId)) }
+                                        handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.taskListId)) }
 
                                         handleCreateTask={ () => dispatch(createTask(taskList.taskListId)) }
 
-                                        handleChangeTaskName={ (value, taskListId, taskId) => dispatch(nameTask(value, taskListId, taskId)) }
-                                        handleSaveTaskName={ (taskListId, taskId) => dispatch(saveTask(taskListId, taskId)) }
-                                        handleCancelTaskName={ (taskListId, taskId) => dispatch(cancelTaskCreation(taskListId, taskId)) }
+                                        handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.taskListId, taskId)) }
+                                        handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.taskListId, taskId)) }
+                                        handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.taskListId, taskId)) }
 
                                         key={ taskList.taskListId }
                                     />

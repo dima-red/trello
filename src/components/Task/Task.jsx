@@ -10,7 +10,6 @@ const Task = (props) => {
         classes,
         description,
         isNewTask,
-        taskListId,
         taskId,
         placeholder,
         handleChangeTask,
@@ -23,13 +22,11 @@ const Task = (props) => {
             <SummaryDescriptionMaker
                 text={ description }
                 variant='textarea'
-                taskListId={ taskListId }
-                taskId={ taskId }
                 placeholder={ placeholder }
 
-                handleChange={ handleChangeTask }
-                handleSave={ handleSaveTask }
-                handleCancel={ handleCancelTask }
+                handleChange={ handleChangeTask(taskId) }
+                handleSave={ handleSaveTask(taskId) }
+                handleCancel={ handleCancelTask(taskId) }
             /> :
             <Typography variant={ 'description' } value={ description }/>
     );
@@ -40,7 +37,6 @@ Task.propTypes = {
     description: PropTypes.string,
     isNewTask: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    taskListId: PropTypes.number.isRequired,
     taskId: PropTypes.number.isRequired,
     handleChangeTask: PropTypes.func.isRequired,
     handleSaveTask: PropTypes.func.isRequired,

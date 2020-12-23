@@ -5,8 +5,8 @@ import classNames from "classnames";
 import styles from "./styles";
 
 const buttonVariantsMap = {
-    main: 'mainButton',
-    additional: 'additionalButton',
+    primary: 'primaryButton',
+    secondary: 'secondaryButton',
 };
 
 const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant, isDisabled }) => {
@@ -17,7 +17,7 @@ const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant,
     );
 
     const buttonTextClasses = classNames(
-        classes.text,
+        classes.buttonContent,
         {
             [classes.alertColor]: isAlertColor,
         },
@@ -35,7 +35,11 @@ const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant,
 };
 
 Button.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        button: PropTypes.string,
+        buttonContent: PropTypes.string,
+        alertColor: PropTypes.string,
+    }).isRequired,
     text: PropTypes.string,
     classNameProps: PropTypes.string,
     onClick: PropTypes.func.isRequired,
@@ -46,9 +50,10 @@ Button.propTypes = {
 
 Button.defaultProps = {
     isAlertColor: false,
-    variant: 'main', // can be 'additional'
+    variant: 'primary', // can be 'secondary'
     classNameProps: '',
     isDisabled: false,
+    text: '',
 };
 
 const StyledButton = withStyles(styles)(Button);

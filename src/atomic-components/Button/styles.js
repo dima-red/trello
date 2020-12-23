@@ -1,4 +1,4 @@
-import {primary, secondary, ternary, decline} from '../../constants/color.constants';
+import { primary, secondary, ternary, decline } from '../../constants/color.constants';
 
 const styles = {
     button: {
@@ -13,32 +13,31 @@ const styles = {
             opacity: 0.6,
         },
     },
-
-    mainButton: {
+    primaryButton: {
         "&:hover&:not([disabled])": {
             "border-color": secondary,
-            "& $alertColor$text": {
+            "& $alertColor$buttonContent": {
                 color: decline,
             },
-            "& $text": {
+            "& $buttonContent": {
                 color: secondary,
             },
         },
     },
-    additionalButton: {
+    secondaryButton: {
         "font-weight": "bold",
         "&:hover&:not([disabled])": {
             "border-color": primary,
-            "& $alertColor$text": {
+            "& $alertColor$buttonContent": {
                 color: decline,
             },
-            "& $text": {
+            "& $buttonContent": {
                 color: primary,
             },
             "background-color": ternary,
         },
     },
-    text: {},
+    buttonContent: {},
     alertColor: {},
 };
 

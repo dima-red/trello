@@ -24,11 +24,13 @@ const Typography = ({ classes, variant, value }) => {
 
 Typography.propTypes = {
     classes: PropTypes.shape({}).isRequired,
+    variant: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
 };
 
 Typography.defaultProps = {
+    value: '',
     variant: 'summary',
-    text: '',
     className: '',
 };
 

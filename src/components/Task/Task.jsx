@@ -1,37 +1,53 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import { nameTask, saveTask, cancelTaskCreation } from "../../views/BoardView/actions/actions";
 import Typography from '../../atomic-components/Typography/Typography.jsx';
 import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
 import styles from "./styles.js";
 
-const Task = ({ classes, description, isNewTask, listId, taskId, placeholder, changeHandler, handleCreate }) => {
+const Task = (props) => {
+    const {
+        classes,
+        description,
+        isEditTask,
+        taskId,
+        placeholder,
+        handleChangeTask,
+        handleSaveTask,
+        handleCancelTask
+    } = props;
 
     return (
-        isNewTask ?
+        isEditTask ?
             <SummaryDescriptionMaker
                 text={ description }
                 variant='textarea'
-                listId={ listId }
-                taskId={ taskId }
                 placeholder={ placeholder }
-                changeHandler={ changeHandler }
-                handleChange={ nameTask }
-                handleSave={ saveTask }
-                handleCancel={ cancelTaskCreation }
+
+                handleChange={ handleChangeTask(taskId) }
+                handleSave={ handleSaveTask(taskId) }
+                handleCancel={ handleCancelTask(taskId) }
             /> :
-            <Typography variant={'description'} value={ description }/>
+            <Typography
+                variant={ 'description' }
+                value={ description }
+            />
     );
 };
 
 Task.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     description: PropTypes.string,
-    isNewTask: PropTypes.bool.isRequired,
+    isEditTask: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    listId: PropTypes.number.isRequired,
-    changeHandler: PropTypes.func.isRequired,
+    taskId: PropTypes.number.isRequired,
+    handleChangeTask: PropTypes.func.isRequired,
+    handleSaveTask: PropTypes.func.isRequired,
+    handleCancelTask: PropTypes.func.isRequired,
+};
+
+Task.defaultProps = {
+    description: '',
 };
 
 const StyledList = withStyles(styles)(Task);

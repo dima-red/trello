@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
-import boardViewReducers from '../views/BoardView/reducers';
+import boardViewReducer from '../views/BoardView/reducer';
 
-export default combineReducers(boardViewReducers);
+export default combineReducers({
+    boardViewReducer,
+});

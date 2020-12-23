@@ -7,7 +7,15 @@ import InputArea from "../../atomic-components/InputArea/InputArea.jsx";
 import styles from "./styles.js";
 
 const SummaryDescriptionMaker = (props) => {
-    const { classes, text, listId, taskId, placeholder, changeHandler, variant, handleChange, handleSave, handleCancel } = props;
+    const {
+        classes,
+        text,
+        placeholder,
+        variant,
+        handleChange,
+        handleSave,
+        handleCancel,
+    } = props;
 
     const buttonClasses = classNames(
         classes.inputControls,
@@ -19,38 +27,41 @@ const SummaryDescriptionMaker = (props) => {
     return (
         <div className={ classes.listItem }>
             <InputArea
-                text={text}
-                placeholder={placeholder}
-                changeHandler={changeHandler}
-                handleChange={handleChange}
-                listId={listId}
-                taskId={taskId}
-                variant={variant}
+                text={ text }
+                placeholder={ placeholder }
+                handleChange={ handleChange }
+                variant={ variant }
             />
             <Button
                 text={"✔"}
                 classNameProps={ buttonClasses }
-                onClick={ () => changeHandler(handleSave(listId, taskId)) }
-                variant='additional'
+                onClick={ handleSave }
+                variant='secondary'
                 isDisabled={ !text.length }
             />
             <Button
                 text={"✖"}
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
-                onClick={ () => changeHandler(handleCancel(listId, taskId)) }
-                variant='additional'
+                onClick={ handleCancel }
+                variant='secondary'
             />
         </div>
     );
 };
 
 SummaryDescriptionMaker.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+        inputControls: PropTypes.string,
+        textAreaControls: PropTypes.string,
+        listItem: PropTypes.string,
+    }).isRequired,
     text: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    listId: PropTypes.number.isRequired,
-    changeHandler: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSave: PropTypes.func.isRequired,
+    handleCancel: PropTypes.func.isRequired,
+    variant: PropTypes.string.isRequired,
 };
 
 const StyledSummaryDescriptionMaker = withStyles(styles)(SummaryDescriptionMaker);

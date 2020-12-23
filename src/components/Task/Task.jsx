@@ -20,7 +20,7 @@ const Task = (props) => {
     return (
         isEditTask ?
             <SummaryDescriptionMaker
-                text={ description }
+                value={ description }
                 variant='textarea'
                 placeholder={ placeholder }
 
@@ -30,7 +30,7 @@ const Task = (props) => {
             /> :
             <Typography
                 variant={ 'description' }
-                value={ description }
+                text={ description }
                 // handleDragStart={ handleDragStart(taskId) }
             />
     );

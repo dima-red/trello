@@ -9,7 +9,7 @@ import styles from './styles.js';
 const SummaryDescriptionMaker = (props) => {
     const {
         classes,
-        text,
+        value,
         placeholder,
         variant,
         handleChange,
@@ -27,7 +27,7 @@ const SummaryDescriptionMaker = (props) => {
     return (
         <div className={ classes.listItem }>
             <InputArea
-                text={ text }
+                value={ value }
                 placeholder={ placeholder }
                 handleChange={ handleChange }
                 variant={ variant }
@@ -37,7 +37,7 @@ const SummaryDescriptionMaker = (props) => {
                 classNameProps={ buttonClasses }
                 onClick={ handleSave }
                 variant='secondary'
-                isDisabled={ !text.length }
+                isDisabled={ !value.length }
             />
             <Button
                 text={'✖'}

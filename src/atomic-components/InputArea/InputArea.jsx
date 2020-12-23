@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from '../../atomic-components/InputArea/styles';
 
 const InputArea = (props) => {
-    const { classes, variant, text, handleChange, placeholder } = props;
+    const { classes, variant, value, handleChange, placeholder } = props;
     const Component = variant;
     const componentClassNames = classNames(
         classes.inputElement,
@@ -15,7 +15,7 @@ const InputArea = (props) => {
     return (
         <Component
             type='text'
-            value={ text }
+            value={ value }
             className={ componentClassNames }
             onChange={ event => handleChange(event.target.value) }
             placeholder={ placeholder }
@@ -28,14 +28,14 @@ InputArea.propTypes = {
         inputElement: PropTypes.string,
     }).isRequired,
     variant: PropTypes.string.isRequired,
-    text: PropTypes.string,
+    value: PropTypes.string,
     handleChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
 };
 
 InputArea.defaultProps = {
     variant: 'input',
-    text: '',
+    value: '',
 };
 
 const StyledInputArea = withStyles(styles)(InputArea);

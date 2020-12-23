@@ -38,7 +38,7 @@ const TaskList = (props) => {
             {
                 isEditList ?
                     <SummaryDescriptionMaker
-                        text={ summary }
+                        value={ summary }
                         variant='input'
                         placeholder={ placeholder }
                         handleChange={ handleChangeListName }
@@ -47,7 +47,7 @@ const TaskList = (props) => {
                     /> :
                     <Typography
                         variant={'summary'}
-                        value={ summary }
+                        text={ summary }
                     />
             }
             {
@@ -72,7 +72,7 @@ const TaskList = (props) => {
                 />
                 <Typography
                     variant={'date'}
-                    value={ dateTime }
+                    text={ dateTime }
                 />
             </div>
         </div>

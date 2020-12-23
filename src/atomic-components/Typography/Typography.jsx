@@ -10,7 +10,7 @@ const typographyClassesMAP = {
     date: 'dateTime',
 };
 
-const Typography = ({ classes, variant, value, handleDragStart }) => {
+const Typography = ({ classes, variant, text, handleDragStart }) => {
     const typographyClassNames = classNames(
         classes[typographyClassesMAP[variant]]
     );
@@ -21,7 +21,7 @@ const Typography = ({ classes, variant, value, handleDragStart }) => {
             draggable={ variant === 'description' }
             // onDragStart={ event => handleDragStart(event.dataTransfer) }
         >
-            <span>{ value }</span>
+            <span>{ text }</span>
         </div>
     );
 };
@@ -29,11 +29,11 @@ const Typography = ({ classes, variant, value, handleDragStart }) => {
 Typography.propTypes = {
     classes: PropTypes.shape({}).isRequired,
     variant: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
 };
 
 Typography.defaultProps = {
-    value: '',
+    text: '',
     variant: 'summary',
     className: '',
 };

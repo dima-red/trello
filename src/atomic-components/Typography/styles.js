@@ -13,6 +13,10 @@ export const styles = {
         margin: "0 auto 10px auto",
         "font-size": "15px",
         padding: "10px",
+        cursor: "grab",
+        "&:active": {
+            cursor: "grabbing",
+        },
     },
     dateTime: {
         "font-size": "12px",

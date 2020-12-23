@@ -10,13 +10,17 @@ const typographyClassesMAP = {
     date: 'dateTime',
 };
 
-const Typography = ({ classes, variant, value }) => {
+const Typography = ({ classes, variant, value, handleDragStart }) => {
     const typographyClassNames = classNames(
         classes[typographyClassesMAP[variant]]
     );
 
     return (
-        <div className={ typographyClassNames }>
+        <div
+            className={ typographyClassNames }
+            draggable={ variant === 'description' }
+            // onDragStart={ event => handleDragStart(event.dataTransfer) }
+        >
             <span>{ value }</span>
         </div>
     );

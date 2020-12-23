@@ -12,11 +12,32 @@ import {
     nameTask,
     saveTask,
     cancelTaskCreation,
+    moveTask
 } from "./actions";
 import Button from '../../atomic-components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from "../../components/Logo/Logo.jsx";
 import styles from './styles';
+
+// const dragStart = (dataTransfer, outgoingListId, taskId) => {
+//     dataTransfer.setData('text/plain', id);
+//     console.log('dragStart', id);
+// };
+//
+// const drop = (dataTransfer, tasks, incomingListId, dispatch) => {
+//     const id = parseInt( dataTransfer.getData('text/plain'));
+//     console.log('drop data: ', id);
+//     console.log('drop tasksObject: ', tasks);
+//
+//     if (!tasks[id]) {
+//         console.log('Allowed!');
+//         dispatch(moveTask(incomingListId, id));
+//     } else {
+//         console.log('Denied!');
+//     }
+// };
+
+
 
 const View = ({ classes }) => {
     const buttonClassNames = classNames(
@@ -65,6 +86,10 @@ const View = ({ classes }) => {
                                         handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.id, taskId)) }
                                         handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
                                         handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
+
+                                        // handleDrop={ dataTransfer => drop(dataTransfer, taskList.tasks, taskList.id, dispatch) }
+                                        // handleDragOver={ event => event.preventDefault() }
+                                        // handleDragStart={ listTd => taskId => dataTransfer => dragStart(dataTransfer, listTd, taskId) }
 
                                         key={ taskList.id }
                                     />

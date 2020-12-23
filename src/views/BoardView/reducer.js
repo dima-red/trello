@@ -7,6 +7,7 @@ import {
     NAME_NEW_TASK,
     SAVE_NEW_TASK,
     CANCEL_NEW_TASK,
+    MOVE_TASK,
 } from './action.constants';
 
 const initialState = {
@@ -30,7 +31,7 @@ const initialState = {
             summary: 'In Progress',
             tasks: {
                 2: {
-                    description: 'Something important is in progress!',
+                    description: 'Something is in progress!',
                     taskId: 2,
                 },
                 3: {
@@ -112,6 +113,16 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case CANCEL_NEW_TASK: {
+        const listsCopy = Object.assign({}, state.taskLists);
+
+        delete listsCopy[payload.id].tasks[payload.taskId];
+
+        return {
+            taskLists: listsCopy,
+        };
+    }
+
+    case MOVE_TASK: {
         const listsCopy = Object.assign({}, state.taskLists);
 
         delete listsCopy[payload.id].tasks[payload.taskId];

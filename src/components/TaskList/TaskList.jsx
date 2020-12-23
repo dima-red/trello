@@ -14,18 +14,27 @@ const TaskList = (props) => {
         dateTime,
         isEditList,
         placeholder,
+        // listId,
         handleChangeListName,
         handleSaveListName,
         handleCancelListName,
         handleCreateTask,
         handleChangeTaskName,
         handleSaveTaskName,
-        handleCancelTaskName
+        handleCancelTaskName,
+        // handleDragStart,
+        // handleDrop,
+        // handleDragOver
     } = props;
-    const tasks = Object.values(props.tasks);
+    const tasksObject = props.tasks;
+    const tasks = Object.values(tasksObject);
 
     return (
-        <div className={ classes.wrapper }>
+        <div
+            className={ classes.wrapper }
+            // onDrop={ event => handleDrop(event.dataTransfer) }
+            // onDragOver={ event => handleDragOver(event) }
+        >
             {
                 isEditList ?
                     <SummaryDescriptionMaker
@@ -47,9 +56,10 @@ const TaskList = (props) => {
                         key={ task.taskId }
                         {...task}
 
-                        handleChangeTask={ handleChangeTaskName }
-                        handleSaveTask={ handleSaveTaskName }
-                        handleCancelTask={ handleCancelTaskName }
+                        handleChangeTask={ handleChangeTaskName(task.taskId) }
+                        handleSaveTask={ handleSaveTaskName(task.taskId) }
+                        handleCancelTask={ handleCancelTaskName(task.taskId) }
+                        // handleDragStart={ handleDragStart(listId) }
                     />
                 ))
             }

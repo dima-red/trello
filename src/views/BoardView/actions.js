@@ -10,6 +10,7 @@ import {
     NAME_NEW_TASK,
     SAVE_NEW_TASK,
     CANCEL_NEW_TASK,
+    MOVE_TASK
 } from './action.constants';
 
 let taskListIdCounter = BOARD_VIEW_TASK_LIST_ID;
@@ -97,6 +98,16 @@ export const saveTask = (taskListId, taskId) => (
 export const cancelTaskCreation = (taskListId, taskId) => (
     {
         type: CANCEL_NEW_TASK,
+        payload: {
+            id: taskListId,
+            taskId
+        },
+    }
+);
+
+export const moveTask = (taskListId, taskId) => (
+    {
+        type: MOVE_TASK,
         payload: {
             id: taskListId,
             taskId

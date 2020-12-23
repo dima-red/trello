@@ -7,14 +7,14 @@ import styles from "./styles.js";
 
 const Task = (props) => {
     const {
-        classes,
+        // classes,
         description,
         isEditTask,
-        taskId,
         placeholder,
         handleChangeTask,
         handleSaveTask,
-        handleCancelTask
+        handleCancelTask,
+        // handleDragStart
     } = props;
 
     return (
@@ -24,13 +24,14 @@ const Task = (props) => {
                 variant='textarea'
                 placeholder={ placeholder }
 
-                handleChange={ handleChangeTask(taskId) }
-                handleSave={ handleSaveTask(taskId) }
-                handleCancel={ handleCancelTask(taskId) }
+                handleChange={ handleChangeTask }
+                handleSave={ handleSaveTask }
+                handleCancel={ handleCancelTask }
             /> :
             <Typography
                 variant={ 'description' }
                 value={ description }
+                // handleDragStart={ handleDragStart(taskId) }
             />
     );
 };
@@ -40,7 +41,6 @@ Task.propTypes = {
     description: PropTypes.string,
     isEditTask: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    taskId: PropTypes.number.isRequired,
     handleChangeTask: PropTypes.func.isRequired,
     handleSaveTask: PropTypes.func.isRequired,
     handleCancelTask: PropTypes.func.isRequired,

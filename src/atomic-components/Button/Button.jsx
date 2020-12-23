@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from "react-jss";
-import classNames from "classnames";
-import styles from "./styles";
+import withStyles from 'react-jss';
+import classNames from 'classnames';
+import styles from './styles';
 
 const buttonVariantsMap = {
     primary: 'primaryButton',

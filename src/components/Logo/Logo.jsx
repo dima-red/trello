@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from "react-jss";
-import styles from "./styles";
+import withStyles from 'react-jss';
+import styles from './styles';
 
 const Logo = ({ classes }) => {
 

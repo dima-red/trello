@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from "react-jss";
+import withStyles from 'react-jss';
 import classNames from 'classnames';
-import Button from "../../atomic-components/Button/Button.jsx";
-import InputArea from "../../atomic-components/InputArea/InputArea.jsx";
-import styles from "./styles.js";
+import Button from '../../atomic-components/Button/Button.jsx';
+import InputArea from '../../atomic-components/InputArea/InputArea.jsx';
+import styles from './styles.js';
 
 const SummaryDescriptionMaker = (props) => {
     const {
@@ -33,14 +33,14 @@ const SummaryDescriptionMaker = (props) => {
                 variant={ variant }
             />
             <Button
-                text={"✔"}
+                text={'✔'}
                 classNameProps={ buttonClasses }
                 onClick={ handleSave }
                 variant='secondary'
                 isDisabled={ !text.length }
             />
             <Button
-                text={"✖"}
+                text={'✖'}
                 classNameProps={ buttonClasses }
                 isAlertColor={ true }
                 onClick={ handleCancel }

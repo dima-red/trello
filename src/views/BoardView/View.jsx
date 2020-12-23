@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import withStyles from 'react-jss';
 import classNames from 'classnames';
 import {
@@ -13,10 +13,11 @@ import {
     saveTask,
     cancelTaskCreation,
     moveTask
-} from "./actions";
+} from './actions';
 import Button from '../../atomic-components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
-import Logo from "../../components/Logo/Logo.jsx";
+import Logo from '../../components/Logo/Logo.jsx';
+import Container from '../../components/Container/Container.jsx';
 import styles from './styles';
 
 // const dragStart = (dataTransfer, outgoingListId, taskId) => {
@@ -47,8 +48,8 @@ const View = ({ classes }) => {
     const taskLists = Object.values(useSelector(state => state.boardViewReducer.taskLists));
     const dispatch = useDispatch();
 
-    console.info("Store.taskLists : ", useSelector(state => state.boardViewReducer.taskLists));
-    console.info("Array from Store.taskLists : ", taskLists);
+    console.info('Store.taskLists : ', useSelector(state => state.boardViewReducer.taskLists));
+    console.info('Array from Store.taskLists : ', taskLists);
 
     return (
         <div className={ classes.app }>
@@ -71,8 +72,8 @@ const View = ({ classes }) => {
                     </div>
                 </header>
                 <main>
-                    <div className={ classes.mainContainer }>
-                        <div className={ classes.boardContent }>
+                    <div className={ classes.scrollable }>
+                        <Container>
                             {
                                 taskLists.map(taskList => (
                                     <TaskList
@@ -95,7 +96,7 @@ const View = ({ classes }) => {
                                     />
                                 ))
                             }
-                        </div>
+                        </Container>
                     </div>
                 </main>
             </div>
@@ -112,7 +113,7 @@ View.propTypes = {
         appHeader: PropTypes.string,
         headerLeft: PropTypes.string,
         headerRight: PropTypes.string,
-        mainContainer: PropTypes.string,
+        scrollable: PropTypes.string,
         boardContent: PropTypes.string,
     }).isRequired,
 };

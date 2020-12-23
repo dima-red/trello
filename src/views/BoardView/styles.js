@@ -13,14 +13,10 @@ const styles = {
         height: "100vh",
         "box-sizing": "border-box"
     },
-    mainContainer: {
+    scrollable: {
         height: "calc(100vh - 70px)",
         "margin-top": "68px",
         "overflow-y": "auto",
-    },
-    boardContent: {
-        display: "flex",
-        "flex-wrap": "wrap",
     },
     appHeader: {
         display: "flex",

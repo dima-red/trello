@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from "react-jss";
-import classNames from "classnames";
-import styles from "../../atomic-components/InputArea/styles";
+import withStyles from 'react-jss';
+import classNames from 'classnames';
+import styles from '../../atomic-components/InputArea/styles';
 
 const InputArea = (props) => {
     const { classes, variant, text, handleChange, placeholder } = props;
@@ -14,7 +14,7 @@ const InputArea = (props) => {
 
     return (
         <Component
-            type="text"
+            type='text'
             value={ text }
             className={ componentClassNames }
             onChange={ event => handleChange(event.target.value) }

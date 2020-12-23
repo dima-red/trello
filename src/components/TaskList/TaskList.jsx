@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from "react-jss";
-import Typography from "../../atomic-components/Typography/Typography.jsx";
-import Task from "../Task/Task.jsx";
-import Button from "../../atomic-components/Button/Button.jsx";
-import SummaryDescriptionMaker from "../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx";
-import styles from "./styles.js";
+import withStyles from 'react-jss';
+import Typography from '../../atomic-components/Typography/Typography.jsx';
+import Task from '../Task/Task.jsx';
+import Button from '../../atomic-components/Button/Button.jsx';
+import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx';
+import styles from './styles.js';
 
 const TaskList = (props) => {
     const {
@@ -65,7 +65,7 @@ const TaskList = (props) => {
             }
             <div className={ classes.footer }>
                 <Button
-                    text={"Add Task"}
+                    text={'Add Task'}
                     classNameProps={ classes.addTaskButton }
                     onClick={ handleCreateTask }
                     variant='secondary'

@@ -1,6 +1,6 @@
-const commonPaths = require('./webpack/paths');
+import commonPaths from './webpack/paths';
 
-module.exports = {
+export default {
     entry: commonPaths.entryPath,
     output: {
         path: commonPaths.outputPath,

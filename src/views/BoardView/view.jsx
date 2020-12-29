@@ -18,6 +18,7 @@ import Button from '../../atomic-components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
+import Droppable from "../../components/Droppable/Droppable.jsx";
 import styles from './styles';
 
 // const dragStart = (dataTransfer, outgoingListId, taskId) => {
@@ -76,24 +77,24 @@ const View = ({ classes }) => {
                         <Container>
                             {
                                 taskLists.map(taskList => (
-                                    <TaskList
-                                        { ...taskList }
-                                        handleChangeListName={ value => dispatch(nameTaskList(value, taskList.id)) }
-                                        handleSaveListName={ () => dispatch(saveTaskList(taskList.id)) }
-                                        handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.id)) }
+                                    <Droppable key={ taskList.id } onItemDropped={ item => console.log(item) }>
+                                        <TaskList
+                                            { ...taskList }
+                                            handleChangeListName={ value => dispatch(nameTaskList(value, taskList.id)) }
+                                            handleSaveListName={ () => dispatch(saveTaskList(taskList.id)) }
+                                            handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.id)) }
 
-                                        handleCreateTask={ () => dispatch(createTask(taskList.id)) }
+                                            handleCreateTask={ () => dispatch(createTask(taskList.id)) }
 
-                                        handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.id, taskId)) }
-                                        handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
-                                        handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
+                                            handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.id, taskId)) }
+                                            handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
+                                            handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
 
-                                        // handleDrop={ dataTransfer => drop(dataTransfer, taskList.tasks, taskList.id, dispatch) }
-                                        // handleDragOver={ event => event.preventDefault() }
-                                        // handleDragStart={ listTd => taskId => dataTransfer => dragStart(dataTransfer, listTd, taskId) }
-
-                                        key={ taskList.id }
-                                    />
+                                            // handleDrop={ dataTransfer => drop(dataTransfer, taskList.tasks, taskList.id, dispatch) }
+                                            // handleDragOver={ event => event.preventDefault() }
+                                            // handleDragStart={ listTd => taskId => dataTransfer => dragStart(dataTransfer, listTd, taskId) }
+                                        />
+                                    </Droppable>
                                 ))
                             }
                         </Container>

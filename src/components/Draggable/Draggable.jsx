@@ -5,7 +5,7 @@ import styles from './styles';
 
 const Draggable = ({ classes, children, dataItem }) => {
     const startDrag = ({ dataTransfer }) => {
-        dataTransfer.setData("drag-item", dataItem);
+        dataTransfer.setData('drag-item', dataItem);
         console.log('Drag Start');
     };
 

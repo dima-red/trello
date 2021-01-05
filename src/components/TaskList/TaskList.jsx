@@ -24,6 +24,7 @@ const TaskList = (props) => {
         handleChangeTaskName,
         handleSaveTaskName,
         handleCancelTaskName,
+        handleEnterListName
     } = props;
     const tasksObject = props.tasks;
     const tasks = Object.values(tasksObject);
@@ -34,14 +35,17 @@ const TaskList = (props) => {
         >
             {
                 isEditList ?
-                    <SummaryDescriptionMaker
-                        value={ summary }
-                        variant='input'
-                        placeholder={ placeholder }
-                        handleChange={ handleChangeListName }
-                        handleSave={ handleSaveListName }
-                        handleCancel={ handleCancelListName }
-                    /> :
+                    <List>
+                        <SummaryDescriptionMaker
+                            value={ summary }
+                            variant='input'
+                            placeholder={ placeholder }
+                            handleChange={ handleChangeListName }
+                            handleSave={ handleSaveListName }
+                            handleCancel={ handleCancelListName }
+                            handleEnter={ handleEnterListName }
+                        />
+                    </List>:
                     <Typography
                         variant={'summary'}
                         text={ summary }

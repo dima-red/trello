@@ -5,12 +5,16 @@ import classNames from 'classnames';
 import styles from '../../atomic-components/InputArea/styles';
 
 const InputArea = (props) => {
-    const { classes, variant, value, handleChange, placeholder } = props;
+    const { classes, variant, value, handleChange, handleEnter, placeholder } = props;
     const Component = variant;
     const componentClassNames = classNames(
         classes.inputElement,
         classes[variant],
     );
+
+    const handleKeyDown = ev => {
+        console.log(ev.key);
+    };
 
     return (
         <Component
@@ -18,6 +22,11 @@ const InputArea = (props) => {
             value={ value }
             className={ componentClassNames }
             onChange={ event => handleChange(event.target.value) }
+
+
+            onKeyDown={ event => handleEnter(event) }
+
+
             placeholder={ placeholder }
         />
     )

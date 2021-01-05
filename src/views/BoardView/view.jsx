@@ -32,6 +32,12 @@ const View = ({ classes }) => {
     console.info('Store.taskLists : ', useSelector(state => state.boardViewReducer.taskLists));
     console.info('Array from Store.taskLists : ', taskLists);
 
+    const enterHandler = (event, id) => {
+        if (event.key === 'Enter') {
+            dispatch(saveTaskList(id));
+        }
+    };
+
     return (
         <div className={ classes.app }>
             <div className={ classes.viewWrapper }>
@@ -72,6 +78,8 @@ const View = ({ classes }) => {
                                             handleChangeTaskName={ taskId => value => dispatch(nameTask(value, taskList.id, taskId)) }
                                             handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
                                             handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
+
+                                            handleEnterListName={ event => enterHandler(event, taskList.id) }
                                         />
                                     </Droppable>
                                 ))

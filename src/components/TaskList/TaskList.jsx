@@ -6,6 +6,7 @@ import Task from '../Task/Task.jsx';
 import Button from '../../atomic-components/Button/Button.jsx';
 import Draggable from '../Draggable/Draggable.jsx';
 import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx';
+import List from "../List/List.jsx";
 import styles from './styles.js';
 
 const TaskList = (props) => {
@@ -47,21 +48,25 @@ const TaskList = (props) => {
                     />
             }
             {
-                !!tasks.length && tasks.map(({ taskId, ...others }) => (
-                    <Draggable
-                        key={ taskId }
-                        taskId={ taskId }
-                        draggableTaskListId={ id }
-                    >
-                        <Task
-                            {...others}
+                <List>
+                    {
+                        !!tasks.length && tasks.map(({ taskId, ...others }) => (
+                            <Draggable
+                                key={ taskId }
+                                taskId={ taskId }
+                                draggableTaskListId={ id }
+                            >
+                                <Task
+                                    {...others}
 
-                            handleChangeTask={ handleChangeTaskName(taskId) }
-                            handleSaveTask={ handleSaveTaskName(taskId) }
-                            handleCancelTask={ handleCancelTaskName(taskId) }
-                        />
-                    </Draggable>
-                ))
+                                    handleChangeTask={ handleChangeTaskName(taskId) }
+                                    handleSaveTask={ handleSaveTaskName(taskId) }
+                                    handleCancelTask={ handleCancelTaskName(taskId) }
+                                />
+                            </Draggable>
+                        ))
+                    }
+                </List>
             }
             <div className={ classes.footer }>
                 <Button

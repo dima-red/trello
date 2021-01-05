@@ -48,6 +48,6 @@ Task.defaultProps = {
     description: '',
 };
 
-const StyledList = withStyles(styles)(Task);
+const StyledTask = withStyles(styles)(Task);
 
-export default StyledList;
+export default StyledTask;

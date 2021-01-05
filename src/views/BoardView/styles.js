@@ -23,7 +23,7 @@ const styles = {
         "justify-content": "space-between",
         "border-bottom": `2px solid ${ternary}`,
         position: "fixed",
-        "width": "100%",
+        width: "100%",
     },
     headerBtn: {
         margin: "10px 10px"

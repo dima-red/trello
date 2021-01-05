@@ -4,7 +4,6 @@ const styles = {
     listItem: {
         "text-align": "center",
         display: "flex",
-        margin: "20px",
     },
     inputControls: {
         padding: "2px 6px",

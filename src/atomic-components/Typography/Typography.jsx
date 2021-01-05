@@ -16,10 +16,8 @@ const Typography = ({ classes, variant, text }) => {
     );
 
     return (
-        <div
-            className={ typographyClassNames }
-        >
-            <span>{ text }</span>
+        <div className={ typographyClassNames }>
+            <span className={ classes.text }>{ text }</span>
         </div>
     );
 };

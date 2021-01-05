@@ -8,6 +8,7 @@ export const styles = {
         margin: "20px",
         "background-color": secondary,
         height: "fit-content",
+        "max-width": "270px",
         "min-width": "270px",
     },
     footer: {

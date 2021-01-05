@@ -105,11 +105,12 @@ export const cancelTaskCreation = (taskListId, taskId) => (
     }
 );
 
-export const moveTask = (taskListId, taskId) => (
+export const moveTask = (droppableTaskListId, draggableTaskListId, taskId) => (
     {
         type: MOVE_TASK,
         payload: {
-            id: taskListId,
+            droppableTaskListId,
+            draggableTaskListId,
             taskId
         },
     }

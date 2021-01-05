@@ -14,7 +14,6 @@ const Task = (props) => {
         handleChangeTask,
         handleSaveTask,
         handleCancelTask,
-        // handleDragStart
     } = props;
 
     return (
@@ -31,7 +30,6 @@ const Task = (props) => {
             <Typography
                 variant={ 'description' }
                 text={ description }
-                // handleDragStart={ handleDragStart(taskId) }
             />
     );
 };

@@ -15,7 +15,7 @@ const TaskList = (props) => {
         dateTime,
         isEditList,
         placeholder,
-        // listId,
+        id,
         handleChangeListName,
         handleSaveListName,
         handleCancelListName,
@@ -23,9 +23,6 @@ const TaskList = (props) => {
         handleChangeTaskName,
         handleSaveTaskName,
         handleCancelTaskName,
-        // handleDragStart,
-        // handleDrop,
-        // handleDragOver
     } = props;
     const tasksObject = props.tasks;
     const tasks = Object.values(tasksObject);
@@ -33,8 +30,6 @@ const TaskList = (props) => {
     return (
         <div
             className={ classes.wrapper }
-            // onDrop={ event => handleDrop(event.dataTransfer) }
-            // onDragOver={ event => handleDragOver(event) }
         >
             {
                 isEditList ?
@@ -53,7 +48,11 @@ const TaskList = (props) => {
             }
             {
                 !!tasks.length && tasks.map(({ taskId, ...others }) => (
-                    <Draggable key={ taskId } dataItem={ taskId }>
+                    <Draggable
+                        key={ taskId }
+                        taskId={ taskId }
+                        draggableTaskListId={ id }
+                    >
                         <Task
                             {...others}
 

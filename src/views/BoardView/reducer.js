@@ -123,13 +123,19 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case MOVE_TASK: {
-        const listsCopy = Object.assign({}, state.taskLists);
+        if (payload.droppableTaskListId !== payload.draggableTaskListId) {
+            const listsCopy = Object.assign({}, state.taskLists);
 
-        delete listsCopy[payload.id].tasks[payload.taskId];
+            listsCopy[payload.droppableTaskListId].tasks[payload.taskId] = Object.assign({}, listsCopy[payload.draggableTaskListId].tasks[payload.taskId]);
 
-        return {
-            taskLists: listsCopy,
-        };
+            delete listsCopy[payload.draggableTaskListId].tasks[payload.taskId];
+
+            return {
+                taskLists: listsCopy,
+            };
+        }
+
+        return state;
     }
 
     default:

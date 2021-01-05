@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Draggable = ({ classes, children, dataItem }) => {
+const Draggable = ({ classes, children, draggableTaskListId, taskId }) => {
     const startDrag = ({ dataTransfer }) => {
-        dataTransfer.setData('drag-item', dataItem);
-        console.log('Drag Start');
+        dataTransfer.setData('drag-data', JSON.stringify({ draggableTaskListId, taskId }));
     };
 
     return (

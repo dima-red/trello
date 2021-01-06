@@ -15,7 +15,7 @@ const SummaryDescriptionMaker = (props) => {
         handleChange,
         handleSave,
         handleCancel,
-        handleEnter
+        handleKeyUp,
     } = props;
 
     const buttonClasses = classNames(
@@ -31,7 +31,8 @@ const SummaryDescriptionMaker = (props) => {
                 value={ value }
                 placeholder={ placeholder }
                 handleChange={ handleChange }
-                handleEnter={ handleEnter }
+
+                handleKeyUp={ handleKeyUp }
                 variant={ variant }
             />
             <Button

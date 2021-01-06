@@ -24,7 +24,7 @@ const TaskList = (props) => {
         handleChangeTaskName,
         handleSaveTaskName,
         handleCancelTaskName,
-        handleEnterListName
+        handleKeyUp,
     } = props;
     const tasksObject = props.tasks;
     const tasks = Object.values(tasksObject);
@@ -43,7 +43,7 @@ const TaskList = (props) => {
                             handleChange={ handleChangeListName }
                             handleSave={ handleSaveListName }
                             handleCancel={ handleCancelListName }
-                            handleEnter={ handleEnterListName }
+                            handleKeyUp={ handleKeyUp() }
                         />
                     </List>:
                     <Typography
@@ -66,6 +66,7 @@ const TaskList = (props) => {
                                     handleChangeTask={ handleChangeTaskName(taskId) }
                                     handleSaveTask={ handleSaveTaskName(taskId) }
                                     handleCancelTask={ handleCancelTaskName(taskId) }
+                                    handleKeyUp={ handleKeyUp(taskId) }
                                 />
                             </Draggable>
                         ))

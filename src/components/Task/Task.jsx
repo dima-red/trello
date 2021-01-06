@@ -14,6 +14,7 @@ const Task = (props) => {
         handleChangeTask,
         handleSaveTask,
         handleCancelTask,
+        handleKeyUp,
     } = props;
 
     return (
@@ -26,6 +27,7 @@ const Task = (props) => {
                 handleChange={ handleChangeTask }
                 handleSave={ handleSaveTask }
                 handleCancel={ handleCancelTask }
+                handleKeyUp={ handleKeyUp }
             /> :
             <Typography
                 variant={ 'description' }

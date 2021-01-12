@@ -16,7 +16,7 @@ const styles = {
     scrollable: {
         height: "calc(100vh - 70px)",
         "margin-top": "68px",
-        "overflow-y": "auto",
+        "overflow-x": "auto",
     },
     appHeader: {
         display: "flex",

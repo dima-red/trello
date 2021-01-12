@@ -12,7 +12,8 @@ import {
     nameTask,
     saveTask,
     cancelTaskCreation,
-    moveTask
+    moveTask,
+    sortTask
 } from './actions';
 import Button from '../../atomic-components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
@@ -94,6 +95,8 @@ const View = ({ classes }) => {
                                             handleCancelTaskName={taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId))}
 
                                             handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
+
+                                            handleSortTask={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
                                         />
                                     </Droppable>
                                 ))

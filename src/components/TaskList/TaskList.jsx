@@ -9,6 +9,8 @@ import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescripti
 import List from "../List/List.jsx";
 import styles from './styles.js';
 
+import Sortable from "../../components/Sortable/Sortable.jsx";
+
 const TaskList = (props) => {
     const {
         classes,
@@ -25,6 +27,7 @@ const TaskList = (props) => {
         handleSaveTaskName,
         handleCancelTaskName,
         handleKeyUp,
+        handleSortTask
     } = props;
     const tasksObject = props.tasks;
     const tasks = Object.values(tasksObject);
@@ -55,20 +58,22 @@ const TaskList = (props) => {
                 <List>
                     {
                         !!tasks.length && tasks.map(({ taskId, ...others }) => (
-                            <Draggable
-                                key={ taskId }
-                                taskId={ taskId }
-                                draggableTaskListId={ id }
-                            >
-                                <Task
-                                    {...others}
+                            <Sortable key={id} handleSortTask={ handleSortTask } sortableId={ taskId }>
+                                <Draggable
+                                    key={ taskId }
+                                    taskId={ taskId }
+                                    draggableTaskListId={ id }
+                                >
+                                    <Task
+                                        {...others}
 
-                                    handleChangeTask={ handleChangeTaskName(taskId) }
-                                    handleSaveTask={ handleSaveTaskName(taskId) }
-                                    handleCancelTask={ handleCancelTaskName(taskId) }
-                                    handleKeyUp={ handleKeyUp(taskId) }
-                                />
-                            </Draggable>
+                                        handleChangeTask={ handleChangeTaskName(taskId) }
+                                        handleSaveTask={ handleSaveTaskName(taskId) }
+                                        handleCancelTask={ handleCancelTaskName(taskId) }
+                                        handleKeyUp={ handleKeyUp(taskId) }
+                                    />
+                                </Draggable>
+                            </Sortable>
                         ))
                     }
                 </List>

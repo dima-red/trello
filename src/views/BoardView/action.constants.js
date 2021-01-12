@@ -12,3 +12,4 @@ export const NAME_NEW_TASK = `${VIEW_NAME}_NAME_NEW_TASK`;
 export const SAVE_NEW_TASK = `${VIEW_NAME}_SAVE_NEW_TASK`;
 export const CANCEL_NEW_TASK = `${VIEW_NAME}_CANCEL_NEW_TASK`;
 export const MOVE_TASK = `${VIEW_NAME}_MOVE_TASK`;
+export const SORT_TASK = `${VIEW_NAME}_SORT_TASK`;

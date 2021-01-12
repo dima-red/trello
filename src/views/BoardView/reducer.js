@@ -8,6 +8,7 @@ import {
     SAVE_NEW_TASK,
     CANCEL_NEW_TASK,
     MOVE_TASK,
+    SORT_TASK
 } from './action.constants';
 
 const initialState = {
@@ -129,6 +130,29 @@ const reducer = (state = initialState, { type, payload }) => {
             listsCopy[payload.droppableTaskListId].tasks[payload.taskId] = Object.assign({}, listsCopy[payload.draggableTaskListId].tasks[payload.taskId]);
 
             delete listsCopy[payload.draggableTaskListId].tasks[payload.taskId];
+
+            return {
+                taskLists: listsCopy,
+            };
+        }
+
+        return state;
+    }
+
+    case SORT_TASK: {
+        if (payload.droppableTaskListId === payload.draggableTaskListId) {
+            const listsCopy = Object.assign({}, state.taskLists);
+            const tasks = Object.values(listsCopy[payload.draggableTaskListId].tasks);
+            const draggableIndex = tasks.findIndex((curr) => curr.taskId === payload.taskId);
+            const [ sortableTask ] = tasks.splice(draggableIndex, 1);
+            const droppableIndex = tasks.findIndex((curr) => curr.taskId === payload.droppableTaskId);
+
+            if (draggableIndex <= droppableIndex) {
+                console.log("Think about it");
+            }
+
+            tasks.splice(droppableIndex, 0, sortableTask);
+            listsCopy[payload.draggableTaskListId].tasks = { ...tasks };
 
             return {
                 taskLists: listsCopy,

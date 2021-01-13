@@ -144,12 +144,8 @@ const reducer = (state = initialState, { type, payload }) => {
             const listsCopy = Object.assign({}, state.taskLists);
             const tasks = Object.values(listsCopy[payload.draggableTaskListId].tasks);
             const draggableIndex = tasks.findIndex((curr) => curr.taskId === payload.taskId);
-            const [ sortableTask ] = tasks.splice(draggableIndex, 1);
             const droppableIndex = tasks.findIndex((curr) => curr.taskId === payload.droppableTaskId);
-
-            if (draggableIndex <= droppableIndex) {
-                console.log("Think about it");
-            }
+            const [ sortableTask ] = tasks.splice(draggableIndex, 1);
 
             tasks.splice(droppableIndex, 0, sortableTask);
             listsCopy[payload.draggableTaskListId].tasks = { ...tasks };

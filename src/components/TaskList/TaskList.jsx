@@ -27,10 +27,11 @@ const TaskList = (props) => {
         handleSaveTaskName,
         handleCancelTaskName,
         handleKeyUp,
-        handleSortTask
+        handleSortTask,
+        tasks
     } = props;
-    const tasksObject = props.tasks;
-    const tasks = Object.values(tasksObject);
+
+    console.log(tasks);
 
     return (
         <div

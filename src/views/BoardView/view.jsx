@@ -27,11 +27,10 @@ const View = ({ classes }) => {
         classes.headerBtn,
         classes.addBtn,
     );
-    const taskLists = Object.values(useSelector(state => state.boardViewReducer.taskLists));
+    const taskLists = useSelector(state => state.boardViewReducer.taskLists);
     const dispatch = useDispatch();
 
     console.info('Store.taskLists : ', useSelector(state => state.boardViewReducer.taskLists));
-    console.info('Array from Store.taskLists : ', taskLists);
 
     const keyBoardHandler = ({ key, target }, taskListId, taskId) => {
         if (key === 'Escape' && !taskId) {

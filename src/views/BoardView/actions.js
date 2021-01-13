@@ -22,7 +22,7 @@ export const createTaskList = () => (
         type: ADD_NEW_LIST,
         payload: {
             summary: '',
-            tasks: {},
+            tasks: [],
             placeholder: 'Please, name your list',
             id: ++taskListIdCounter,
             dateTime: new Date().toLocaleString(),
@@ -106,8 +106,9 @@ export const cancelTaskCreation = (taskListId, taskId) => (
     }
 );
 
-export const moveTask = (droppableTaskListId, draggableTaskListId, taskId) => (
-    {
+export const moveTask = (droppableTaskListId, draggableTaskListId, taskId) => {
+    console.log(droppableTaskListId, draggableTaskListId, taskId)
+    return {
         type: MOVE_TASK,
         payload: {
             droppableTaskListId,
@@ -115,7 +116,7 @@ export const moveTask = (droppableTaskListId, draggableTaskListId, taskId) => (
             taskId,
         },
     }
-);
+};
 
 export const sortTask = (droppableTaskListId, draggableTaskListId, draggableTaskId, droppableTaskId) => (
     {

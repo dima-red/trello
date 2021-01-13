@@ -27,7 +27,7 @@ const TaskList = (props) => {
         handleSaveTaskName,
         handleCancelTaskName,
         handleKeyUp,
-        handleSortTask
+        handleSort
     } = props;
     const tasksObject = props.tasks;
     const tasks = Object.values(tasksObject);
@@ -58,7 +58,7 @@ const TaskList = (props) => {
                 <List>
                     {
                         !!tasks.length && tasks.map(({ taskId, ...others }) => (
-                            <Sortable key={id} handleSortTask={ handleSortTask } sortableId={ taskId }>
+                            <Sortable key={id} handleSort={ handleSort } sortableId={ taskId } >
                                 <Draggable
                                     key={ taskId }
                                     taskId={ taskId }

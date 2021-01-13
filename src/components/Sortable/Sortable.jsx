@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Sortable = ({ classes, children, handleSortTask, sortableId }) => {
+const Sortable = ({ classes, children, handleSort, sortableId }) => {
 
     const dragOver = event => {
         event.preventDefault();
@@ -12,7 +12,7 @@ const Sortable = ({ classes, children, handleSortTask, sortableId }) => {
 
     const drop = ({ dataTransfer }) => {
         const { draggableTaskListId, taskId } = JSON.parse(dataTransfer.getData('drag-data'));
-        handleSortTask(draggableTaskListId, taskId, sortableId);
+        handleSort(draggableTaskListId, taskId, sortableId);
     };
 
     return (

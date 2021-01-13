@@ -13,13 +13,16 @@ import {
     saveTask,
     cancelTaskCreation,
     moveTask,
-    sortTask
+    sortTask,
+    sortList
 } from './actions';
 import Button from '../../atomic-components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from "../../components/Droppable/Droppable.jsx";
+import Draggable from "../../components/Draggable/Draggable.jsx";
+import Sortable from "../../components/Sortable/Sortable.jsx";
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -78,27 +81,59 @@ const View = ({ classes }) => {
                         <Container>
                             {
                                 taskLists.map(taskList => (
-                                    <Droppable
+                                    <Sortable
                                         key={taskList.id}
-                                        handleDropTask={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
+                                        handleSort={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
                                     >
-                                        <TaskList
-                                            {...taskList}
-                                            handleChangeListName={value => dispatch(nameTaskList(value, taskList.id))}
-                                            handleSaveListName={() => dispatch(saveTaskList(taskList.id))}
-                                            handleCancelListName={() => dispatch(cancelTaskListCreation(taskList.id))}
+                                        <Draggable
+                                            key={taskList.id}
+                                            draggableTaskListId={ taskList.id }
+                                        >
+                                            <Droppable
+                                                key={taskList.id}
+                                                handleDropTask={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
+                                            >
+                                                <TaskList
+                                                    {...taskList}
+                                                    handleChangeListName={value => dispatch(nameTaskList(value, taskList.id))}
+                                                    handleSaveListName={() => dispatch(saveTaskList(taskList.id))}
+                                                    handleCancelListName={() => dispatch(cancelTaskListCreation(taskList.id))}
 
-                                            handleCreateTask={() => dispatch(createTask(taskList.id))}
+                                                    handleCreateTask={() => dispatch(createTask(taskList.id))}
 
-                                            handleChangeTaskName={taskId => value => dispatch(nameTask(value, taskList.id, taskId))}
-                                            handleSaveTaskName={taskId => () => dispatch(saveTask(taskList.id, taskId))}
-                                            handleCancelTaskName={taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId))}
+                                                    handleChangeTaskName={taskId => value => dispatch(nameTask(value, taskList.id, taskId))}
+                                                    handleSaveTaskName={taskId => () => dispatch(saveTask(taskList.id, taskId))}
+                                                    handleCancelTaskName={taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId))}
 
-                                            handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
+                                                    handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
 
-                                            handleSortTask={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
-                                        />
-                                    </Droppable>
+                                                    handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
+                                                />
+                                            </Droppable>
+                                        </Draggable>
+                                    </Sortable>
+
+                                    // <Droppable
+                                    //     key={taskList.id}
+                                    //     handleDropTask={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
+                                    // >
+                                    //     <TaskList
+                                    //         {...taskList}
+                                    //         handleChangeListName={value => dispatch(nameTaskList(value, taskList.id))}
+                                    //         handleSaveListName={() => dispatch(saveTaskList(taskList.id))}
+                                    //         handleCancelListName={() => dispatch(cancelTaskListCreation(taskList.id))}
+                                    //
+                                    //         handleCreateTask={() => dispatch(createTask(taskList.id))}
+                                    //
+                                    //         handleChangeTaskName={taskId => value => dispatch(nameTask(value, taskList.id, taskId))}
+                                    //         handleSaveTaskName={taskId => () => dispatch(saveTask(taskList.id, taskId))}
+                                    //         handleCancelTaskName={taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId))}
+                                    //
+                                    //         handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
+                                    //
+                                    //         handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
+                                    //     />
+                                    // </Droppable>
                                 ))
                             }
                         </Container>

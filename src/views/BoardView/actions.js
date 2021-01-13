@@ -11,7 +11,8 @@ import {
     SAVE_NEW_TASK,
     CANCEL_NEW_TASK,
     MOVE_TASK,
-    SORT_TASK
+    SORT_TASK,
+    SORT_LIST
 } from './action.constants';
 
 let taskListIdCounter = BOARD_VIEW_TASK_LIST_ID;
@@ -125,6 +126,16 @@ export const sortTask = (droppableTaskListId, draggableTaskListId, draggableTask
             draggableTaskListId,
             taskId: draggableTaskId,
             droppableTaskId
+        },
+    }
+);
+
+export const sortList = (droppableTaskListId, draggableTaskListId) => (
+    {
+        type: SORT_LIST,
+        payload: {
+            droppableTaskListId,
+            draggableTaskListId,
         },
     }
 );

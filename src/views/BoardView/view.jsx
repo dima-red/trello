@@ -91,7 +91,7 @@ const View = ({ classes }) => {
                                         >
                                             <Droppable
                                                 key={taskList.id}
-                                                handleDropTask={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
+                                                handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
                                             >
                                                 <TaskList
                                                     {...taskList}
@@ -115,7 +115,7 @@ const View = ({ classes }) => {
 
                                     // <Droppable
                                     //     key={taskList.id}
-                                    //     handleDropTask={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
+                                    //     handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
                                     // >
                                     //     <TaskList
                                     //         {...taskList}

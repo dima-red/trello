@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Droppable = ({ classes, children, handleDropTask }) => {
+const Droppable = ({ classes, children, handleDrop }) => {
 
     const dragOver = event => {
         event.preventDefault();
@@ -12,8 +12,8 @@ const Droppable = ({ classes, children, handleDropTask }) => {
 
     const drop = ({ dataTransfer }) => {
         const { draggableTaskListId, taskId } = JSON.parse(dataTransfer.getData('drag-data'));
-
-        handleDropTask(draggableTaskListId, taskId);
+        
+        handleDrop(draggableTaskListId, taskId);
     };
 
     return (

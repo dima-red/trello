@@ -33,11 +33,19 @@ const initialState = {
             summary: 'In Progress',
             tasks: {
                 2: {
-                    description: 'Something is in progress!',
+                    description: '1',
                     taskId: 2,
                 },
                 3: {
-                    description: 'Something important is in progress!',
+                    description: '2',
+                    taskId: 3,
+                },
+                4: {
+                    description: '3',
+                    taskId: 2,
+                },
+                5: {
+                    description: '4',
                     taskId: 3,
                 }
             },

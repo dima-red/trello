@@ -25,7 +25,7 @@ export const createTaskList = () => (
             summary: '',
             tasks: {},
             placeholder: 'Please, name your list',
-            id: ++taskListIdCounter,
+            id: `#${++taskListIdCounter}`,
             dateTime: new Date().toLocaleString(),
             isEditList: true,
         },
@@ -67,7 +67,7 @@ export const createTask = (taskListId) => (
         payload: {
             description: '',
             placeholder: 'Please, add description for your task',
-            taskId: ++taskIdCounter,
+            taskId: `#${++taskIdCounter}`,
             dateTime: new Date().toLocaleString(),
             isEditTask: true,
             id: taskListId,
@@ -113,7 +113,7 @@ export const moveTask = (droppableTaskListId, draggableTaskListId, taskId) => (
         payload: {
             droppableTaskListId,
             draggableTaskListId,
-            taskId,
+            taskId
         },
     }
 );
@@ -135,7 +135,7 @@ export const sortList = (droppableTaskListId, draggableTaskListId) => (
         type: SORT_LIST,
         payload: {
             droppableTaskListId,
-            draggableTaskListId,
+            draggableTaskListId
         },
     }
 );

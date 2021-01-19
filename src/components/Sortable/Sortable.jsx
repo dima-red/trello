@@ -11,8 +11,12 @@ const Sortable = ({ classes, children, handleSort, sortableId }) => {
     };
 
     const drop = ({ dataTransfer }) => {
-        const { draggableTaskListId, taskId } = JSON.parse(dataTransfer.getData('drag-data'));
-        handleSort(draggableTaskListId, taskId, sortableId);
+        console.log('drop Sortable');
+        const transferredData = dataTransfer.getData('drag-data');
+        if (transferredData) {
+            const { draggableTaskListId, taskId } = JSON.parse(transferredData);
+            handleSort(draggableTaskListId, taskId, sortableId);
+        }
     };
 
     return (

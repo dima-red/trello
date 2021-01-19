@@ -5,6 +5,7 @@ import styles from './styles';
 
 const Draggable = ({ classes, children, draggableTaskListId, taskId }) => {
     const startDrag = ({ dataTransfer }) => {
+        console.log('startDrag Draggable');
         dataTransfer.setData('drag-data', JSON.stringify({ draggableTaskListId, taskId }));
     };
 
@@ -15,7 +16,9 @@ const Draggable = ({ classes, children, draggableTaskListId, taskId }) => {
     )
 };
 
-Draggable.defaultProps = {};
+Draggable.defaultProps = {
+    taskId: null
+};
 
 Draggable.propTypes = {};
 

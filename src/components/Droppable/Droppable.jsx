@@ -11,9 +11,12 @@ const Droppable = ({ classes, children, handleDrop }) => {
     };
 
     const drop = ({ dataTransfer }) => {
-        const { draggableTaskListId, taskId } = JSON.parse(dataTransfer.getData('drag-data'));
-        
-        handleDrop(draggableTaskListId, taskId);
+        console.log('drop Droppable');
+        const transferredData = dataTransfer.getData('drag-data');
+        if (transferredData) {
+            const { draggableTaskListId, taskId } = JSON.parse(transferredData);
+            handleDrop(draggableTaskListId, taskId);
+        }
     };
 
     return (

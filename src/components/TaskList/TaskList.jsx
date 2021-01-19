@@ -74,6 +74,21 @@ const TaskList = (props) => {
                                     />
                                 </Draggable>
                             </Sortable>
+
+                            // <Draggable
+                            //     key={ taskId }
+                            //     taskId={ taskId }
+                            //     draggableTaskListId={ id }
+                            // >
+                            //     <Task
+                            //         {...others}
+                            //
+                            //         handleChangeTask={ handleChangeTaskName(taskId) }
+                            //         handleSaveTask={ handleSaveTaskName(taskId) }
+                            //         handleCancelTask={ handleCancelTaskName(taskId) }
+                            //         handleKeyUp={ handleKeyUp(taskId) }
+                            //     />
+                            // </Draggable>
                         ))
                     }
                 </List>

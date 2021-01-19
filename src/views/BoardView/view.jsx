@@ -21,8 +21,8 @@ import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from "../../components/Droppable/Droppable.jsx";
-import Draggable from "../../components/Draggable/Draggable.jsx";
-import Sortable from "../../components/Sortable/Sortable.jsx";
+import DragList from "../../components/DragList/DragList.jsx";
+import SortList from "../../components/SortList/SortList.jsx";
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -56,6 +56,8 @@ const View = ({ classes }) => {
         }
     };
 
+    const foo = taskListId => (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskListId, draggableTaskListId, taskId, droppableTaskId));
+
     return (
         <div className={classes.app}>
             <div className={classes.viewWrapper}>
@@ -81,12 +83,14 @@ const View = ({ classes }) => {
                         <Container>
                             {
                                 taskLists.map(taskList => (
-                                    <Sortable
-                                        key={taskList.id}
-                                        handleSort={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
+                                    <SortList
+                                        key={ taskList.id }
+                                        handleSort1={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
+                                        // handleSort1={ () => console.log('BooooM') }
+                                        handleSort={ foo(taskList.id) }
                                     >
-                                        <Draggable
-                                            key={taskList.id}
+                                        <DragList
+                                            key={ taskList.id }
                                             draggableTaskListId={ taskList.id }
                                         >
                                             <Droppable
@@ -107,11 +111,12 @@ const View = ({ classes }) => {
 
                                                     handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
 
-                                                    handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
+                                                    // handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
+                                                    handleSort={ foo(taskList.id) }
                                                 />
                                             </Droppable>
-                                        </Draggable>
-                                    </Sortable>
+                                        </DragList>
+                                    </SortList>
 
                                     // <Droppable
                                     //     key={taskList.id}

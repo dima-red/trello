@@ -130,12 +130,13 @@ export const sortTask = (droppableTaskListId, draggableTaskListId, draggableTask
     }
 );
 
-export const sortList = (droppableTaskListId, draggableTaskListId) => (
+export const sortList = (droppableTaskListId, draggableTaskListId, taskId) => (
     {
         type: SORT_LIST,
         payload: {
             droppableTaskListId,
-            draggableTaskListId
+            draggableTaskListId,
+            taskId
         },
     }
 );

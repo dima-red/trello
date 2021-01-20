@@ -10,12 +10,13 @@ const Droppable = ({ classes, children, handleDrop }) => {
         event.dataTransfer.dropEffect = 'move';
     };
 
-    const drop = ({ dataTransfer }) => {
-        console.log('drop Droppable');
-        const transferredData = dataTransfer.getData('drag-data');
+    const drop = (event) => {
+        console.log('drop Droppable: ', event);
+        const transferredData = event.dataTransfer.getData('drag-data');
         if (transferredData) {
             const { draggableTaskListId, taskId } = JSON.parse(transferredData);
             handleDrop(draggableTaskListId, taskId);
+            event.stopPropagation();
         }
     };
 

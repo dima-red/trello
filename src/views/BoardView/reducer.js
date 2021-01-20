@@ -27,7 +27,7 @@ const initialState = {
                 }
             },
             dateTime: '11/18/2020, 3:06:49 PM',
-            id: 1,
+            id: '#1',
         },
         '#2': {
             summary: 'In Progress',
@@ -50,7 +50,7 @@ const initialState = {
                 }
             },
             dateTime: '11/19/2020, 4:06:49 PM',
-            id: 2,
+            id: '#2',
         }
     },
 };
@@ -133,7 +133,8 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case MOVE_TASK: {
-        if (payload.droppableTaskListId !== payload.draggableTaskListId) {
+        console.log(!!payload.taskId);
+        if (payload.droppableTaskListId !== payload.draggableTaskListId && payload.taskId) {
             console.log('MOVE_TASK');
             console.log(payload);
             const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
@@ -141,9 +142,9 @@ const reducer = (state = initialState, { type, payload }) => {
             console.log(JSON.stringify(state.taskLists));
             console.log(listsCopy);
 
-            listsCopy[`#${payload.droppableTaskListId}`].tasks[`#${payload.taskId}`] = JSON.parse(JSON.stringify(listsCopy[`#${payload.draggableTaskListId}`].tasks[`#${payload.taskId}`]));
+            listsCopy[payload.droppableTaskListId].tasks[`#${payload.taskId}`] = JSON.parse(JSON.stringify(listsCopy[payload.draggableTaskListId].tasks[`#${payload.taskId}`]));
 
-            delete listsCopy[`#${payload.draggableTaskListId}`].tasks[`#${payload.taskId}`];
+            delete listsCopy[payload.draggableTaskListId].tasks[`#${payload.taskId}`];
 
             return {
                 taskLists: listsCopy,
@@ -155,12 +156,12 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case SORT_TASK: {
         console.log(payload);
-        if (payload.droppableTaskListId === payload.draggableTaskListId && payload.taskId) {
+        if (payload.droppableTaskListId === payload.draggableTaskListId && !!payload.taskId) {
             console.log('SORT_TASK');
             console.log(payload);
 
             const listsCopy = Object.assign({}, state.taskLists);
-            const tasks = [...Object.values(listsCopy[`#${payload.draggableTaskListId}`].tasks)];
+            const tasks = [...Object.values(listsCopy[payload.draggableTaskListId].tasks)];
             const draggableIndex = tasks.findIndex((curr) => curr.taskId === payload.taskId);
             const droppableIndex = tasks.findIndex((curr) => curr.taskId === payload.droppableTaskId);
             const [ sortableTask ] = tasks.splice(draggableIndex, 1);
@@ -176,7 +177,7 @@ const reducer = (state = initialState, { type, payload }) => {
             };
             console.log(restoreIdHelper(tasks));
             // listsCopy[payload.draggableTaskListId].tasks = { ...tasks };
-            listsCopy[`#${payload.draggableTaskListId}`].tasks = restoreIdHelper(tasks);
+            listsCopy[payload.draggableTaskListId].tasks = restoreIdHelper(tasks);
 
             return {
                 taskLists: listsCopy,
@@ -187,24 +188,36 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case SORT_LIST: {
-        if (payload.droppableTaskListId !== payload.draggableTaskListId) {
-            console.log('SORT_LIST');
+        console.log(!!payload.taskId);
+        if (payload.droppableTaskListId !== payload.draggableTaskListId && !payload.taskId) {
+            console.info('SORT_LIST');
             console.log(payload);
+
+            const listsCopy = Object.assign({}, state.taskLists);
+            const lists = [...Object.values(listsCopy)];
+            const draggableIndex = lists.findIndex((curr) => curr.id === payload.draggableTaskListId);
+            const droppableIndex = lists.findIndex((curr) => curr.id === payload.droppableTaskListId);
+
+            console.log(lists);
+
+            const [ sortableList ] = lists.splice(draggableIndex, 1);
+
+            lists.splice(droppableIndex, 0, sortableList);
+
+            const restoreIdHelper = arr => {
+                const tempObj = {};
+                arr.forEach(item => tempObj[item.id] = item);
+
+                return tempObj;
+            };
+            console.log(restoreIdHelper(lists));
+
+            return {
+                taskLists: restoreIdHelper(lists),
+            };
         }
 
         return state;
-        // const listsCopy = Object.assign({}, state.taskLists);
-        // const tasks = Object.values(listsCopy[payload.draggableTaskListId].tasks);
-        // const draggableIndex = tasks.findIndex((curr) => curr.taskId === payload.taskId);
-        // const droppableIndex = tasks.findIndex((curr) => curr.taskId === payload.droppableTaskId);
-        // const [ sortableTask ] = tasks.splice(draggableIndex, 1);
-        //
-        // tasks.splice(droppableIndex, 0, sortableTask);
-        // listsCopy[payload.draggableTaskListId].tasks = { ...tasks };
-        //
-        // return {
-        //     taskLists: listsCopy,
-        // };
     }
 
     default:

@@ -9,7 +9,7 @@ import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescripti
 import List from "../List/List.jsx";
 import styles from './styles.js';
 
-import Sortable from "../../components/Sortable/Sortable.jsx";
+import Droppable from "../../components/Droppable/Droppable.jsx";
 
 const TaskList = (props) => {
     const {
@@ -58,7 +58,13 @@ const TaskList = (props) => {
                 <List>
                     {
                         !!tasks.length && tasks.map(({ taskId, ...others }) => (
-                            <Sortable key={id} handleSort={ handleSort } sortableId={ taskId } >
+                            <Droppable
+                                key={taskId}
+                                handleDrop={ handleSort }
+                                sortableId={ taskId }
+                                dragType='drag-task'
+                                droppableTaskListId={id}
+                            >
                                 <Draggable
                                     key={ taskId }
                                     taskId={ taskId }
@@ -73,7 +79,7 @@ const TaskList = (props) => {
                                         handleKeyUp={ handleKeyUp(taskId) }
                                     />
                                 </Draggable>
-                            </Sortable>
+                            </Droppable>
 
                             // <Draggable
                             //     key={ taskId }

@@ -21,7 +21,7 @@ import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from "../../components/Droppable/Droppable.jsx";
-import DragList from "../../components/DragList/DragList.jsx";
+import Draggable from "../../components/Draggable/Draggable.jsx";
 import SortList from "../../components/SortList/SortList.jsx";
 import styles from './styles';
 
@@ -83,18 +83,22 @@ const View = ({ classes }) => {
                         <Container>
                             {
                                 taskLists.map(taskList => (
-                                    <SortList
+                                    <Droppable
                                         key={ taskList.id }
-                                        handleSort1={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
+                                        dragType='drag-list'
+                                        droppableTaskListId={ taskList.id }
+                                        handleDrop={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
                                         // handleSort1={ () => console.log('BooooM') }
-                                        handleSort={ foo(taskList.id) }
+                                        // handleDrop={ foo(taskList.id) }
                                     >
-                                        <DragList
+                                        <Draggable
                                             key={ taskList.id }
                                             draggableTaskListId={ taskList.id }
                                         >
                                             <Droppable
                                                 key={taskList.id}
+                                                dragType='drag-task'
+                                                droppableTaskListId={ taskList.id }
                                                 handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
                                             >
                                                 <TaskList
@@ -115,8 +119,8 @@ const View = ({ classes }) => {
                                                     handleSort={ foo(taskList.id) }
                                                 />
                                             </Droppable>
-                                        </DragList>
-                                    </SortList>
+                                        </Draggable>
+                                    </Droppable>
 
                                     // <Droppable
                                     //     key={taskList.id}

@@ -6,7 +6,8 @@ import styles from './styles';
 const Draggable = ({ classes, children, draggableTaskListId, taskId }) => {
     const startDrag = ({ dataTransfer }) => {
         console.log('startDrag Draggable');
-        dataTransfer.setData('drag-data', JSON.stringify({ draggableTaskListId, taskId }));
+        const dragType = taskId ? 'drag-task' : 'drag-list';
+        dataTransfer.setData(dragType, JSON.stringify({ draggableTaskListId, taskId }));
     };
 
     return (

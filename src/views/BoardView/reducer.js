@@ -133,13 +133,12 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case MOVE_TASK: {
-        console.log(!!payload.taskId);
+        console.log(payload);
         if (payload.droppableTaskListId !== payload.draggableTaskListId && payload.taskId) {
             console.log('MOVE_TASK');
             console.log(payload);
             const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
 
-            console.log(JSON.stringify(state.taskLists));
             console.log(listsCopy);
 
             listsCopy[payload.droppableTaskListId].tasks[`#${payload.taskId}`] = JSON.parse(JSON.stringify(listsCopy[payload.draggableTaskListId].tasks[`#${payload.taskId}`]));
@@ -156,7 +155,7 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case SORT_TASK: {
         console.log(payload);
-        if (payload.droppableTaskListId === payload.draggableTaskListId && !!payload.taskId) {
+        if (payload.droppableTaskListId === payload.draggableTaskListId && payload.taskId) {
             console.log('SORT_TASK');
             console.log(payload);
 
@@ -188,7 +187,7 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case SORT_LIST: {
-        console.log(!!payload.taskId);
+        console.log(payload);
         if (payload.droppableTaskListId !== payload.draggableTaskListId && !payload.taskId) {
             console.info('SORT_LIST');
             console.log(payload);

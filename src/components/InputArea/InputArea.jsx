@@ -17,12 +17,8 @@ const InputArea = (props) => {
             type='text'
             value={ value }
             className={ componentClassNames }
-            onChange={ event => handleChange(event.target.value) }
-
-
-            onKeyUp={ event => handleKeyUp(event) }
-
-
+            onChange={ handleChange }
+            onKeyUp={ handleKeyUp }
             placeholder={ placeholder }
         />
     )

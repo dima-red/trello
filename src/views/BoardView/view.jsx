@@ -22,7 +22,6 @@ import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from "../../components/Droppable/Droppable.jsx";
 import Draggable from "../../components/Draggable/Draggable.jsx";
-import SortList from "../../components/SortList/SortList.jsx";
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -36,7 +35,24 @@ const View = ({ classes }) => {
     console.info('Store.taskLists : ', useSelector(state => state.boardViewReducer.taskLists));
     console.info('Array from Store.taskLists : ', taskLists);
 
-    const keyBoardHandler = ({ key, target }, taskListId, taskId) => {
+    const eventKeyHelper = (key, defaultValue, taskListId, taskId) => {
+        const actions = {
+            taskList: {
+                Escape: cancelTaskListCreation(taskListId),
+                Enter: saveTaskList(taskListId),
+            },
+            task: {
+                Escape: cancelTaskCreation(taskListId, taskId),
+                Enter: () => {
+                    defaultValue && defaultValue.charCodeAt(0) !== 10 && dispatch(saveTask(taskListId, taskId))
+                },
+            },
+        };
+
+        return taskId ? actions.taskList[key] : actions.task[key];
+    };
+
+    const keyBoardHandler = ({ key, target: { defaultValue } }, taskListId, taskId) => {
         if (key === 'Escape' && !taskId) {
             dispatch(cancelTaskListCreation(taskListId));
         }
@@ -50,13 +66,11 @@ const View = ({ classes }) => {
         }
 
         if (key === 'Enter' && taskId) {
-            const value = target.defaultValue;
-
-            value && value.charCodeAt(0) !== 10 && dispatch(saveTask(taskListId, taskId));
+            defaultValue && defaultValue.charCodeAt(0) !== 10 && dispatch(saveTask(taskListId, taskId));
         }
-    };
 
-    const foo = taskListId => (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskListId, draggableTaskListId, taskId, droppableTaskId));
+        // eventKeyHelper(key, taskId)
+    };
 
     return (
         <div className={classes.app}>
@@ -85,11 +99,9 @@ const View = ({ classes }) => {
                                 taskLists.map(taskList => (
                                     <Droppable
                                         key={ taskList.id }
-                                        dragType='drag-list'
+                                        type='drag-list'
                                         droppableTaskListId={ taskList.id }
                                         handleDrop={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
-                                        // handleSort1={ () => console.log('BooooM') }
-                                        // handleDrop={ foo(taskList.id) }
                                     >
                                         <Draggable
                                             key={ taskList.id }
@@ -97,52 +109,29 @@ const View = ({ classes }) => {
                                         >
                                             <Droppable
                                                 key={taskList.id}
-                                                dragType='drag-task'
+                                                type='drag-task'
                                                 droppableTaskListId={ taskList.id }
                                                 handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
                                             >
                                                 <TaskList
                                                     {...taskList}
-                                                    handleChangeListName={value => dispatch(nameTaskList(value, taskList.id))}
-                                                    handleSaveListName={() => dispatch(saveTaskList(taskList.id))}
-                                                    handleCancelListName={() => dispatch(cancelTaskListCreation(taskList.id))}
+                                                    handleChangeListName={ ({ target: { value } }) => dispatch(nameTaskList(value, taskList.id)) }
+                                                    handleSaveListName={ () => dispatch(saveTaskList(taskList.id))}
+                                                    handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.id)) }
 
-                                                    handleCreateTask={() => dispatch(createTask(taskList.id))}
+                                                    handleCreateTask={ () => dispatch(createTask(taskList.id)) }
 
-                                                    handleChangeTaskName={taskId => value => dispatch(nameTask(value, taskList.id, taskId))}
-                                                    handleSaveTaskName={taskId => () => dispatch(saveTask(taskList.id, taskId))}
-                                                    handleCancelTaskName={taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId))}
+                                                    handleChangeTaskName={ taskId => ({ target: { value } }) => dispatch(nameTask(value, taskList.id, taskId)) }
+                                                    handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
+                                                    handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
 
                                                     handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
 
-                                                    // handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
-                                                    handleSort={ foo(taskList.id) }
+                                                    handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
                                                 />
                                             </Droppable>
                                         </Draggable>
                                     </Droppable>
-
-                                    // <Droppable
-                                    //     key={taskList.id}
-                                    //     handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
-                                    // >
-                                    //     <TaskList
-                                    //         {...taskList}
-                                    //         handleChangeListName={value => dispatch(nameTaskList(value, taskList.id))}
-                                    //         handleSaveListName={() => dispatch(saveTaskList(taskList.id))}
-                                    //         handleCancelListName={() => dispatch(cancelTaskListCreation(taskList.id))}
-                                    //
-                                    //         handleCreateTask={() => dispatch(createTask(taskList.id))}
-                                    //
-                                    //         handleChangeTaskName={taskId => value => dispatch(nameTask(value, taskList.id, taskId))}
-                                    //         handleSaveTaskName={taskId => () => dispatch(saveTask(taskList.id, taskId))}
-                                    //         handleCancelTaskName={taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId))}
-                                    //
-                                    //         handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
-                                    //
-                                    //         handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
-                                    //     />
-                                    // </Droppable>
                                 ))
                             }
                         </Container>

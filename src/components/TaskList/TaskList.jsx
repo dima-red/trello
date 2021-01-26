@@ -62,7 +62,7 @@ const TaskList = (props) => {
                                 key={taskId}
                                 handleDrop={ handleSort }
                                 sortableId={ taskId }
-                                dragType='drag-task'
+                                type='drag-task'
                                 droppableTaskListId={id}
                             >
                                 <Draggable
@@ -72,7 +72,6 @@ const TaskList = (props) => {
                                 >
                                     <Task
                                         {...others}
-
                                         handleChangeTask={ handleChangeTaskName(taskId) }
                                         handleSaveTask={ handleSaveTaskName(taskId) }
                                         handleCancelTask={ handleCancelTaskName(taskId) }
@@ -80,21 +79,6 @@ const TaskList = (props) => {
                                     />
                                 </Draggable>
                             </Droppable>
-
-                            // <Draggable
-                            //     key={ taskId }
-                            //     taskId={ taskId }
-                            //     draggableTaskListId={ id }
-                            // >
-                            //     <Task
-                            //         {...others}
-                            //
-                            //         handleChangeTask={ handleChangeTaskName(taskId) }
-                            //         handleSaveTask={ handleSaveTaskName(taskId) }
-                            //         handleCancelTask={ handleCancelTaskName(taskId) }
-                            //         handleKeyUp={ handleKeyUp(taskId) }
-                            //     />
-                            // </Draggable>
                         ))
                     }
                 </List>

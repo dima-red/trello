@@ -1,3 +1,1 @@
-import BoardView from './view.jsx';
-
-export default BoardView;
+export { default as BoardView } from './view.jsx';

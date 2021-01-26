@@ -31,7 +31,6 @@ const SummaryDescriptionMaker = (props) => {
                 value={ value }
                 placeholder={ placeholder }
                 handleChange={ handleChange }
-
                 handleKeyUp={ handleKeyUp }
                 variant={ variant }
             />

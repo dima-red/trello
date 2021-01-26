@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import Typography from '../../atomic-components/Typography/Typography.jsx';
+import Typography from '../Typography/Typography.jsx';
 import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx';
 import styles from './styles.js';
 

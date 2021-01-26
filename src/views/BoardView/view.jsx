@@ -16,7 +16,7 @@ import {
     sortTask,
     sortList
 } from './actions';
-import Button from '../../atomic-components/Button/Button.jsx';
+import Button from '../../components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';

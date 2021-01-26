@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import Button from '../../atomic-components/Button/Button.jsx';
-import InputArea from '../../atomic-components/InputArea/InputArea.jsx';
+import Button from '../Button/Button.jsx';
+import InputArea from '../InputArea/InputArea.jsx';
 import styles from './styles.js';
 
 const SummaryDescriptionMaker = (props) => {

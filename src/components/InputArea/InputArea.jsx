@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import classNames from 'classnames';
-import styles from '../../atomic-components/InputArea/styles';
+import styles from './styles';
 
 const InputArea = (props) => {
     const { classes, variant, value, handleChange, handleKeyUp, placeholder } = props;

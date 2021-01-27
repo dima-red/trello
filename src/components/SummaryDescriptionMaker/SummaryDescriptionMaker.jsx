@@ -14,12 +14,21 @@ const SummaryDescriptionMaker = (props) => {
         handleChange,
         handleSave,
         handleCancel,
-        handleKeyUp,
     } = props;
 
     const buttonClasses = classNames(
         classes.inputControls,
     );
+
+    const keyHandler = ({ key, target: { defaultValue } }) => {
+        if (key === 'Escape') {
+            handleCancel();
+        }
+
+        if (key === 'Enter' && defaultValue) {
+            handleSave();
+        }
+    };
 
     return (
         <div className={ classes.listItem }>
@@ -27,7 +36,7 @@ const SummaryDescriptionMaker = (props) => {
                 value={ value }
                 placeholder={ placeholder }
                 handleChange={ handleChange }
-                handleKeyUp={ handleKeyUp }
+                handleKeyUp={ keyHandler }
             />
             <Button
                 text={'✔'}

@@ -35,43 +35,6 @@ const View = ({ classes }) => {
     console.info('Store.taskLists : ', useSelector(state => state.boardViewReducer.taskLists));
     console.info('Array from Store.taskLists : ', taskLists);
 
-    const eventKeyHelper = (key, defaultValue, taskListId, taskId) => {
-        const actions = {
-            taskList: {
-                Escape: cancelTaskListCreation(taskListId),
-                Enter: saveTaskList(taskListId),
-            },
-            task: {
-                Escape: cancelTaskCreation(taskListId, taskId),
-                Enter: () => {
-                    defaultValue && defaultValue.charCodeAt(0) !== 10 && dispatch(saveTask(taskListId, taskId))
-                },
-            },
-        };
-
-        return taskId ? actions.taskList[key] : actions.task[key];
-    };
-
-    const keyBoardHandler = ({ key, target: { defaultValue } }, taskListId, taskId) => {
-        if (key === 'Escape' && !taskId) {
-            dispatch(cancelTaskListCreation(taskListId));
-        }
-
-        if (key === 'Escape' && taskId) {
-            dispatch(cancelTaskCreation(taskListId, taskId));
-        }
-
-        if (key === 'Enter' && !taskId) {
-            defaultValue && dispatch(saveTaskList(taskListId));
-        }
-
-        if (key === 'Enter' && taskId) {
-            defaultValue && defaultValue.charCodeAt(0) !== 10 && dispatch(saveTask(taskListId, taskId));
-        }
-
-        // eventKeyHelper(key, taskId)
-    };
-
     return (
         <div className={classes.app}>
             <div className={classes.viewWrapper}>
@@ -124,11 +87,6 @@ const View = ({ classes }) => {
                                                     handleChangeTaskName={ taskId => ({ target: { value } }) => dispatch(nameTask(value, taskList.id, taskId)) }
                                                     handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
                                                     handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
-
-
-                                                    handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
-
-
 
                                                     handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
                                                 />

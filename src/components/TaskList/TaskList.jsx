@@ -26,7 +26,6 @@ const TaskList = (props) => {
         handleChangeTaskName,
         handleSaveTaskName,
         handleCancelTaskName,
-        handleKeyUp,
         handleSort
     } = props;
     const tasksObject = props.tasks;
@@ -45,7 +44,6 @@ const TaskList = (props) => {
                             handleChange={ handleChangeListName }
                             handleSave={ handleSaveListName }
                             handleCancel={ handleCancelListName }
-                            handleKeyUp={ handleKeyUp() }
                         />
                     </List>:
                     <Typography
@@ -62,7 +60,7 @@ const TaskList = (props) => {
                                 handleDrop={ handleSort }
                                 sortableId={ taskId }
                                 type='drag-task'
-                                droppableTaskListId={id}
+                                droppableTaskListId={ id }
                             >
                                 <Draggable
                                     key={ taskId }
@@ -74,7 +72,6 @@ const TaskList = (props) => {
                                         handleChangeTask={ handleChangeTaskName(taskId) }
                                         handleSaveTask={ handleSaveTaskName(taskId) }
                                         handleCancelTask={ handleCancelTaskName(taskId) }
-                                        handleKeyUp={ handleKeyUp(taskId) }
                                     />
                                 </Draggable>
                             </Droppable>

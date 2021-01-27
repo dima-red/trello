@@ -62,7 +62,7 @@ const View = ({ classes }) => {
         }
 
         if (key === 'Enter' && !taskId) {
-            target.defaultValue && dispatch(saveTaskList(taskListId));
+            defaultValue && dispatch(saveTaskList(taskListId));
         }
 
         if (key === 'Enter' && taskId) {
@@ -125,7 +125,10 @@ const View = ({ classes }) => {
                                                     handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
                                                     handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
 
+
                                                     handleKeyUp={ taskId => event => keyBoardHandler(event, taskList.id, taskId) }
+
+
 
                                                     handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
                                                 />

@@ -11,7 +11,6 @@ const SummaryDescriptionMaker = (props) => {
         classes,
         value,
         placeholder,
-        variant,
         handleChange,
         handleSave,
         handleCancel,
@@ -20,9 +19,6 @@ const SummaryDescriptionMaker = (props) => {
 
     const buttonClasses = classNames(
         classes.inputControls,
-        {
-            [classes.textAreaControls]: variant === 'textarea',
-        },
     );
 
     return (
@@ -32,7 +28,6 @@ const SummaryDescriptionMaker = (props) => {
                 placeholder={ placeholder }
                 handleChange={ handleChange }
                 handleKeyUp={ handleKeyUp }
-                variant={ variant }
             />
             <Button
                 text={'✔'}
@@ -55,15 +50,12 @@ const SummaryDescriptionMaker = (props) => {
 SummaryDescriptionMaker.propTypes = {
     classes: PropTypes.shape({
         inputControls: PropTypes.string,
-        textAreaControls: PropTypes.string,
         listItem: PropTypes.string,
     }).isRequired,
-    text: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSave: PropTypes.func.isRequired,
     handleCancel: PropTypes.func.isRequired,
-    variant: PropTypes.string.isRequired,
 };
 
 const StyledSummaryDescriptionMaker = withStyles(styles)(SummaryDescriptionMaker);

@@ -14,9 +14,6 @@ const styles = {
         },
         "margin-left": "1px",
     },
-    textAreaControls: {
-        "align-self": "flex-end",
-    },
 };
 
 export default styles;

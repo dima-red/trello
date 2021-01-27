@@ -5,15 +5,14 @@ import classNames from 'classnames';
 import styles from './styles';
 
 const InputArea = (props) => {
-    const { classes, variant, value, handleChange, handleKeyUp, placeholder } = props;
-    const Component = variant;
+    const { classes, value, handleChange, handleKeyUp, placeholder } = props;
     const componentClassNames = classNames(
         classes.inputElement,
-        classes[variant],
+        classes.input,
     );
 
     return (
-        <Component
+        <input
             type='text'
             value={ value }
             className={ componentClassNames }

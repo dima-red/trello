@@ -21,7 +21,6 @@ const Task = (props) => {
         isEditTask ?
             <SummaryDescriptionMaker
                 value={ description }
-                variant='textarea'
                 placeholder={ placeholder }
 
                 handleChange={ handleChangeTask }

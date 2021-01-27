@@ -41,7 +41,6 @@ const TaskList = (props) => {
                     <List>
                         <SummaryDescriptionMaker
                             value={ summary }
-                            variant='input'
                             placeholder={ placeholder }
                             handleChange={ handleChangeListName }
                             handleSave={ handleSaveListName }

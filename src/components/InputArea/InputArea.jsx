@@ -27,14 +27,12 @@ InputArea.propTypes = {
     classes: PropTypes.shape({
         inputElement: PropTypes.string,
     }).isRequired,
-    variant: PropTypes.string.isRequired,
     value: PropTypes.string,
     handleChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
 };
 
 InputArea.defaultProps = {
-    variant: 'input',
     value: '',
 };
 

@@ -54,29 +54,29 @@ const TaskList = (props) => {
             {
                 <List>
                     {
-                        !!tasks.length && tasks.map(({ taskId, ...others }) => (
+                        !!tasks.length && tasks.map((task, index) => (
                             <Droppable
-                                key={taskId}
-                                options={{
+                                key={ index }
+                                options={ {
                                     droppableTaskListId: id,
-                                    sortableId: taskId,
-                                }}
+                                    sortableId: index,
+                                } }
                                 handleDrop={ handleSort }
                                 type='drag-task'
                             >
                                 <Draggable
-                                    key={ taskId }
+                                    key={ index }
                                     type='drag-task'
                                     options={{
-                                        taskId: taskId,
+                                        taskId: index,
                                         draggableTaskListId: id,
                                     }}
                                 >
                                     <Task
-                                        {...others}
-                                        handleChangeTask={ handleChangeTaskName(taskId) }
-                                        handleSaveTask={ handleSaveTaskName(taskId) }
-                                        handleCancelTask={ handleCancelTaskName(taskId) }
+                                        { ...task }
+                                        handleChangeTask={ handleChangeTaskName(index) }
+                                        handleSaveTask={ handleSaveTaskName(index) }
+                                        handleCancelTask={ handleCancelTaskName(index) }
                                     />
                                 </Draggable>
                             </Droppable>

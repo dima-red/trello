@@ -18,7 +18,7 @@ const Droppable = ({ children, handleDrop, type, options }) => {
             handleDrop(draggableTaskListId, taskId, options.sortableId);
             console.log(options.droppableTaskListId, draggableTaskListId, taskId, options.sortableId);
 
-            if (options.droppableTaskListId !== draggableTaskListId && taskId && !options.sortableId) {
+            if (options.droppableTaskListId !== draggableTaskListId && taskId >= 0 && !options.sortableId && options.sortableId !== 0) {
                 options.handlePropagation(event);
             }
         }

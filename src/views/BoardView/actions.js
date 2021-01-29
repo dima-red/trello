@@ -23,9 +23,8 @@ export const createTaskList = () => (
         type: ADD_NEW_LIST,
         payload: {
             summary: '',
-            tasks: {},
+            tasks: [],
             placeholder: 'Please, name your list',
-            id: `#${++taskListIdCounter}`,
             dateTime: new Date().toLocaleString(),
             isEditList: true,
         },
@@ -52,14 +51,14 @@ export const saveTaskList = (taskListId) => (
     }
 );
 
-export const cancelTaskListCreation = (taskListId) => (
-    {
+export const cancelTaskListCreation = (taskListId) => {
+    return {
         type: CANCEL_NEW_LIST,
         payload: {
             id: taskListId,
         },
     }
-);
+};
 
 export const createTask = (taskListId) => (
     {
@@ -67,10 +66,9 @@ export const createTask = (taskListId) => (
         payload: {
             description: '',
             placeholder: 'Please, add description for your task',
-            taskId: `#${++taskIdCounter}`,
             dateTime: new Date().toLocaleString(),
             isEditTask: true,
-            id: taskListId,
+            listId: taskListId,
         },
     }
 );
@@ -80,8 +78,8 @@ export const nameTask = (value, taskListId, taskId) => (
         type: NAME_NEW_TASK,
         payload: {
             description: value,
-            id: taskListId,
             taskId,
+            listId: taskListId,
         },
     }
 );
@@ -91,8 +89,8 @@ export const saveTask = (taskListId, taskId) => (
         type: SAVE_NEW_TASK,
         payload: {
             isEditTask: false,
-            id: taskListId,
             taskId,
+            listId: taskListId,
         },
     }
 );
@@ -101,7 +99,7 @@ export const cancelTaskCreation = (taskListId, taskId) => (
     {
         type: CANCEL_NEW_TASK,
         payload: {
-            id: taskListId,
+            listId: taskListId,
             taskId
         },
     }

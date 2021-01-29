@@ -29,11 +29,10 @@ const View = ({ classes }) => {
         classes.headerBtn,
         classes.addBtn,
     );
-    const taskLists = Object.values(useSelector(state => state.boardViewReducer.taskLists));
+    const taskLists = useSelector(state => state.boardViewReducer.taskLists);
     const dispatch = useDispatch();
 
-    console.info('Store.taskLists : ', useSelector(state => state.boardViewReducer.taskLists));
-    console.info('Array from Store.taskLists : ', taskLists);
+    console.info('Store.taskLists : ', taskLists);
 
     return (
         <div className={classes.app}>
@@ -59,44 +58,45 @@ const View = ({ classes }) => {
                     <div className={classes.scrollable}>
                         <Container options={ { direction: 'row' } }>
                             {
-                                taskLists.map(taskList => (
+                                taskLists.map((taskList, index) => (
                                     <Droppable
                                         key={ taskList.id }
                                         options={{
                                             droppableTaskListId: taskList.id,
                                         }}
                                         type='drag-list'
-                                        handleDrop={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
+                                        handleDrop={ draggableTaskListId => dispatch(sortList(index, draggableTaskListId)) }
                                     >
                                         <Draggable
-                                            key={ taskList.id }
+                                            key={ index }
                                             type='drag-list'
                                             options={{
-                                                draggableTaskListId: taskList.id,
+                                                draggableTaskListId: index,
                                             }}
                                         >
                                             <Droppable
-                                                key={taskList.id}
+                                                key={ index }
                                                 options={{
-                                                    droppableTaskListId: taskList.id,
+                                                    droppableTaskListId: index,
                                                     handlePropagation: event => event.stopPropagation(),
                                                 }}
                                                 type='drag-task'
-                                                handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
+                                                handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(index, draggableTaskListId, taskId))}
                                             >
                                                 <TaskList
                                                     {...taskList}
-                                                    handleChangeListName={ ({ target: { value } }) => dispatch(nameTaskList(value, taskList.id)) }
-                                                    handleSaveListName={ () => dispatch(saveTaskList(taskList.id))}
-                                                    handleCancelListName={ () => dispatch(cancelTaskListCreation(taskList.id)) }
+                                                    id={ index }
+                                                    handleChangeListName={ ({ target: { value } }) => dispatch(nameTaskList(value, index)) }
+                                                    handleSaveListName={ () => dispatch(saveTaskList(index))}
+                                                    handleCancelListName={ () => dispatch(cancelTaskListCreation(index)) }
 
-                                                    handleCreateTask={ () => dispatch(createTask(taskList.id)) }
+                                                    handleCreateTask={ () => dispatch(createTask(index)) }
 
-                                                    handleChangeTaskName={ taskId => ({ target: { value } }) => dispatch(nameTask(value, taskList.id, taskId)) }
-                                                    handleSaveTaskName={ taskId => () => dispatch(saveTask(taskList.id, taskId)) }
-                                                    handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(taskList.id, taskId)) }
+                                                    handleChangeTaskName={ taskId => ({ target: { value } }) => dispatch(nameTask(value, index, taskId)) }
+                                                    handleSaveTaskName={ taskId => () => dispatch(saveTask(index, taskId)) }
+                                                    handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(index, taskId)) }
 
-                                                    handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(taskList.id, draggableTaskListId, taskId, droppableTaskId)) }
+                                                    handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(index, draggableTaskListId, taskId, droppableTaskId)) }
                                                 />
                                             </Droppable>
                                         </Draggable>

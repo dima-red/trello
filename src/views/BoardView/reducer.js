@@ -12,42 +12,9 @@ import {
     SORT_LIST
 } from './action.constants';
 
-const initialState = {
-    taskLists: [
-        {
-            summary: 'ToDo',
-            tasks: [
-                {
-                    description: 'To do something important!',
-                },
-                {
-                    description: 'To do something another important!',
-                }
-            ],
-            dateTime: '11/18/2020, 3:06:49 PM',
-        },
-        {
-            summary: 'In Progress',
-            tasks: [
-                {
-                    description: '1',
-                },
-                {
-                    description: '2',
-                },
-                {
-                    description: '3',
-                },
-                {
-                    description: '4',
-                }
-            ],
-            dateTime: '11/19/2020, 4:06:49 PM',
-        }
-    ],
-};
+import { initialBoardViewState } from './initials';
 
-const reducer = (state = initialState, { type, payload } ) => {
+const reducer = (state = initialBoardViewState, { type, payload } ) => {
     switch (type) {
     case ADD_NEW_LIST:
         return {
@@ -127,7 +94,6 @@ const reducer = (state = initialState, { type, payload } ) => {
     }
 
     case MOVE_TASK: {
-        console.log(payload);
         if (payload.droppableTaskListId !== payload.draggableTaskListId && payload.taskId >= 0) {
             console.log('MOVE_TASK');
             console.log(payload);
@@ -148,7 +114,6 @@ const reducer = (state = initialState, { type, payload } ) => {
     }
 
     case SORT_TASK: {
-        console.log(payload);
         if (payload.droppableTaskListId === payload.draggableTaskListId && payload.taskId >= 0) {
             console.log('SORT_TASK');
             console.log(payload);
@@ -174,7 +139,6 @@ const reducer = (state = initialState, { type, payload } ) => {
     }
 
     case SORT_LIST: {
-        console.log(payload);
         if (payload.droppableTaskListId !== payload.draggableTaskListId && !payload.taskId && payload.taskId !== 0) {
             console.info('SORT_LIST');
             console.log(payload);

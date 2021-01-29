@@ -12,9 +12,7 @@ const Logo = ({ classes }) => {
     )
 };
 
-Logo.defaultProps = {
-    isCancel: false,
-};
+Logo.defaultProps = {};
 
 Logo.propTypes = {
     classes: PropTypes.shape({

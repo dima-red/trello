@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Droppable = ({ classes, children, type, handleDrop, sortableId, droppableTaskListId }) => {
+const Droppable = ({ children, handleDrop, type, options }) => {
 
     const dragOver = event => {
         event.preventDefault();
@@ -11,15 +11,15 @@ const Droppable = ({ classes, children, type, handleDrop, sortableId, droppableT
     };
 
     const drop = (event) => {
-        console.log('drop Droppable: ', type);
+        console.log('drop Droppable: ', type, options);
         const transferredData = event.dataTransfer.getData(type);
         if (transferredData) {
             const { draggableTaskListId, taskId } = JSON.parse(transferredData);
-            handleDrop(draggableTaskListId, taskId, sortableId);
-            console.log(droppableTaskListId, draggableTaskListId, taskId, sortableId);
+            handleDrop(draggableTaskListId, taskId, options.sortableId);
+            console.log(options.droppableTaskListId, draggableTaskListId, taskId, options.sortableId);
 
-            if (droppableTaskListId !== draggableTaskListId && taskId && !sortableId) {
-                event.stopPropagation();
+            if (options.droppableTaskListId !== draggableTaskListId && taskId && !options.sortableId) {
+                options.handlePropagation(event);
             }
         }
     };
@@ -31,11 +31,13 @@ const Droppable = ({ classes, children, type, handleDrop, sortableId, droppableT
     )
 };
 
-Droppable.defaultProps = {
-    sortableId: null,
-};
+Droppable.defaultProps = {};
 
-Droppable.propTypes = {};
+Droppable.propTypes = {
+    type: PropTypes.string,
+    options: PropTypes.object,
+    handleDrop: PropTypes.func,
+};
 
 const StyledDroppable = withStyles(styles)(Droppable);
 

@@ -57,23 +57,31 @@ const View = ({ classes }) => {
                 </header>
                 <main>
                     <div className={classes.scrollable}>
-                        <Container>
+                        <Container options={ { direction: 'row' } }>
                             {
                                 taskLists.map(taskList => (
                                     <Droppable
                                         key={ taskList.id }
+                                        options={{
+                                            droppableTaskListId: taskList.id,
+                                        }}
                                         type='drag-list'
-                                        droppableTaskListId={ taskList.id }
                                         handleDrop={ draggableTaskListId => dispatch(sortList(taskList.id, draggableTaskListId)) }
                                     >
                                         <Draggable
                                             key={ taskList.id }
-                                            draggableTaskListId={ taskList.id }
+                                            type='drag-list'
+                                            options={{
+                                                draggableTaskListId: taskList.id,
+                                            }}
                                         >
                                             <Droppable
                                                 key={taskList.id}
+                                                options={{
+                                                    droppableTaskListId: taskList.id,
+                                                    handlePropagation: event => event.stopPropagation(),
+                                                }}
                                                 type='drag-task'
-                                                droppableTaskListId={ taskList.id }
                                                 handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(taskList.id, draggableTaskListId, taskId))}
                                             >
                                                 <TaskList

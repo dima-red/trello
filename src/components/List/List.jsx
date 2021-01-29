@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
@@ -11,10 +10,6 @@ const List = ({ classes, children }) => {
         </div>
     )
 };
-
-List.defaultProps = {};
-
-List.propTypes = {};
 
 const StyledList = withStyles(styles)(List);
 

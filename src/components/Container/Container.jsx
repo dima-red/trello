@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
+import classNames from 'classnames';
 import styles from './styles';
 
-const Container = ({ classes, children }) => {
+const Container = ({ classes, children, options }) => {
+    const containerDirectionMap = {
+        row: 'horizontal',
+        column: 'vertical',
+    };
+
+    const containerClasses = classNames(
+        classes.container,
+        classes[containerDirectionMap[options.direction]],
+    );
 
     return (
-        <div className={ classes.boardContent }>
+        <div className={ containerClasses }>
             {
                 children
             }
@@ -14,13 +24,11 @@ const Container = ({ classes, children }) => {
     )
 };
 
-Container.defaultProps = {
-    isCancel: false,
-};
+Container.defaultProps = {};
 
 Container.propTypes = {
     classes: PropTypes.shape({
-
+        boardContent: PropTypes.string,
     }).isRequired,
 };
 

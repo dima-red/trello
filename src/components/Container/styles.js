@@ -1,8 +1,14 @@
 import { primary, secondary, ternary } from '../../constants/color.constants';
 
 const styles = {
-    boardContent: {
+    container: {
         display: "flex",
+    },
+    horizontal: {
+        "flex-direction": "row",
+    },
+    vertical: {
+        "flex-direction": "column",
     },
 };
 

@@ -7,7 +7,6 @@ import styles from './styles.js';
 
 const Task = (props) => {
     const {
-        // classes,
         description,
         isEditTask,
         placeholder,
@@ -34,7 +33,6 @@ const Task = (props) => {
 };
 
 Task.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
     description: PropTypes.string,
     isEditTask: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,

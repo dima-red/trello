@@ -29,11 +29,13 @@ InputArea.propTypes = {
     }).isRequired,
     value: PropTypes.string,
     handleChange: PropTypes.func.isRequired,
+    handleKeyUp: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
 };
 
 InputArea.defaultProps = {
     value: '',
+    placeholder: '',
 };
 
 const StyledInputArea = withStyles(styles)(InputArea);

@@ -57,15 +57,20 @@ const TaskList = (props) => {
                         !!tasks.length && tasks.map(({ taskId, ...others }) => (
                             <Droppable
                                 key={taskId}
+                                options={{
+                                    droppableTaskListId: id,
+                                    sortableId: taskId,
+                                }}
                                 handleDrop={ handleSort }
-                                sortableId={ taskId }
                                 type='drag-task'
-                                droppableTaskListId={ id }
                             >
                                 <Draggable
                                     key={ taskId }
-                                    taskId={ taskId }
-                                    draggableTaskListId={ id }
+                                    type='drag-task'
+                                    options={{
+                                        taskId: taskId,
+                                        draggableTaskListId: id,
+                                    }}
                                 >
                                     <Task
                                         {...others}
@@ -105,7 +110,7 @@ TaskList.propTypes = {
     dateTime: PropTypes.string.isRequired,
     isEditList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    tasks: PropTypes.array.isRequired,
+    // id: PropTypes.string, TODO: fix after change state structure
     handleChangeListName: PropTypes.func.isRequired,
     handleSaveListName: PropTypes.func.isRequired,
     handleCancelListName: PropTypes.func.isRequired,
@@ -113,6 +118,7 @@ TaskList.propTypes = {
     handleChangeTaskName: PropTypes.func.isRequired,
     handleSaveTaskName: PropTypes.func.isRequired,
     handleCancelTaskName: PropTypes.func.isRequired,
+    handleSort: PropTypes.func.isRequired,
 };
 
 TaskList.defaultProps = {

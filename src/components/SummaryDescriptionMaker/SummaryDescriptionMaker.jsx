@@ -61,6 +61,7 @@ SummaryDescriptionMaker.propTypes = {
         inputControls: PropTypes.string,
         listItem: PropTypes.string,
     }).isRequired,
+    value: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSave: PropTypes.func.isRequired,

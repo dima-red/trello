@@ -4,12 +4,11 @@ import withStyles from 'react-jss';
 import Typography from '../Typography/Typography.jsx';
 import Task from '../Task/Task.jsx';
 import Button from '../Button/Button.jsx';
+import Droppable from '../../components/Droppable/Droppable.jsx';
 import Draggable from '../Draggable/Draggable.jsx';
 import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx';
-import List from "../List/List.jsx";
+import List from '../List/List.jsx';
 import styles from './styles.js';
-
-import Droppable from "../../components/Droppable/Droppable.jsx";
 
 const TaskList = (props) => {
     const {

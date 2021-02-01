@@ -4,17 +4,18 @@ import withStyles from 'react-jss';
 import styles from './styles';
 
 const Draggable = ({ children, data }) => {
-    const handleDragStart = ({ dataTransfer }) => {
-        console.log('startDrag Draggable');
+    const handleDragStart = (event) => {
+        console.log('startDrag Draggable', event);
+        // console.log('startDrag Draggable', event.target.attributes.type.value);
 
-        dataTransfer.setData(data.type, JSON.stringify({
+        event.dataTransfer.setData(data.type, JSON.stringify({
             draggableTaskListId: data.draggableTaskListId,
             draggableTaskId: data.taskId
         }));
     };
 
     return (
-        <div draggable onDragStart={ handleDragStart } >
+        <div draggable onDragStart={ handleDragStart } type='TEST2222222222222' >
             { children }
         </div>
     )

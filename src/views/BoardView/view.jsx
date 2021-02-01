@@ -17,8 +17,8 @@ import Button from '../../components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
 import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
-import Droppable from "../../components/Droppable/Droppable.jsx";
-import Draggable from "../../components/Draggable/Draggable.jsx";
+import Droppable from '../../components/Droppable/Droppable.jsx';
+import Draggable from '../../components/Draggable/Draggable.jsx';
 import { dropHelper } from './helpers';
 import styles from './styles';
 

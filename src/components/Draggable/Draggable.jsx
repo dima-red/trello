@@ -5,8 +5,7 @@ import styles from './styles';
 
 const Draggable = ({ children, data }) => {
     const handleDragStart = (event) => {
-        console.log('startDrag Draggable', event);
-        // console.log('startDrag Draggable', event.target.attributes.type.value);
+        console.log('startDrag Draggable', data);
 
         event.dataTransfer.setData(data.type, JSON.stringify({
             draggableTaskListId: data.draggableTaskListId,
@@ -15,7 +14,7 @@ const Draggable = ({ children, data }) => {
     };
 
     return (
-        <div draggable onDragStart={ handleDragStart } type='TEST2222222222222' >
+        <div draggable onDragStart={ handleDragStart } >
             { children }
         </div>
     )

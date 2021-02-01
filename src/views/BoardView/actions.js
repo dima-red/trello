@@ -27,6 +27,7 @@ export const createTaskList = () => (
             placeholder: 'Please, name your list',
             dateTime: new Date().toLocaleString(),
             isEditList: true,
+            id: ++taskListIdCounter,
         },
     }
 );
@@ -69,6 +70,7 @@ export const createTask = (taskListId) => (
             dateTime: new Date().toLocaleString(),
             isEditTask: true,
             listId: taskListId,
+            id: ++taskIdCounter,
         },
     }
 );

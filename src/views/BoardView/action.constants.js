@@ -1,7 +1,7 @@
 const VIEW_NAME = 'BOARD_VIEW';
 
 export const BOARD_VIEW_TASK_LIST_ID = 1;
-export const BOARD_VIEW_TASK_ID = 6;
+export const BOARD_VIEW_TASK_ID = 5;
 
 export const ADD_NEW_LIST = `${VIEW_NAME}_ADD_NEW_LIST`;
 export const NAME_NEW_LIST = `${VIEW_NAME}_NAME_NEW_LIST`;

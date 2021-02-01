@@ -68,14 +68,12 @@ const View = ({ classes }) => {
                                         handleDrop={ draggableTaskListId => dispatch(sortList(index, draggableTaskListId)) }
                                     >
                                         <Draggable
-                                            key={ index }
                                             type='drag-list'
                                             options={{
                                                 draggableTaskListId: index,
                                             }}
                                         >
                                             <Droppable
-                                                key={ index }
                                                 options={{
                                                     droppableTaskListId: index,
                                                     handlePropagation: event => event.stopPropagation(),

@@ -56,7 +56,7 @@ const TaskList = (props) => {
                     {
                         !!tasks.length && tasks.map((task, index) => (
                             <Droppable
-                                key={ index }
+                                key={ task.id }
                                 options={ {
                                     droppableTaskListId: id,
                                     sortableId: index,
@@ -65,7 +65,6 @@ const TaskList = (props) => {
                                 type='drag-task'
                             >
                                 <Draggable
-                                    key={ index }
                                     type='drag-task'
                                     options={{
                                         taskId: index,

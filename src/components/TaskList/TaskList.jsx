@@ -108,7 +108,7 @@ TaskList.propTypes = {
     dateTime: PropTypes.string.isRequired,
     isEditList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    id: PropTypes.number,
+    id: PropTypes.number.isRequired,
     handleChangeListName: PropTypes.func.isRequired,
     handleSaveListName: PropTypes.func.isRequired,
     handleCancelListName: PropTypes.func.isRequired,

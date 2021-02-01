@@ -109,7 +109,7 @@ TaskList.propTypes = {
     dateTime: PropTypes.string.isRequired,
     isEditList: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
-    // id: PropTypes.string, TODO: fix after change state structure
+    id: PropTypes.number,
     handleChangeListName: PropTypes.func.isRequired,
     handleSaveListName: PropTypes.func.isRequired,
     handleCancelListName: PropTypes.func.isRequired,

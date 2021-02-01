@@ -61,24 +61,24 @@ const View = ({ classes }) => {
                                 taskLists.map((taskList, index) => (
                                     <Droppable
                                         key={ taskList.id }
-                                        options={{
+                                        data={{
+                                            type: 'drag-list',
                                             droppableTaskListId: taskList.id,
                                         }}
-                                        type='drag-list'
                                         handleDrop={ draggableTaskListId => dispatch(sortList(index, draggableTaskListId)) }
                                     >
                                         <Draggable
-                                            type='drag-list'
-                                            options={{
+                                            data={{
+                                                type: 'drag-list',
                                                 draggableTaskListId: index,
                                             }}
                                         >
                                             <Droppable
-                                                options={{
+                                                data={{
+                                                    type: 'drag-task',
                                                     droppableTaskListId: index,
                                                     handlePropagation: event => event.stopPropagation(),
                                                 }}
-                                                type='drag-task'
                                                 handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(index, draggableTaskListId, taskId))}
                                             >
                                                 <TaskList

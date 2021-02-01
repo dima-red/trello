@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Draggable = ({ children, type, options }) => {
+const Draggable = ({ children, data }) => {
     const handleDragStart = ({ dataTransfer }) => {
         console.log('startDrag Draggable');
 
-        dataTransfer.setData(type, JSON.stringify({
-            draggableTaskListId: options.draggableTaskListId,
-            taskId: options.taskId
+        dataTransfer.setData(data.type, JSON.stringify({
+            draggableTaskListId: data.draggableTaskListId,
+            taskId: data.taskId
         }));
     };
 
@@ -23,8 +23,7 @@ const Draggable = ({ children, type, options }) => {
 Draggable.defaultProps = {};
 
 Draggable.propTypes = {
-    type: PropTypes.string,
-    options: PropTypes.object,
+    data: PropTypes.object,
 };
 
 const StyledDraggable = withStyles(styles)(Draggable);

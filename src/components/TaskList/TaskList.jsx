@@ -60,7 +60,7 @@ const TaskList = (props) => {
                                 data={ {
                                     type: 'drag-task',
                                     droppableTaskListId: id,
-                                    sortableId: index,
+                                    droppableTaskId: index,
                                 } }
                                 handleDrop={ handleSort }
                             >

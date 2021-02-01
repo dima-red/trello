@@ -13,14 +13,11 @@ const Droppable = ({ children, handleDrop, data }) => {
     const drop = (event) => {
         console.log('drop Droppable: ', data);
         const transferredData = event.dataTransfer.getData(data.type);
-        if (transferredData) {
-            const { draggableTaskListId, taskId } = JSON.parse(transferredData);
-            handleDrop(draggableTaskListId, taskId, data.sortableId);
-            console.log(data.droppableTaskListId, draggableTaskListId, taskId, data.sortableId);
 
-            if (data.droppableTaskListId !== draggableTaskListId && taskId >= 0 && !data.sortableId && data.sortableId !== 0) {
-                data.handlePropagation(event);
-            }
+        if (transferredData) {
+            const parsedData = JSON.parse(transferredData);
+
+            handleDrop({ ...parsedData, ...data, event });
         }
     };
 

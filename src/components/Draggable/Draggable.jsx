@@ -9,7 +9,7 @@ const Draggable = ({ children, data }) => {
 
         dataTransfer.setData(data.type, JSON.stringify({
             draggableTaskListId: data.draggableTaskListId,
-            taskId: data.taskId
+            draggableTaskId: data.taskId
         }));
     };
 

@@ -12,9 +12,6 @@ import {
     nameTask,
     saveTask,
     cancelTaskCreation,
-    moveTask,
-    sortTask,
-    sortList
 } from './actions';
 import Button from '../../components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
@@ -22,6 +19,7 @@ import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from "../../components/Droppable/Droppable.jsx";
 import Draggable from "../../components/Draggable/Draggable.jsx";
+import { dropHelper } from './helpers';
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -63,9 +61,9 @@ const View = ({ classes }) => {
                                         key={ taskList.id }
                                         data={{
                                             type: 'drag-list',
-                                            droppableTaskListId: taskList.id,
+                                            droppableTaskListId: index,
                                         }}
-                                        handleDrop={ draggableTaskListId => dispatch(sortList(index, draggableTaskListId)) }
+                                        handleDrop={ data => dropHelper(dispatch, data) }
                                     >
                                         <Draggable
                                             data={{
@@ -79,7 +77,7 @@ const View = ({ classes }) => {
                                                     droppableTaskListId: index,
                                                     handlePropagation: event => event.stopPropagation(),
                                                 }}
-                                                handleDrop={(draggableTaskListId, taskId) => dispatch(moveTask(index, draggableTaskListId, taskId))}
+                                                handleDrop={ data => dropHelper(dispatch, data) }
                                             >
                                                 <TaskList
                                                     {...taskList}
@@ -94,7 +92,7 @@ const View = ({ classes }) => {
                                                     handleSaveTaskName={ taskId => () => dispatch(saveTask(index, taskId)) }
                                                     handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(index, taskId)) }
 
-                                                    handleSort={ (draggableTaskListId, taskId, droppableTaskId) => dispatch(sortTask(index, draggableTaskListId, taskId, droppableTaskId)) }
+                                                    handleSort={ data => dropHelper(dispatch, data) }
                                                 />
                                             </Droppable>
                                         </Draggable>

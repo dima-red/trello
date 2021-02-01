@@ -94,68 +94,56 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
     }
 
     case MOVE_TASK: {
-        if (payload.droppableTaskListId !== payload.draggableTaskListId && payload.taskId >= 0) {
-            console.log('MOVE_TASK');
-            console.log(payload);
-            const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
+        console.log('MOVE_TASK');
+        console.log(payload);
+        const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
 
-            console.log(listsCopy);
+        console.log(listsCopy);
 
-            listsCopy[payload.droppableTaskListId].tasks.push(JSON.parse(JSON.stringify(listsCopy[payload.draggableTaskListId].tasks[payload.taskId])));
+        listsCopy[payload.droppableTaskListId].tasks.push(JSON.parse(JSON.stringify(listsCopy[payload.draggableTaskListId].tasks[payload.taskId])));
 
-            listsCopy[payload.draggableTaskListId].tasks.splice(payload.taskId, 1);
+        listsCopy[payload.draggableTaskListId].tasks.splice(payload.taskId, 1);
 
-            return {
-                taskLists: listsCopy,
-            };
-        }
-
-        return state;
+        return {
+            taskLists: listsCopy,
+        };
     }
 
     case SORT_TASK: {
-        if (payload.droppableTaskListId === payload.draggableTaskListId && payload.taskId >= 0) {
-            console.log('SORT_TASK');
-            console.log(payload);
+        console.log('SORT_TASK');
+        console.log(payload);
 
-            const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
-            const tasks = listsCopy[payload.draggableTaskListId].tasks;
-            const draggableIndex = payload.taskId;
-            const droppableIndex = payload.droppableTaskId;
-            const [ sortableTask ] = tasks.splice(draggableIndex, 1);
+        const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
+        const tasks = listsCopy[payload.draggableTaskListId].tasks;
+        const draggableIndex = payload.taskId;
+        const droppableIndex = payload.droppableTaskId;
+        const [ sortableTask ] = tasks.splice(draggableIndex, 1);
 
-            tasks.splice(droppableIndex, 0, sortableTask);
+        tasks.splice(droppableIndex, 0, sortableTask);
 
-            console.log(tasks);
-            // listsCopy[payload.draggableTaskListId].tasks = { ...tasks };
-            listsCopy[payload.draggableTaskListId].tasks = tasks;
+        console.log(tasks);
 
-            return {
-                taskLists: listsCopy,
-            };
-        }
+        listsCopy[payload.draggableTaskListId].tasks = tasks;
 
-        return state;
+        return {
+            taskLists: listsCopy,
+        };
     }
 
     case SORT_LIST: {
-        if (payload.droppableTaskListId !== payload.draggableTaskListId && !payload.taskId && payload.taskId !== 0) {
-            console.info('SORT_LIST');
-            console.log(payload);
+        console.info('SORT_LIST');
+        console.log(payload);
 
-            const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
-            const draggableIndex = payload.draggableTaskListId;
-            const droppableIndex = payload.droppableTaskListId;
-            const [ sortableList ] = listsCopy.splice(draggableIndex, 1);
+        const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
+        const draggableIndex = payload.draggableTaskListId;
+        const droppableIndex = payload.droppableTaskListId;
+        const [ sortableList ] = listsCopy.splice(draggableIndex, 1);
 
-            listsCopy.splice(droppableIndex, 0, sortableList);
+        listsCopy.splice(droppableIndex, 0, sortableList);
 
-            return {
-                taskLists: listsCopy,
-            };
-        }
-
-        return state;
+        return {
+            taskLists: listsCopy,
+        };
     }
 
     default:

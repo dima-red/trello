@@ -57,7 +57,7 @@ const TaskList = (props) => {
                             <Droppable
                                 key={ task.id }
                                 data={ {
-                                    type: 'drag-task',
+                                    types: ['drag-task'],
                                     droppableTaskListId: id,
                                     droppableTaskId: index,
                                 } }

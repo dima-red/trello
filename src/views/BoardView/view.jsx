@@ -60,8 +60,9 @@ const View = ({ classes }) => {
                                     <Droppable
                                         key={ taskList.id }
                                         data={{
-                                            type: 'drag-list',
+                                            types: ['drag-task', 'drag-list'],
                                             droppableTaskListId: index,
+                                            handlePropagation: event => event.stopPropagation(),
                                         }}
                                         handleDrop={ data => dropHelper(dispatch, data) }
                                     >
@@ -71,30 +72,21 @@ const View = ({ classes }) => {
                                                 draggableTaskListId: index,
                                             }}
                                         >
-                                            <Droppable
-                                                data={{
-                                                    type: 'drag-task',
-                                                    droppableTaskListId: index,
-                                                    handlePropagation: event => event.stopPropagation(),
-                                                }}
-                                                handleDrop={ data => dropHelper(dispatch, data) }
-                                            >
-                                                <TaskList
-                                                    {...taskList}
-                                                    id={ index }
-                                                    handleChangeListName={ ({ target: { value } }) => dispatch(nameTaskList(value, index)) }
-                                                    handleSaveListName={ () => dispatch(saveTaskList(index))}
-                                                    handleCancelListName={ () => dispatch(cancelTaskListCreation(index)) }
+                                            <TaskList
+                                                {...taskList}
+                                                id={ index }
+                                                handleChangeListName={ ({ target: { value } }) => dispatch(nameTaskList(value, index)) }
+                                                handleSaveListName={ () => dispatch(saveTaskList(index))}
+                                                handleCancelListName={ () => dispatch(cancelTaskListCreation(index)) }
 
-                                                    handleCreateTask={ () => dispatch(createTask(index)) }
+                                                handleCreateTask={ () => dispatch(createTask(index)) }
 
-                                                    handleChangeTaskName={ taskId => ({ target: { value } }) => dispatch(nameTask(value, index, taskId)) }
-                                                    handleSaveTaskName={ taskId => () => dispatch(saveTask(index, taskId)) }
-                                                    handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(index, taskId)) }
+                                                handleChangeTaskName={ taskId => ({ target: { value } }) => dispatch(nameTask(value, index, taskId)) }
+                                                handleSaveTaskName={ taskId => () => dispatch(saveTask(index, taskId)) }
+                                                handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(index, taskId)) }
 
-                                                    handleSort={ data => dropHelper(dispatch, data) }
-                                                />
-                                            </Droppable>
+                                                handleSort={ data => dropHelper(dispatch, data) }
+                                            />
                                         </Draggable>
                                     </Droppable>
                                 ))

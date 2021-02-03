@@ -10,18 +10,6 @@ const Droppable = ({ children, handleDrop, data }) => {
         event.dataTransfer.dropEffect = 'move';
     };
 
-    // const drop = (event) => {
-    //     console.log('drop Droppable: ', data);
-    //
-    //     const transferredData = event.dataTransfer.getData(data.type);
-    //
-    //     if (transferredData) {
-    //         const parsedData = JSON.parse(transferredData);
-    //
-    //         handleDrop({ ...parsedData, ...data, event });
-    //     }
-    // };
-
     const drop = (event) => {
         console.log('drop Droppable: ', data);
 

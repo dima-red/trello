@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import {
     moveTask,
     sortTask,
@@ -18,4 +19,14 @@ export const dropHelper = (dispatch, { droppableTaskListId, draggableTaskListId,
     if (droppableTaskListId !== draggableTaskListId && !draggableTaskId && draggableTaskId !== 0) {
         dispatch(sortList(droppableTaskListId, draggableTaskListId));
     }
+};
+
+export const withCallback = (cb, params) => {
+    console.log('BooooM');
+    const memoizedCallback = useCallback(
+        cb,
+        [params],
+    );
+
+    return memoizedCallback;
 };

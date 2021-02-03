@@ -19,7 +19,7 @@ import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from '../../components/Droppable/Droppable.jsx';
 import Draggable from '../../components/Draggable/Draggable.jsx';
-import { dropHelper } from './helpers';
+import { dropHelper, withCallback } from './helpers';
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -64,7 +64,7 @@ const View = ({ classes }) => {
                                             droppableTaskListId: index,
                                             handlePropagation: event => event.stopPropagation(),
                                         }}
-                                        handleDrop={ data => dropHelper(dispatch, data) }
+                                        handleDrop={ data => withCallback(dropHelper(dispatch, data), data) }
                                     >
                                         <Draggable
                                             data={{

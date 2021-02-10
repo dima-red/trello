@@ -107,36 +107,35 @@ export const cancelTaskCreation = (taskListId, taskId) => (
     }
 );
 
-export const moveTask = (droppableTaskListId, draggableTaskListId, taskId) => (
+export const moveTask = ({ droppableTaskListId, draggableTaskListId, draggableTaskId }) => (
     {
         type: MOVE_TASK,
         payload: {
             droppableTaskListId,
             draggableTaskListId,
-            taskId
+            draggableTaskId
         },
     }
 );
 
-export const sortTask = (droppableTaskListId, draggableTaskListId, draggableTaskId, droppableTaskId) => (
+export const sortTask = ({ droppableTaskListId, draggableTaskListId, draggableTaskId, droppableTaskId }) => (
     {
         type: SORT_TASK,
         payload: {
             droppableTaskListId,
             draggableTaskListId,
-            taskId: draggableTaskId,
+            draggableTaskId,
             droppableTaskId
         },
     }
 );
 
-export const sortList = (droppableTaskListId, draggableTaskListId, taskId) => (
+export const sortList = ({ droppableTaskListId, draggableTaskListId }) => (
     {
         type: SORT_LIST,
         payload: {
-            droppableTaskListId,
             draggableTaskListId,
-            taskId
+            droppableTaskListId,
         },
     }
 );

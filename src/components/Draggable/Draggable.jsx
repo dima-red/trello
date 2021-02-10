@@ -7,10 +7,8 @@ const Draggable = ({ children, data }) => {
     const handleDragStart = (event) => {
         console.log('startDrag Draggable', data);
 
-        event.dataTransfer.setData(data.type, JSON.stringify({
-            draggableTaskListId: data.draggableTaskListId,
-            draggableTaskId: data.taskId
-        }));
+        event.dataTransfer.setData(data.type, JSON.stringify(data));
+        event.stopPropagation();
     };
 
     return (

@@ -12,6 +12,9 @@ import {
     nameTask,
     saveTask,
     cancelTaskCreation,
+    sortTask,
+    moveTask,
+    sortList,
 } from './actions';
 import Button from '../../components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
@@ -60,16 +63,24 @@ const View = ({ classes }) => {
                                     <Droppable
                                         key={ taskList.id }
                                         data={{
-                                            types: ['drag-task', 'drag-list'],
+                                            dropTypes: ['task-list', 'task'],
                                             droppableTaskListId: index,
                                             handlePropagation: event => event.stopPropagation(),
                                         }}
-                                        handleDrop={ data => withCallback(dropHelper(dispatch, data), data) }
+                                        handleDrop={{
+                                            'task-list': data => dispatch(sortList(data)),
+                                            'task': {
+                                                'move': data => dispatch(moveTask(data)),
+                                            }
+                                        }}
                                     >
                                         <Draggable
                                             data={{
-                                                type: 'drag-list',
+                                                type: 'task-list',
                                                 draggableTaskListId: index,
+                                                draggedData: {
+                                                    taskList
+                                                }
                                             }}
                                         >
                                             <TaskList
@@ -85,7 +96,12 @@ const View = ({ classes }) => {
                                                 handleSaveTaskName={ taskId => () => dispatch(saveTask(index, taskId)) }
                                                 handleCancelTaskName={ taskId => () => dispatch(cancelTaskCreation(index, taskId)) }
 
-                                                handleSort={ data => dropHelper(dispatch, data) }
+                                                handleSort={{
+                                                    'task': {
+                                                        'move': data => dispatch(moveTask(data)), // for case when user drags task from the one taskList on the task on another taskList
+                                                        'sort': data => dispatch(sortTask(data)),
+                                                    },
+                                                }}
                                             />
                                         </Draggable>
                                     </Droppable>

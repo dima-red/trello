@@ -11,17 +11,22 @@ const Droppable = ({ children, handleDrop, data }) => {
     };
 
     const drop = (event) => {
-        console.log('drop Droppable: ', data);
+        const transferredData = data.dropTypes
+            .map(type => event.dataTransfer.getData(type))
+            .find(item => item.length);
 
-        const types = data.types;
-        const parsedData = types.reduce((acc, curr) => {
-            const transferredData = event.dataTransfer.getData(curr);
+        const parsedData = JSON.parse(transferredData);
 
-            return transferredData ? acc = [...acc, JSON.parse(transferredData)] : acc;
+        const type = parsedData.type;
 
-        }, []);
+        if (type === 'task') {
+            const action = parsedData.draggableTaskListId === data.droppableTaskListId ? 'sort' : 'move';
 
-        return handleDrop({ ...parsedData[0], ...data, event });
+            handleDrop[type][action]({ ...parsedData, ...data });
+            event.stopPropagation();
+        } else {
+            handleDrop[type]?.({ ...parsedData, ...data });
+        }
     };
 
     return (

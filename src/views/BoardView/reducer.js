@@ -100,9 +100,9 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
 
         console.log(listsCopy);
 
-        listsCopy[payload.droppableTaskListId].tasks.push(JSON.parse(JSON.stringify(listsCopy[payload.draggableTaskListId].tasks[payload.taskId])));
+        listsCopy[payload.droppableTaskListId].tasks.push(JSON.parse(JSON.stringify(listsCopy[payload.draggableTaskListId].tasks[payload.draggableTaskId])));
 
-        listsCopy[payload.draggableTaskListId].tasks.splice(payload.taskId, 1);
+        listsCopy[payload.draggableTaskListId].tasks.splice(payload.draggableTaskId, 1);
 
         return {
             taskLists: listsCopy,
@@ -115,7 +115,7 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
 
         const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
         const tasks = listsCopy[payload.draggableTaskListId].tasks;
-        const draggableIndex = payload.taskId;
+        const draggableIndex = payload.draggableTaskId;
         const droppableIndex = payload.droppableTaskId;
         const [ sortableTask ] = tasks.splice(draggableIndex, 1);
 

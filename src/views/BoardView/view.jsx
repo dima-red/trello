@@ -22,7 +22,6 @@ import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from '../../components/Droppable/Droppable.jsx';
 import Draggable from '../../components/Draggable/Draggable.jsx';
-import { dropHelper, withCallback } from './helpers';
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -32,6 +31,14 @@ const View = ({ classes }) => {
     );
     const taskLists = useSelector(state => state.boardViewReducer.taskLists);
     const dispatch = useDispatch();
+
+    const handleAction = ({ type, draggableTaskListId }, { droppableTaskListId }) => type === 'task-list'
+        ? 'move'
+        : draggableTaskListId === droppableTaskListId
+            ? 'sort'
+            : 'move';
+
+    const handlePropagation = ( { type }, event ) =>  type === 'task' ? event.stopPropagation() : '';
 
     console.info('Store.taskLists : ', taskLists);
 
@@ -65,14 +72,17 @@ const View = ({ classes }) => {
                                         data={{
                                             dropTypes: ['task-list', 'task'],
                                             droppableTaskListId: index,
-                                            handlePropagation: event => event.stopPropagation(),
                                         }}
                                         handleDrop={{
-                                            'task-list': data => dispatch(sortList(data)),
+                                            'task-list': {
+                                                'move': data => dispatch(sortList(data)),
+                                            },
                                             'task': {
                                                 'move': data => dispatch(moveTask(data)),
                                             }
                                         }}
+                                        handleAction={ handleAction }
+                                        handlePropagation={ handlePropagation }
                                     >
                                         <Draggable
                                             data={{
@@ -102,6 +112,8 @@ const View = ({ classes }) => {
                                                         'sort': data => dispatch(sortTask(data)),
                                                     },
                                                 }}
+                                                handleAction={ handleAction }
+                                                handlePropagation={ handlePropagation }
                                             />
                                         </Draggable>
                                     </Droppable>

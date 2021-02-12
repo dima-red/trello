@@ -25,7 +25,9 @@ const TaskList = (props) => {
         handleChangeTaskName,
         handleSaveTaskName,
         handleCancelTaskName,
-        handleSort
+        handleSort,
+        handleAction,
+        handlePropagation
     } = props;
     const tasksObject = props.tasks;
     const tasks = Object.values(tasksObject);
@@ -62,6 +64,8 @@ const TaskList = (props) => {
                                     droppableTaskId: index,
                                 } }
                                 handleDrop={ handleSort }
+                                handleAction={ handleAction }
+                                handlePropagation={ handlePropagation }
                             >
                                 <Draggable
                                     data={{

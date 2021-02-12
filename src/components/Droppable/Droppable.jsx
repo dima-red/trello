@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Droppable = ({ children, handleDrop, data }) => {
+const Droppable = ({ children, handleDrop, handleAction, handlePropagation, data }) => {
 
     const dragOver = event => {
         event.preventDefault();
@@ -16,17 +16,11 @@ const Droppable = ({ children, handleDrop, data }) => {
             .find(item => item.length);
 
         const parsedData = JSON.parse(transferredData);
-
         const type = parsedData.type;
+        const action = handleAction(parsedData, data);
 
-        if (type === 'task') {
-            const action = parsedData.draggableTaskListId === data.droppableTaskListId ? 'sort' : 'move';
-
-            handleDrop[type][action]({ ...parsedData, ...data });
-            event.stopPropagation();
-        } else {
-            handleDrop[type]?.({ ...parsedData, ...data });
-        }
+        handleDrop[type]?.[action]({ ...parsedData, ...data });
+        handlePropagation(parsedData, event);
     };
 
     return (

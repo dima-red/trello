@@ -22,6 +22,7 @@ import Logo from '../../components/Logo/Logo.jsx';
 import Container from '../../components/Container/Container.jsx';
 import Droppable from '../../components/Droppable/Droppable.jsx';
 import Draggable from '../../components/Draggable/Draggable.jsx';
+import Header from '../../components/Header/Header.jsx';
 import styles from './styles';
 
 const View = ({ classes }) => {
@@ -32,36 +33,36 @@ const View = ({ classes }) => {
     const taskLists = useSelector(state => state.boardViewReducer.taskLists);
     const dispatch = useDispatch();
 
-    const handleAction = ({ type, draggableTaskListId }, { droppableTaskListId }) => type === 'task-list'
-        ? 'move'
-        : draggableTaskListId === droppableTaskListId
-            ? 'sort'
-            : 'move';
+    const handleAction = ({ type, draggableTaskListId }, { droppableTaskListId }) => (
+        type === 'task-list'
+            ? 'move'
+            : draggableTaskListId === droppableTaskListId
+                ? 'sort'
+                : 'move'
+    );
 
-    const handlePropagation = ( { type }, event ) =>  type === 'task' ? event.stopPropagation() : '';
+    const handleEventPropagation = ( { type }, event ) =>  type === 'task' ? event.stopPropagation() : '';
 
     console.info('Store.taskLists : ', taskLists);
 
     return (
         <div className={classes.app}>
             <div className={classes.viewWrapper}>
-                <header className={classes.appHeader}>
-                    <div className={classes.headerLeft}>
-                        <Button
-                            text={'Boards'}
-                            classNameProps={classes.headerBtn}
-                            onClick={() => console.log('Add Board')}
-                        />
-                    </div>
-                    <div className={classes.headerRight}>
-                        <Button
-                            text={'+'}
-                            classNameProps={buttonClassNames}
-                            onClick={() => dispatch(createTaskList())}
-                        />
-                        <Logo/>
-                    </div>
-                </header>
+                <Header>
+                    <Button
+                        location='left'
+                        text='Boards'
+                        classNameProps={classes.headerBtn}
+                        onClick={ () => console.log('Add Board') }
+                    />
+                    <Button
+                        location='right'
+                        text={'+'}
+                        classNameProps={ buttonClassNames }
+                        onClick={ () => dispatch(createTaskList()) }
+                    />
+                    <Logo location='right' />
+                </Header>
                 <main>
                     <div className={classes.scrollable}>
                         <Container options={ { direction: 'row' } }>
@@ -82,7 +83,7 @@ const View = ({ classes }) => {
                                             }
                                         }}
                                         handleAction={ handleAction }
-                                        handlePropagation={ handlePropagation }
+                                        handleEventPropagation={ handleEventPropagation }
                                     >
                                         <Draggable
                                             data={{
@@ -113,7 +114,7 @@ const View = ({ classes }) => {
                                                     },
                                                 }}
                                                 handleAction={ handleAction }
-                                                handlePropagation={ handlePropagation }
+                                                handleEventPropagation={ handleEventPropagation }
                                             />
                                         </Draggable>
                                     </Droppable>
@@ -133,9 +134,6 @@ View.propTypes = {
         addBtn: PropTypes.string,
         app: PropTypes.string,
         viewWrapper: PropTypes.string,
-        appHeader: PropTypes.string,
-        headerLeft: PropTypes.string,
-        headerRight: PropTypes.string,
         scrollable: PropTypes.string,
         boardContent: PropTypes.string,
     }).isRequired,

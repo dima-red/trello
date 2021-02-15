@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
 import styles from './styles';
 
-const Droppable = ({ children, handleDrop, handleAction, handlePropagation, data }) => {
+const Droppable = ({ children, handleDrop, handleAction, handleEventPropagation, data }) => {
 
     const dragOver = event => {
         event.preventDefault();
@@ -20,7 +20,7 @@ const Droppable = ({ children, handleDrop, handleAction, handlePropagation, data
         const action = handleAction(parsedData, data);
 
         handleDrop[type]?.[action]({ ...parsedData, ...data });
-        handlePropagation(parsedData, event);
+        handleEventPropagation(parsedData, event);
     };
 
     return (

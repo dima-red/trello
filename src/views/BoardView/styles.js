@@ -18,13 +18,6 @@ const styles = {
         "margin-top": "68px",
         "overflow-x": "auto",
     },
-    appHeader: {
-        display: "flex",
-        "justify-content": "space-between",
-        "border-bottom": `2px solid ${ternary}`,
-        position: "fixed",
-        width: "100%",
-    },
     headerBtn: {
         margin: "10px 10px"
     },
@@ -32,12 +25,6 @@ const styles = {
         "font-size": "30px",
         padding: "5px 14px"
     },
-
-
-    headerRight: {
-        display: "flex"
-    },
-    headerLeft: {},
 };
 
 export default styles;

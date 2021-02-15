@@ -94,7 +94,7 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
     }
 
     case MOVE_TASK: {
-        console.log('MOVE_TASK');
+        console.info('MOVE_TASK');
         console.log(payload);
         const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
 
@@ -110,7 +110,7 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
     }
 
     case SORT_TASK: {
-        console.log('SORT_TASK');
+        console.info('SORT_TASK');
         console.log(payload);
 
         const listsCopy = JSON.parse(JSON.stringify(state.taskLists));

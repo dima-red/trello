@@ -10,7 +10,7 @@ const typographyClassesMAP = {
     date: 'dateTime',
 };
 
-const Typography = ({ classes, variant, text }) => {
+const Typography = ({ classes, variant, text, children }) => {
     const typographyClassNames = classNames(
         classes[typographyClassesMAP[variant]]
     );
@@ -18,12 +18,15 @@ const Typography = ({ classes, variant, text }) => {
     return (
         <div className={ typographyClassNames }>
             <span className={ classes.text }>{ text }</span>
+            <div className={ classes.typographyChildren } >{ children }</div>
         </div>
     );
 };
 
 Typography.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
+    classes: PropTypes.shape({
+
+    }).isRequired,
     variant: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
 };

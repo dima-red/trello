@@ -5,6 +5,9 @@ const styles = {
     },
     input: {
         padding: "0 10px",
+        "&:focus": {
+            outline: "none",
+        },
     },
 };
 

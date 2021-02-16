@@ -36,71 +36,78 @@ const TaskList = (props) => {
         <div
             className={ classes.wrapper }
         >
-            {
-                isEditList ?
-                    <List>
+            <List>
+                {
+                    isEditList ?
                         <SummaryDescriptionMaker
                             value={ summary }
                             placeholder={ placeholder }
                             handleChange={ handleChangeListName }
                             handleSave={ handleSaveListName }
                             handleCancel={ handleCancelListName }
-                        />
-                    </List>:
-                    <Typography
-                        variant={'summary'}
-                        text={ summary }
-                    />
-            }
-            {
-                <List>
-                    {
-                        !!tasks.length && tasks.map((task, index) => (
-                            <Droppable
-                                key={ task.id }
-                                data={ {
-                                    dropTypes: ['task-list', 'task'],
-                                    droppableTaskListId: id,
-                                    droppableTaskId: index,
-                                } }
-                                handleDrop={ handleSort }
-                                handleAction={ handleAction }
-                                handleEventPropagation={ handleEventPropagation }
+                        /> :
+                        <Typography
+                            variant={'summary'}
+                            text={ summary }
+                        >
+                            <Button
+                                variant='icon'
+                                classNameProps="far fa-edit"
+                                onClick={ () => console.log('Ediiiiiiittttttttt') }
+                            />
+                            <Button
+                                variant='icon'
+                                classNameProps="far fa-trash-alt"
+                                onClick={ () => console.log('Deleeeete') }
+                            />
+                        </Typography>
+                }
+                {
+                    !!tasks.length && tasks.map((task, index) => (
+                        <Droppable
+                            key={ task.id }
+                            data={ {
+                                dropTypes: ['task-list', 'task'],
+                                droppableTaskListId: id,
+                                droppableTaskId: index,
+                            } }
+                            handleDrop={ handleSort }
+                            handleAction={ handleAction }
+                            handleEventPropagation={ handleEventPropagation }
+                        >
+                            <Draggable
+                                data={{
+                                    type: 'task',
+                                    draggableTaskId: index,
+                                    draggableTaskListId: id,
+                                    draggedData: {
+                                        task
+                                    }
+                                }}
                             >
-                                <Draggable
-                                    data={{
-                                        type: 'task',
-                                        draggableTaskId: index,
-                                        draggableTaskListId: id,
-                                        draggedData: {
-                                            task
-                                        }
-                                    }}
-                                >
-                                    <Task
-                                        { ...task }
-                                        handleChangeTask={ handleChangeTaskName(index) }
-                                        handleSaveTask={ handleSaveTaskName(index) }
-                                        handleCancelTask={ handleCancelTaskName(index) }
-                                    />
-                                </Draggable>
-                            </Droppable>
-                        ))
-                    }
-                </List>
-            }
-            <div className={ classes.footer }>
-                <Button
-                    text={'Add Task'}
-                    classNameProps={ classes.addTaskButton }
-                    onClick={ handleCreateTask }
-                    variant='secondary'
-                />
-                <Typography
-                    variant={'date'}
-                    text={ dateTime }
-                />
-            </div>
+                                <Task
+                                    { ...task }
+                                    handleChangeTask={ handleChangeTaskName(index) }
+                                    handleSaveTask={ handleSaveTaskName(index) }
+                                    handleCancelTask={ handleCancelTaskName(index) }
+                                />
+                            </Draggable>
+                        </Droppable>
+                    ))
+                }
+                <div className={ classes.footer }>
+                    <Button
+                        text={'Add Task'}
+                        classNameProps={ classes.addTaskButton }
+                        onClick={ handleCreateTask }
+                        variant='secondary'
+                    />
+                    <Typography
+                        variant={'date'}
+                        text={ dateTime }
+                    />
+                </div>
+            </List>
         </div>
     );
 };

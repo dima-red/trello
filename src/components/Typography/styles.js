@@ -3,7 +3,14 @@ import { ternary } from '../../constants/color.constants';
 export const styles = {
     summary: {
         "text-align": "center",
-        "margin": "10px 10px 0",
+        "margin-bottom": "10px",
+        "padding": "0 5px",
+        display: "flex",
+        "justify-content": "space-between",
+        "white-space": "nowrap",
+        "& $typographyChildren": {
+            display: "block",
+        }
     },
     description: {
         "box-shadow": "0 1px 0 rgba(9, 30, 66, 0.25)",
@@ -13,8 +20,16 @@ export const styles = {
         "font-size": "15px",
         padding: "10px",
         cursor: "grab",
+        display: "flex",
+        "justify-content": "space-between",
+        "white-space": "nowrap",
         "&:active": {
             cursor: "grabbing",
+        },
+        "&:hover": {
+            "& $typographyChildren": {
+                display: "block",
+            }
         },
     },
     dateTime: {
@@ -27,7 +42,12 @@ export const styles = {
         overflow: "hidden",
         "text-overflow": "ellipsis",
         display: "block",
-    }
+        "white-space": "nowrap",
+    },
+    typographyChildren: {
+        display: "none",
+    },
+    icon: {},
 };
 
 export default styles;

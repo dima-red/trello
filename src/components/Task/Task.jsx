@@ -4,6 +4,7 @@ import withStyles from 'react-jss';
 import Typography from '../Typography/Typography.jsx';
 import SummaryDescriptionMaker from '../SummaryDescriptionMaker/SummaryDescriptionMaker.jsx';
 import styles from './styles.js';
+import Button from '../Button/Button.jsx';
 
 const Task = (props) => {
     const {
@@ -28,7 +29,25 @@ const Task = (props) => {
             <Typography
                 variant={ 'description' }
                 text={ description }
-            />
+            >
+                <Button
+                    variant='icon'
+                    size='small'
+                    visibility='hidden'
+                    isAnimated={ false }
+                    className='TEST'
+                    classNameProps="far fa-edit"
+                    onClick={ () => console.log('Ediiiiiiittttttttt') }
+                />
+                <Button
+                    variant='icon'
+                    size='small'
+                    visibility='hidden'
+                    isAnimated={ false }
+                    classNameProps="far fa-trash-alt"
+                    onClick={ () => console.log('Deleeeete') }
+                />
+            </Typography>
     );
 };
 

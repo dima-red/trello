@@ -7,12 +7,29 @@ import styles from './styles';
 const buttonVariantsMap = {
     primary: 'primaryButton',
     secondary: 'secondaryButton',
+    icon: 'icon',
 };
 
-const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant, isDisabled }) => {
+const sizesMap = {
+    small: 'iconSmall',
+    medium: 'iconMedium',
+    large: 'iconLarge',
+};
+
+const visibilityMap = {
+    visible: 'visible',
+    hidden: 'hidden'
+};
+
+const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant, isDisabled, size, visibility, isAnimated }) => {
     const buttonClasses = classNames(
         classes.button,
         classes[buttonVariantsMap[variant]],
+        classes[sizesMap[size]],
+        classes[visibilityMap[visibility]],
+        {
+            [classes.animate]: isAnimated,
+        },
         classNameProps
     );
 
@@ -22,6 +39,8 @@ const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant,
             [classes.alertColor]: isAlertColor,
         },
     );
+
+    console.log(buttonClasses);
 
     return (
         <button
@@ -51,6 +70,9 @@ Button.propTypes = {
 Button.defaultProps = {
     isAlertColor: false,
     variant: 'primary', // can be 'secondary'
+    size: 'medium',
+    visibility: 'visible',
+    isAnimated: true,
     classNameProps: '',
     isDisabled: false,
     text: '',

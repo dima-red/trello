@@ -13,8 +13,7 @@ export const styles = {
     },
     footer: {
         display: "flex",
-        "margin-bottom": "10px",
-        "justify-content": "space-around",
+        "justify-content": "space-between",
     },
     addTaskButton: {
         padding: "5px 10px",

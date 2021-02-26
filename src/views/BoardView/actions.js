@@ -5,6 +5,7 @@ import {
     ADD_NEW_LIST,
     NAME_NEW_LIST,
     SAVE_NEW_LIST,
+    EDIT_LIST,
     CANCEL_NEW_LIST,
     CREATE_NEW_TASK,
     NAME_NEW_TASK,
@@ -26,6 +27,7 @@ export const createTaskList = () => (
             tasks: [],
             placeholder: 'Please, name your list',
             dateTime: new Date().toLocaleString(),
+            isNewList: true,
             isEditList: true,
             id: ++taskListIdCounter,
         },
@@ -47,6 +49,17 @@ export const saveTaskList = (taskListId) => (
         type: SAVE_NEW_LIST,
         payload: {
             isEditList: false,
+            isNewList: false,
+            id: taskListId,
+        },
+    }
+);
+
+export const editTaskList = (taskListId) => (
+    {
+        type: EDIT_LIST,
+        payload: {
+            isEditList: true,
             id: taskListId,
         },
     }

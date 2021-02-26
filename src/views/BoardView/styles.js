@@ -1,4 +1,10 @@
-import { primary, secondary, ternary } from '../../constants/color.constants';
+import {
+    primary,
+    secondary,
+    ternary,
+    specialBackground,
+    specialBackgroundHover,
+} from '../../constants/color.constants';
 
 const styles = {
     app: {
@@ -19,11 +25,17 @@ const styles = {
         "overflow-x": "auto",
     },
     headerBtn: {
-        margin: "10px 10px"
+        margin: "10px 10px",
     },
     addBtn: {
-        "font-size": "30px",
-        padding: "5px 14px"
+        "font-size": "25px",
+        padding: "5px 14px",
+        "color": secondary,
+        "border-radius": "5px",
+        "background-color": specialBackground,
+        "&:hover": {
+            "background-color": specialBackgroundHover,
+        },
     },
 };
 

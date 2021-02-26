@@ -16,10 +16,12 @@ const TaskList = (props) => {
         summary,
         dateTime,
         isEditList,
+        isNewList,
         placeholder,
         id,
         handleChangeListName,
         handleSaveListName,
+        handleEditListName,
         handleCancelListName,
         handleCreateTask,
         handleChangeTaskName,
@@ -42,6 +44,7 @@ const TaskList = (props) => {
                         <SummaryDescriptionMaker
                             value={ summary }
                             placeholder={ placeholder }
+                            isNewList={ isNewList }
                             handleChange={ handleChangeListName }
                             handleSave={ handleSaveListName }
                             handleCancel={ handleCancelListName }
@@ -52,13 +55,13 @@ const TaskList = (props) => {
                         >
                             <Button
                                 variant='icon'
-                                classNameProps="far fa-edit"
-                                onClick={ () => console.log('Ediiiiiiittttttttt') }
+                                iconProps="far fa-edit"
+                                handleClick={ handleEditListName }
                             />
                             <Button
                                 variant='icon'
-                                classNameProps="far fa-trash-alt"
-                                onClick={ () => console.log('Deleeeete') }
+                                iconProps="far fa-trash-alt"
+                                handleClick={ () => console.log('Deleeeete') }
                             />
                         </Typography>
                 }
@@ -96,11 +99,19 @@ const TaskList = (props) => {
                     ))
                 }
                 <div className={ classes.footer }>
+                    {/*<Button*/}
+                    {/*    text={'Add Task'}*/}
+                    {/*    classNameProps={ classes.addTaskButton }*/}
+                    {/*    handleClick={ handleCreateTask }*/}
+                    {/*    variant='secondary'*/}
+                    {/*/>*/}
                     <Button
-                        text={'Add Task'}
-                        classNameProps={ classes.addTaskButton }
-                        onClick={ handleCreateTask }
                         variant='secondary'
+                        text='Add Task'
+                        isAnimated={ false }
+                        classNameProps={ classes.addTaskButton }
+                        iconProps='fas fa-plus'
+                        handleClick={ handleCreateTask }
                     />
                     <Typography
                         variant={'date'}

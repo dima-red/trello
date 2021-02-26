@@ -15,6 +15,7 @@ import {
     sortTask,
     moveTask,
     sortList,
+    editTaskList,
 } from './actions';
 import Button from '../../components/Button/Button.jsx';
 import TaskList from '../../components/TaskList/TaskList.jsx';
@@ -51,15 +52,20 @@ const View = ({ classes }) => {
                 <Header>
                     <Button
                         location='left'
+                        variant='icon'
                         text='Boards'
-                        classNameProps={classes.headerBtn}
-                        onClick={ () => console.log('Add Board') }
+                        isAnimated={ false }
+                        classNameProps={ buttonClassNames }
+                        iconProps='fab fa-trello'
+                        handleClick={ () => console.log('Add Board') }
                     />
                     <Button
                         location='right'
-                        text={'+'}
+                        variant='icon'
+                        isAnimated={ false }
                         classNameProps={ buttonClassNames }
-                        onClick={ () => dispatch(createTaskList()) }
+                        iconProps='fas fa-plus'
+                        handleClick={ () => dispatch(createTaskList()) }
                     />
                     <Logo location='right' />
                 </Header>
@@ -115,6 +121,8 @@ const View = ({ classes }) => {
                                                 }}
                                                 handleAction={ handleAction }
                                                 handleEventPropagation={ handleEventPropagation }
+
+                                                handleEditListName={ () => dispatch(editTaskList(index)) }
                                             />
                                         </Draggable>
                                     </Droppable>

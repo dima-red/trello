@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'react-jss';
-import classNames from 'classnames';
 import Button from '../Button/Button.jsx';
 import InputArea from '../InputArea/InputArea.jsx';
 import styles from './styles.js';
@@ -11,14 +10,11 @@ const SummaryDescriptionMaker = (props) => {
         classes,
         value,
         placeholder,
+        isNewList,
         handleChange,
         handleSave,
         handleCancel,
     } = props;
-
-    const buttonClasses = classNames(
-        classes.inputControls,
-    );
 
     const keyHandler = ({ key, target: { defaultValue } }) => {
         if (key === 'Escape') {
@@ -39,26 +35,35 @@ const SummaryDescriptionMaker = (props) => {
                 handleKeyUp={ keyHandler }
             />
             <Button
-                text={'✔'}
-                classNameProps={ buttonClasses }
-                onClick={ handleSave }
-                variant='secondary'
+                variant='icon'
+                isAnimated={ !!value.length }
+                iconProps='fas fa-check'
+                handleClick={ handleSave }
                 isDisabled={ !value.length }
             />
-            <Button
-                text={'✖'}
-                classNameProps={ buttonClasses }
-                isAlertColor={ true }
-                onClick={ handleCancel }
-                variant='secondary'
-            />
+            {
+                isNewList ?
+                    <Button
+                        variant='icon'
+                        // text='Test'
+                        isAnimated={ false }
+                        classNameProps={ classes.trash }
+                        iconProps='far fa-trash-alt'
+                        handleClick={ handleCancel }
+                    /> :
+                    <Button
+                        variant='icon'
+                        iconProps='fas fa-times'
+                        handleClick={ () => console.log('AAAAA') }
+                    />
+            }
         </div>
     );
 };
 
 SummaryDescriptionMaker.propTypes = {
     classes: PropTypes.shape({
-        inputControls: PropTypes.string,
+        // inputControls: PropTypes.string,
         listItem: PropTypes.string,
     }).isRequired,
     value: PropTypes.string,

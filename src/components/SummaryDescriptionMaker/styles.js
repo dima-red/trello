@@ -1,18 +1,15 @@
-import { primary } from '../../constants/color.constants';
+import { primary, decline } from '../../constants/color.constants';
 
 const styles = {
     listItem: {
-        "text-align": "center",
         display: "flex",
         "margin-bottom": "10px",
+        "height": "26px",
     },
-    inputControls: {
-        padding: "2px 6px",
-        border: `1px solid ${primary}`,
+    trash: {
         "&:hover": {
-            "border-color": primary,
+            color: decline,
         },
-        "margin-left": "1px",
     },
 };
 

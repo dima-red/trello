@@ -2,6 +2,7 @@ import {
     ADD_NEW_LIST,
     NAME_NEW_LIST,
     SAVE_NEW_LIST,
+    EDIT_LIST,
     CANCEL_NEW_LIST,
     CREATE_NEW_TASK,
     NAME_NEW_TASK,
@@ -16,13 +17,16 @@ import { initialBoardViewState } from './initials';
 
 const reducer = (state = initialBoardViewState, { type, payload } ) => {
     switch (type) {
-    case ADD_NEW_LIST:
+
+    case ADD_NEW_LIST: {
         return {
             taskLists: [
                 ...state.taskLists,
                 payload,
             ],
         };
+    }
+
     case NAME_NEW_LIST: {
         const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
 
@@ -32,7 +36,19 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
             taskLists: listsCopy,
         };
     }
+
     case SAVE_NEW_LIST: {
+        const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
+
+        listsCopy[payload.id].isEditList = payload.isEditList;
+        listsCopy[payload.id].isNewList = payload.isNewList;
+
+        return {
+            taskLists: listsCopy,
+        };
+    }
+
+    case EDIT_LIST: {
         const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
 
         listsCopy[payload.id].isEditList = payload.isEditList;
@@ -41,6 +57,7 @@ const reducer = (state = initialBoardViewState, { type, payload } ) => {
             taskLists: listsCopy,
         };
     }
+
     case CANCEL_NEW_LIST: {
         const listsCopy = JSON.parse(JSON.stringify(state.taskLists));
 

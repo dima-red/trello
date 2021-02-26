@@ -9,7 +9,7 @@ export const styles = {
         "justify-content": "space-between",
         "white-space": "nowrap",
         "& $typographyChildren": {
-            display: "block",
+            display: "flex",
         }
     },
     description: {
@@ -28,7 +28,7 @@ export const styles = {
         },
         "&:hover": {
             "& $typographyChildren": {
-                display: "block",
+                display: "flex",
             }
         },
     },

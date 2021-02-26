@@ -21,7 +21,7 @@ const visibilityMap = {
     hidden: 'hidden'
 };
 
-const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant, isDisabled, size, visibility, isAnimated }) => {
+const Button = ({ classes, text, classNameProps, handleClick, variant, isDisabled, size, visibility, isAnimated, iconProps }) => {
     const buttonClasses = classNames(
         classes.button,
         classes[buttonVariantsMap[variant]],
@@ -33,21 +33,29 @@ const Button = ({ classes, text, classNameProps, onClick, isAlertColor, variant,
         classNameProps
     );
 
-    const buttonTextClasses = classNames(
-        classes.buttonContent,
+    console.log(!!iconProps);
+
+    const buttonIconClasses = classNames(
+        iconProps,
         {
-            [classes.alertColor]: isAlertColor,
+            [classes.fIcon]: !!iconProps,
         },
     );
 
-    console.log(buttonClasses);
+    const buttonTextClasses = classNames(
+        classes.buttonContent,
+        {
+            [classes.buttonText]: !!text,
+        },
+    );
 
     return (
         <button
             className={ buttonClasses }
-            onClick={ onClick }
+            onClick={ handleClick }
             disabled={ isDisabled }
         >
+            <span className={ buttonIconClasses }></span>
             <span className={ buttonTextClasses }>{ text }</span>
         </button>
     )
@@ -62,14 +70,12 @@ Button.propTypes = {
     text: PropTypes.string,
     classNameProps: PropTypes.string,
     onClick: PropTypes.func.isRequired,
-    isAlertColor: PropTypes.string,
     variant: PropTypes.string.isRequired,
     isDisabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
-    isAlertColor: false,
-    variant: 'primary', // can be 'secondary'
+    variant: 'secondary', // can be 'icon'
     size: 'medium',
     visibility: 'visible',
     isAnimated: true,

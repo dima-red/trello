@@ -1,4 +1,4 @@
-import { primary, secondary, ternary, decline } from '../../constants/color.constants';
+import { primary, ternary, } from '../../constants/color.constants';
 
 const styles = {
     button: {
@@ -16,31 +16,23 @@ const styles = {
             outline: "none",
         },
     },
-    primaryButton: {
-        "&:hover&:not([disabled])": {
-            "border-color": secondary,
-            "& $alertColor$buttonContent": {
-                color: decline,
-            },
-            "& $buttonContent": {
-                color: secondary,
-            },
-        },
-    },
     secondaryButton: {
         "font-weight": "bold",
         "&:hover&:not([disabled])": {
             "border-color": primary,
-            "& $alertColor$buttonContent": {
-                color: decline,
-            },
             "& $buttonContent": {
+                color: primary,
+            },
+            "& $fIcon": {
                 color: primary,
             },
             "background-color": ternary,
         },
     },
     icon: {
+        display: "flex",
+        "flex-direction": "row",
+        "align-items": "center",
         color: primary,
         border: "initial",
         cursor: "pointer",
@@ -50,6 +42,9 @@ const styles = {
         "padding-left": "5px",
         "&:hover&$animate": {
             animation: "iconMovement 0.2s linear",
+        },
+        "&:hover&.addBtn": {
+            "background-color": "#868077",
         },
         "&:focus": {
             outline: "none",
@@ -75,7 +70,11 @@ const styles = {
         },
     },
     buttonContent: {},
+    buttonText: {
+        "margin-left": "5px",
+    },
     alertColor: {},
+    fIcon: {},
 };
 
 export default styles;

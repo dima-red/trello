@@ -36,7 +36,7 @@ const Task = (props) => {
                     visibility='hidden'
                     isAnimated={ false }
                     className='TEST'
-                    classNameProps="far fa-edit"
+                    iconProps="far fa-edit"
                     onClick={ () => console.log('Ediiiiiiittttttttt') }
                 />
                 <Button
@@ -44,7 +44,7 @@ const Task = (props) => {
                     size='small'
                     visibility='hidden'
                     isAnimated={ false }
-                    classNameProps="far fa-trash-alt"
+                    iconProps="far fa-trash-alt"
                     onClick={ () => console.log('Deleeeete') }
                 />
             </Typography>
